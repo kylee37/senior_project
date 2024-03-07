@@ -7,14 +7,6 @@ public class Spawner : MonoBehaviour
     [HideInInspector] public StateManager stateManager;
     public GameObject buildPanel;
     private GameObject spawnedObject;
-    private NewButtonController buttonController; // NewButtonController 참조 추가
-
-    // NewButtonController 참조를 설정하는 메서드
-    /*public void SetButtonController(NewButtonController controller)
-    {
-        buttonController = controller;
-    }*/
-
     void Start()
     {
         buildPanel.SetActive(false);
@@ -27,15 +19,6 @@ public class Spawner : MonoBehaviour
         {
             Debug.Log("StateManager found: " + stateManager.currentState);
         }
-
-        buttonController = GetComponent<NewButtonController>();
-      
-
-        // 이미 클래스 레벨에서 선언된 buttonController 변수를 초기화
-        /*if (buttonController != null)
-        {
-            SetButtonController(buttonController);
-        }*/
     }
 
     void Update()

@@ -824,6 +824,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateManager: {fileID: 605254642}
   panel: {fileID: 1999034852}
+  spawner: {fileID: 0}
 --- !u!114 &578074716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1178,6 +1179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateManager: {fileID: 605254642}
   panel: {fileID: 1999034852}
+  spawner: {fileID: 0}
 --- !u!114 &720897433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1737,6 +1739,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateManager: {fileID: 605254642}
   panel: {fileID: 1999034852}
+  spawner: {fileID: 0}
 --- !u!114 &1038194572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1926,18 +1929,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1075068071}
-        m_TargetAssemblyTypeName: NewButtonController, Assembly-CSharp
-        m_MethodName: TogglePanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 430133288}
         m_TargetAssemblyTypeName: Spawner, Assembly-CSharp
         m_MethodName: SpawnObject
@@ -2002,6 +1993,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateManager: {fileID: 605254642}
   panel: {fileID: 1999034852}
+  spawner: {fileID: 0}
 --- !u!1 &1157236474
 GameObject:
   m_ObjectHideFlags: 0
@@ -2189,6 +2181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateManager: {fileID: 605254642}
   panel: {fileID: 1999034852}
+  spawner: {fileID: 0}
 --- !u!114 &1432975899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2693,6 +2686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateManager: {fileID: 605254642}
   panel: {fileID: 1999034852}
+  spawner: {fileID: 0}
 --- !u!114 &1579958867
 MonoBehaviour:
   m_ObjectHideFlags: 0

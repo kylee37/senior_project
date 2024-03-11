@@ -563,10 +563,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1567,10 +1567,12 @@ MonoBehaviour:
   - {fileID: 1388792544}
   foodTextList:
   - "\uC5C6\uC5B4"
-  - "\uD638\uBC00\uBE75"
-  - "\uC2A4\uD14C\uC774\uD06C"
-  - "\uC0D0\uB7EC\uB4DC"
-  - "\uB9E5\uC8FC"
+  - "\uD638\uBC00\uBE75\n\uD638\uBD88\uD638 \uAC08\uB9AC\uC9C0 \uC54A\uB294 \uBB34\uB09C\uD55C
+    \uBE75\n500G "
+  - "\uC2A4\uD14C\uC774\uD06C\n\uBA39\uC74C\uC9C1\uC2A4\uB7FD\uAC8C \uAD6C\uC6CC\uC9C4
+    \uC18C\uACE0\uAE30\n1000G"
+  - "\uC0D0\uB7EC\uB4DC\n\uC2E0\uC120\uD55C \uCC44\uC18C\uB85C \uB9CC\uB4E0 \uC0D0\uB7EC\uB4DC\n700G"
+  - "\uB9E5\uC8FC\n\uC2DC\uC6D0\uD558\uAC8C \uCC28\uAC00\uC6CC\uC9C4 \uB9E5\uC8FC\n700G\n"
   manuImageList:
   - {fileID: 5045962878729638631}
   - {fileID: 214949255}
@@ -4548,7 +4550,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 12:17
+  m_text: "n\uC77C\uCC28 12:17"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 25a0f4facb7fef74b8a10183363d3cfd, type: 2}
   m_sharedMaterial: {fileID: -8643609303237122738, guid: 25a0f4facb7fef74b8a10183363d3cfd, type: 2}
@@ -7250,7 +7252,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 150, y: 45}
-  m_SizeDelta: {x: 170, y: 50}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &3660874515359396845
 MonoBehaviour:
@@ -9428,7 +9430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &5671273015276060030
 CanvasRenderer:
   m_ObjectHideFlags: 0

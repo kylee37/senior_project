@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
 
     //저장용 리스트
     public List<Image> foodImageList = new List<Image>(); //모든 음식 이미지를 담는 리스트
+    [TextArea]
     public List<string> foodTextList = new List<string>(); //모든 음식 설명을 담는 리스트
     //메뉴판 리스트
     public List<Image> manuImageList = new List<Image>(); //메뉴판 이미지를 담는 리스트
@@ -20,24 +21,28 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
+        foodList = new List<int>(new int[limit]);
+
         for (int i = 0; i < limit; i++)
         {
             foodList[i] = 0;
         }
-
-        Debug.Log("foodList의 모든 인덱스를 0으로 초기화");
     }
 
     public void HandleFoodCode(int foodCode) //음식 코드를 받아 처리하는 메서드
     {
-        //리스트에 등록되지 않았고 리스트에 등록된 음식 코드의 갯수가 리미트보다 작다면
-        if (!foodList.Contains(foodCode) && foodList.Count < limit)
+        //리스트에 등록되지 않았고
+        if (!foodList.Contains(foodCode))
         {
-            int indexOfZero = foodList.IndexOf(0);
-            if (indexOfZero != -1)
+            // 0인 인덱스가 있다면
+            if (foodList.Contains(0))
             {
-                foodList[indexOfZero] = foodCode;
-                Debug.Log("음식 코드 추가");
+                // foodList에서 값이 0인 첫 번째 인덱스에 음식 코드 추가
+                int indexOfZero = foodList.IndexOf(0);
+                if (indexOfZero != -1)
+                {
+                    foodList[indexOfZero] = foodCode;
+                }
             }
         }
     }
@@ -96,7 +101,7 @@ public class MenuManager : MonoBehaviour
             }
         }
 
-        yield return 0.5f;
+        yield return new WaitForSeconds(0.5f);
     }
 
     IEnumerator ResetMenu()
@@ -104,13 +109,16 @@ public class MenuManager : MonoBehaviour
         for(int i = 0; i < limit; i++)
         {
             foodList[i] = 0;
-            if (foodList[i] == 0) //값이 없으면
+            if (foodList[i] == 0) //값이 없고
             {
-                manuImageList[i].sprite = foodImageList[0].sprite; //스프라이트 리스트  0번으로 번경
-                manuTextList[i].text = foodTextList[0]; //텍스트 리스트 0번으로 번경
+                if (foodImageList.Count > 0 && foodTextList.Count > 0) //해당 리스트가 비어있다면
+                {
+                    manuImageList[i].sprite = foodImageList[0].sprite; //스프라이트 리스트  0번으로 번경
+                    manuTextList[i].text = foodTextList[0]; //텍스트 리스트 0번으로 번경
+                }
             }
         }
 
-        yield return 0.5f;
+        yield return new WaitForSeconds(0.5f);
     }
 }

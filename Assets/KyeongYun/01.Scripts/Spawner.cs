@@ -5,7 +5,7 @@ using UnityEngine.SubsystemsImplementation;
 public class Spawner : MonoBehaviour
 {
     [HideInInspector] public StateManager stateManager;
-    public GameObject buildPanel;
+    [HideInInspector] public GameObject buildPanel;
     private GameObject spawnedObject;
     void Start()
     {
@@ -37,10 +37,9 @@ public class Spawner : MonoBehaviour
 
     public void SpawnObject(GameObject prefabToSpawn)
     {
-        // 패널이 내려간 상태에서만 오브젝트 생성
         spawnedObject = Instantiate(prefabToSpawn, Vector3.zero, Quaternion.identity);
-        SetObjectAlpha(spawnedObject, 0.2f);
-        buildPanel.SetActive(true);
+        SetObjectAlpha(spawnedObject, 0.2f); // 배치상태일 때 Alpha값을 줄임
+        buildPanel.SetActive(true); 
     }
 
     void MoveObject(Vector3 direction)
@@ -53,6 +52,10 @@ public class Spawner : MonoBehaviour
             GameObject lastSpawnedObject = spawnedObjects[spawnedObjects.Length - 1];
             // 이동할 거리
             float moveDistance = 1.0f;
+            if(Input.GetKey(KeyCode.LeftShift))
+            {
+                moveDistance = 0.2f;
+            }
             // 현재 오브젝트의 위치를 이동
             lastSpawnedObject.transform.Translate(direction * moveDistance);
         }

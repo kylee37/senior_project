@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class NewButtonController : MonoBehaviour
 {
     [HideInInspector] public StateManager stateManager;
+    [HideInInspector] public Spawner spawner;
     public GameObject panel;
-    public Spawner spawner;
 
     private void Awake()
     {

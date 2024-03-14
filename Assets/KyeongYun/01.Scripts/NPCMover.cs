@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Linq;
 
-public class ObjectMovement : MonoBehaviour
+public class NPCMover : MonoBehaviour
 {
     GameManager gameManager;
     Vector3[] path;

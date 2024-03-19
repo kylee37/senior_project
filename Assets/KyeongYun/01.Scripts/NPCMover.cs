@@ -19,7 +19,7 @@ public class NPCMover : MonoBehaviour
     {
         if (targetObject == null) return;
 
-        Vector3 startPos = transform.position;
+        // Vector3 startPos = transform.position;
         Vector3 endPos = targetObject.transform.position;
 
         // A* 알고리즘을 사용하여 경로 찾기

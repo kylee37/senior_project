@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class NPCSpawner : MonoBehaviour
 {
-    public GameObject[] npcPrefabToSpawn;
+    public GameObject[] npcPrefabsToSpawn;
     public void NPCSpawn()
     {
-        Instantiate(npcPrefabToSpawn[0],transform.position,Quaternion.identity);
+        Instantiate(npcPrefabsToSpawn[0], transform.position, Quaternion.identity);
     }
 }

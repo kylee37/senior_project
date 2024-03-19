@@ -5,16 +5,19 @@ using TMPro;
 
 public class XPManager : MonoBehaviour
 {
-    public float xp = 0; //xp
+    public int xp = 0; //xp
     public TMP_Text xpText; //xp Ç¥½Ã UI
-
-    void Start()
-    {
-        
-    }
+    public LevelManager levelManager;
 
     void Update()
     {
         xpText.text = xp.ToString();
+
+        if(levelManager.totalXP > 0)
+        {
+            xp += levelManager.totalXP;
+
+            levelManager.totalXP = 0;
+        }
     }
 }

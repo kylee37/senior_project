@@ -6,7 +6,7 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
-    public static int limit = 5; //리스트에 등록할 수 있는 최대 갯수
+    public static int limit = 3; //리스트에 등록할 수 있는 최대 갯수
     public List<int> foodList = new List<int>(new int[limit]); //음식 코드를 담는 리스트
     public GameObject addPanel; //메뉴 등록 UI (켜져있을 때만 등록을 실행하기 위해 필요)
     public MenuReset menuReset; //메뉴 리셋 스크립트
@@ -34,15 +34,11 @@ public class MenuManager : MonoBehaviour
         //리스트에 등록되지 않았고
         if (!foodList.Contains(foodCode))
         {
-            // 0인 인덱스가 있다면
-            if (foodList.Contains(0))
+            // foodList에서 값이 0인 첫 번째 인덱스에 음식 코드 추가
+            int indexOfZero = foodList.IndexOf(0);
+            if (indexOfZero != -1)
             {
-                // foodList에서 값이 0인 첫 번째 인덱스에 음식 코드 추가
-                int indexOfZero = foodList.IndexOf(0);
-                if (indexOfZero != -1)
-                {
-                    foodList[indexOfZero] = foodCode;
-                }
+                foodList[indexOfZero] = foodCode;
             }
         }
     }
@@ -65,7 +61,6 @@ public class MenuManager : MonoBehaviour
             if(coroutineCheck1 == true) //코루틴이 켜져있다면
             {
                 StopCoroutine(AddManu()); //코루틴 중단
-                Debug.Log("코루틴 중단");
                 coroutineCheck1 = false; //코루틴 변수 false
             }
         }
@@ -75,7 +70,6 @@ public class MenuManager : MonoBehaviour
             if(coroutineCheck2 == false)
             {
                 StartCoroutine(ResetMenu()); //코루틴 호출
-                Debug.Log("초기화 코루틴 호출");
                 coroutineCheck2 = true; //코루틴 변수 true
             }
         }
@@ -84,7 +78,6 @@ public class MenuManager : MonoBehaviour
             if(coroutineCheck2 == true)
             {
                 StopCoroutine(ResetMenu()); //코루틴 중단
-                Debug.Log("초기화 코루틴 중단");
                 coroutineCheck2 = false; //코루틴 변수 false
             }
         }
@@ -96,8 +89,11 @@ public class MenuManager : MonoBehaviour
         {
             if(foodList[i] != 0) //푸드리스트에 값이 있다면
             {
-                manuImageList[i].sprite = foodImageList[foodList[i]].sprite; //메뉴판에 들어온 번호에 해당하는 음식 이미지를 적용
-                manuTextList[i].text = foodTextList[foodList[i]]; //메뉴판에 들어온 번호에 해당하는 음식 설명을 적용
+                if (foodList[i] < foodImageList.Count && foodList[i] < foodTextList.Count) //인덱스 범위 내에 있을 때
+                {
+                    manuImageList[i].sprite = foodImageList[foodList[i]].sprite; //메뉴판에 들어온 번호에 해당하는 음식 이미지를 적용
+                    manuTextList[i].text = foodTextList[foodList[i]]; //메뉴판에 들어온 번호에 해당하는 음식 설명을 적용
+                }
             }
         }
 
@@ -106,15 +102,21 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator ResetMenu()
     {
-        for(int i = 0; i < limit; i++)
+        int manuImageListCount = manuImageList.Count;
+        int manuTextListCount = manuTextList.Count;
+
+        for (int i = 0; i < limit; i++)
         {
             foodList[i] = 0;
-            if (foodList[i] == 0) //값이 없고
+            if (foodList[i] == 0) //값이 0이고
             {
                 if (foodImageList.Count > 0 && foodTextList.Count > 0) //해당 리스트가 비어있다면
                 {
-                    manuImageList[i].sprite = foodImageList[0].sprite; //스프라이트 리스트  0번으로 번경
-                    manuTextList[i].text = foodTextList[0]; //텍스트 리스트 0번으로 번경
+                    if (i < manuImageListCount && i < manuTextListCount) //인덱스 범위 내에 있을 때
+                    {
+                        manuImageList[i].sprite = foodImageList[0].sprite; //스프라이트 리스트  0번으로 번경
+                        manuTextList[i].text = foodTextList[0]; //텍스트 리스트 0번으로 번경
+                    }
                 }
             }
         }

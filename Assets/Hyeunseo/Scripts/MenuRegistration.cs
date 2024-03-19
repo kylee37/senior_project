@@ -10,7 +10,6 @@ public class MenuRegistration : MonoBehaviour
     public GameObject textUi; //표시 UI
     public TMP_Text printText; //표시 UI 텍스트
     public MenuManager menuManager; //메뉴 매니저 스크립트
-
     void Start()
     {
         Button button = GetComponent<Button>();
@@ -24,9 +23,16 @@ public class MenuRegistration : MonoBehaviour
     {
         if (menuManager != null) // 만약 menuManager가 null이 아니라면
         {
-            menuManager.HandleFoodCode(foodCode); // foodCode 값을 MenuManager 스크립트로 전달
-            Debug.Log("값 전달");
-            printText.text = "등록 완료!"; //표시 UI에 문장 넣기
+            if (menuManager.foodList.Contains(0)) //메뉴매니저의 푸드리스트에 0인 자리가 있다면
+            {
+                menuManager.HandleFoodCode(foodCode); // foodCode 값을 MenuManager 스크립트로 전달
+                Debug.Log("값 전달");
+                printText.text = "등록 완료!"; //표시 UI에 문장 넣기
+            }
+            else
+            {
+                printText.text = "메뉴판이 부족합니다."; //표시 UI에 문장 넣기
+            }
         }
         else
         {

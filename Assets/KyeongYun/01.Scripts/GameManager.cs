@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [System.Serializable]
 public class Node
 {
@@ -22,12 +21,13 @@ public class GameManager : MonoBehaviour
     public Vector2Int bottomLeft, topRight, startPos, targetPos;
     public List<Node> FinalNodeList;
     public bool allowDiagonal, dontCrossCorner;
+    public GameObject[] targetObjects; // 여러 목표 오브젝트를 저장할 배열
+    private HashSet<GameObject> usedTargets = new();
 
     int sizeX, sizeY;
     Node[,] NodeArray;
     Node StartNode, TargetNode, CurNode;
     List<Node> OpenList, ClosedList;
-
 
     public void PathFinding()
     {
@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
 
             // 이웃노드에 넣고, 직선은 10, 대각선은 14비용
             Node NeighborNode = NodeArray[checkX - bottomLeft.x, checkY - bottomLeft.y];
-            int MoveCost = CurNode.G + (CurNode.x - checkX == 0 || CurNode.y - checkY == 0 ? 10 : 14);
+            int MoveCost = CurNode.G + (CurNode.x - checkX == 0 || CurNode.y - checkY == 0 ? 10 : 14); //(1:1:
 
 
             // 이동비용이 이웃노드G보다 작거나 또는 열린리스트에 이웃노드가 없다면 G, H, ParentNode를 설정 후 열린리스트에 추가
@@ -139,5 +139,51 @@ public class GameManager : MonoBehaviour
     {
         if (FinalNodeList.Count != 0) for (int i = 0; i < FinalNodeList.Count - 1; i++)
                 Gizmos.DrawLine(new Vector2(FinalNodeList[i].x, FinalNodeList[i].y), new Vector2(FinalNodeList[i + 1].x, FinalNodeList[i + 1].y));
+    }
+
+    public GameObject GetRandomTargetObject()
+    {
+        // targetObjects 배열이 비어있으면 null 반환
+        if (targetObjects == null || targetObjects.Length == 0)
+        {
+            Debug.LogError("No target objects available.");
+            return null;
+        }
+
+        // targetObjects 배열에서 랜덤하게 인덱스를 선택
+        int randomIndex = Random.Range(0, targetObjects.Length);
+
+        // 선택된 인덱스의 목적지 반환
+        return targetObjects[randomIndex];
+    }
+    public GameObject GetUnusedTargetObject()
+    {
+        List<GameObject> unusedTargets = new List<GameObject>();
+
+        // 사용되지 않은 목적지를 찾아서 리스트에 추가
+        foreach (GameObject targetObject in targetObjects)
+        {
+            if (!usedTargets.Contains(targetObject))
+            {
+                Debug.Log("리스트 추가");
+                unusedTargets.Add(targetObject);
+            }
+        }
+
+        // 사용되지 않은 목적지가 없으면 null 반환
+        if (unusedTargets.Count == 0)
+        {
+            Debug.LogError("No unused target objects available.");
+            return null;
+        }
+
+        // 랜덤하게 사용되지 않은 목적지 선택
+        int randomIndex = Random.Range(0, unusedTargets.Count);
+        GameObject selectedTarget = unusedTargets[randomIndex];
+
+        // 선택된 목적지를 사용 중으로 표시
+        usedTargets.Add(selectedTarget); // 사용된 목적지 추가
+
+        return selectedTarget;
     }
 }

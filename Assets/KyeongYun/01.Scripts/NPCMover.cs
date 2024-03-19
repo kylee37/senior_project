@@ -1,54 +1,29 @@
 using UnityEngine;
-using System.Linq;
 
-public class ObjectMovement : MonoBehaviour
+public class NPCMover : MonoBehaviour
 {
     GameManager gameManager;
     Vector3[] path;
     private int targetIndex;
-
-    public float moveSpeed = 5f; // 이동 속도 변수 추가
-    public GameObject[] targetObjects; // 여러 목표 오브젝트를 저장할 배열
+    private float moveSpeed = 5f;
+    private GameObject targetObject; // NPC의 목적지를 저장할 변수
 
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>(); // GameManager 객체 참조
+        targetObject = gameManager.GetRandomTargetObject(); // 랜덤한 목적지 설정
         FindPath(); // 경로 찾기
     }
 
     void FindPath()
     {
-        float closestDistance = Mathf.Infinity; // 가장 가까운 거리를 저장할 변수 초기화
-        Vector3 closestEndPos = Vector3.zero; // 가장 가까운 목표 위치를 저장할 변수 초기화
+        if (targetObject == null) return;
 
-        // 현재 위치
-        Vector3 startPos = transform.position;
+        // Vector3 startPos = transform.position;
+        Vector3 endPos = targetObject.transform.position;
 
-        // 가장 가까운 목표 위치 찾기
-        foreach (GameObject targetObject in targetObjects)
-        {
-            Vector3 endPos = targetObject.transform.position;
-            float distance = Vector3.Distance(startPos, endPos);
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                closestEndPos = endPos;
-            }
-        }
-
-        // 가장 가까운 목표 위치에 대한 인덱스 찾기
-        int closestTargetIndex = -1;
-        for (int i = 0; i < targetObjects.Length; i++)
-        {
-            if (targetObjects[i].transform.position == closestEndPos)
-            {
-                closestTargetIndex = i;
-                break;
-            }
-        }
-
-        // 가장 가까운 목표 위치에 대한 경로 찾기
-        gameManager.targetPos = new Vector2Int((int)closestEndPos.x, (int)closestEndPos.y); // 가장 가까운 목표 위치 설정
+        // A* 알고리즘을 사용하여 경로 찾기
+        gameManager.targetPos = new Vector2Int((int)endPos.x, (int)endPos.y);
         gameManager.PathFinding();
         path = new Vector3[gameManager.FinalNodeList.Count];
         for (int i = 0; i < gameManager.FinalNodeList.Count; i++)
@@ -56,14 +31,6 @@ public class ObjectMovement : MonoBehaviour
             path[i] = new Vector3(gameManager.FinalNodeList[i].x, gameManager.FinalNodeList[i].y, 0);
         }
         targetIndex = 0;
-
-        // 찾은 목표 위치를 리스트에서 제거
-        if (closestTargetIndex != -1)
-        {
-            Debug.Log("Reached target position: " + closestEndPos); // 목표 위치에 도달한 것을 로그로 출력
-            // 해당 목표 위치를 배열에서 제거
-            targetObjects = targetObjects.Where((source, index) => index != closestTargetIndex).ToArray();
-        }
 
         // 이동 경로가 생성되었으므로 이동 시작
         MoveToNextTarget();

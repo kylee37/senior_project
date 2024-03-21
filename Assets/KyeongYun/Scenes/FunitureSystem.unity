@@ -989,6 +989,7 @@ MonoBehaviour:
   FinalNodeList: []
   allowDiagonal: 0
   dontCrossCorner: 0
+  acheivement: 0
   targetObjects: []
 --- !u!1 &578074713
 GameObject:
@@ -1088,25 +1089,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 578074715}
-        m_TargetAssemblyTypeName: NewButtonController, Assembly-CSharp
-        m_MethodName: TogglePanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 430133288}
         m_TargetAssemblyTypeName: Spawner, Assembly-CSharp
         m_MethodName: SpawnObject
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6935390034817815761, guid: eb6709c3b5718304fb061d4f2094e79a,
-            type: 3}
+          m_ObjectArgument: {fileID: 1234160969309089367, guid: 2219b931987288a4fac94ad8321a79be, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1445,25 +1433,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720897432}
-        m_TargetAssemblyTypeName: NewButtonController, Assembly-CSharp
-        m_MethodName: TogglePanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 430133288}
         m_TargetAssemblyTypeName: Spawner, Assembly-CSharp
         m_MethodName: SpawnObject
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6935390034817815761, guid: da67f2f98f24e6842acc6bf2778e5220,
-            type: 3}
+          m_ObjectArgument: {fileID: 1234160969309089367, guid: 6575b96a782610c4e9354586be50775d, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2142,25 +2117,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1038194571}
-        m_TargetAssemblyTypeName: NewButtonController, Assembly-CSharp
-        m_MethodName: TogglePanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 430133288}
         m_TargetAssemblyTypeName: Spawner, Assembly-CSharp
         m_MethodName: SpawnObject
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6935390034817815761, guid: 33c76ba2858ec9a4481dac13c6be149c,
-            type: 3}
+          m_ObjectArgument: {fileID: 1234160969309089367, guid: c3d3470efd86eb4478a1c5c9c15b5b97, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2293,8 +2255,7 @@ MonoBehaviour:
         m_MethodName: SpawnObject
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6935390034817815761, guid: f3e2eaa7f43f78746aedc3682358b83d,
-            type: 3}
+          m_ObjectArgument: {fileID: 1234160969309089367, guid: 1d8292b852aad004d83679d2bc0964ed, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2812,8 +2773,7 @@ MonoBehaviour:
         m_MethodName: SpawnObject
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6935390034817815761, guid: b9b34a0b158d513458550dcea82f2c0d,
-            type: 3}
+          m_ObjectArgument: {fileID: 1234160969309089367, guid: 39c6575e975b1934eb993bfafa72a9f1, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3302,25 +3262,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1579958866}
-        m_TargetAssemblyTypeName: NewButtonController, Assembly-CSharp
-        m_MethodName: TogglePanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 430133288}
         m_TargetAssemblyTypeName: Spawner, Assembly-CSharp
         m_MethodName: SpawnObject
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6935390034817815761, guid: 7219c897838a65a47944a79c9737a413,
-            type: 3}
+          m_ObjectArgument: {fileID: 1234160969309089367, guid: 530bdcc57e34ec542a8fd3e97d2d036f, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3532,6 +3479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newSprite: {fileID: 21300000, guid: d0d7ea0fd97c55d43a7024285fa8f6c3, type: 3}
+  isKeyPressed: 0
 --- !u!1 &1868620047
 GameObject:
   m_ObjectHideFlags: 0
@@ -3541,7 +3489,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1868620048}
-  - component: {fileID: 1868620049}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -3564,22 +3511,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1868620049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1868620047}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52a95496ae200e14c8b54465fb6ac392, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateManager: {fileID: 605254642}
-  objectToSpawn: {fileID: 6935390034817815761, guid: f3e2eaa7f43f78746aedc3682358b83d,
-    type: 3}
-  panel: {fileID: 1999034852}
 --- !u!1 &1974740453
 GameObject:
   m_ObjectHideFlags: 0

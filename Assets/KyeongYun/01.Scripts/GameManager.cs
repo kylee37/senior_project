@@ -21,8 +21,10 @@ public class GameManager : MonoBehaviour
     public Vector2Int bottomLeft, topRight, startPos, targetPos;
     public List<Node> FinalNodeList;
     public bool allowDiagonal, dontCrossCorner;
+    public int acheivement = 0;
     public GameObject[] targetObjects; // 여러 목표 오브젝트를 저장할 배열
-    private HashSet<GameObject> usedTargets = new();
+    private HashSet<GameObject> usedTargets = new(); // 사용 중인 목적지를 추적하기 위한 HashSet
+
 
     int sizeX, sizeY;
     Node[,] NodeArray;
@@ -48,7 +50,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-
         // 시작과 끝 노드, 열린리스트와 닫힌리스트, 마지막리스트 초기화
         StartNode = NodeArray[startPos.x - bottomLeft.x, startPos.y - bottomLeft.y];
         TargetNode = NodeArray[targetPos.x - bottomLeft.x, targetPos.y - bottomLeft.y];
@@ -56,7 +57,6 @@ public class GameManager : MonoBehaviour
         OpenList = new List<Node>() { StartNode };
         ClosedList = new List<Node>();
         FinalNodeList = new List<Node>();
-
 
         while (OpenList.Count > 0)
         {
@@ -68,42 +68,35 @@ public class GameManager : MonoBehaviour
             OpenList.Remove(CurNode);
             ClosedList.Add(CurNode);
 
-
-            // 마지막
+            // 목표 노드에 도달하면 탐색 중지
             if (CurNode == TargetNode)
             {
-                Node TargetCurNode = TargetNode;
-                while (TargetCurNode != StartNode)
-                {
-                    FinalNodeList.Add(TargetCurNode);
-                    TargetCurNode = TargetCurNode.ParentNode;
-                }
-                FinalNodeList.Add(StartNode);
-                FinalNodeList.Reverse();
-
-                for (int i = 0; i < FinalNodeList.Count; i++)
-                {
-                    print(i + "번째는 " + FinalNodeList[i].x + ", " + FinalNodeList[i].y);
-                }
+                TracePath();
                 return;
             }
 
-
-            // ↗↖↙↘ 대각 움직임 허용할 시
-            if (allowDiagonal)
-            {
-                OpenListAdd(CurNode.x + 1, CurNode.y + 1);
-                OpenListAdd(CurNode.x - 1, CurNode.y + 1);
-                OpenListAdd(CurNode.x - 1, CurNode.y - 1);
-                OpenListAdd(CurNode.x + 1, CurNode.y - 1);
-            }
-
-            // ↑ → ↓ ← 대각 움직임 막을 시
-            OpenListAdd(CurNode.x, CurNode.y + 1);
-            OpenListAdd(CurNode.x + 1, CurNode.y);
-            OpenListAdd(CurNode.x, CurNode.y - 1);
-            OpenListAdd(CurNode.x - 1, CurNode.y);
+            // 이웃 노드를 검사하여 열린 리스트에 추가
+            ExploreNeighborNodes(CurNode);
         }
+    }
+
+    // 이웃 노드를 검사하여 열린 리스트에 추가
+    private void ExploreNeighborNodes(Node currentNode)
+    {
+        // ↗↖↙↘ 대각 움직임 허용할 시
+        if (allowDiagonal)
+        {
+            OpenListAdd(currentNode.x + 1, currentNode.y + 1);
+            OpenListAdd(currentNode.x - 1, currentNode.y + 1);
+            OpenListAdd(currentNode.x - 1, currentNode.y - 1);
+            OpenListAdd(currentNode.x + 1, currentNode.y - 1);
+        }
+
+        // ↑ → ↓ ← 대각 움직임 막을 시
+        OpenListAdd(currentNode.x, currentNode.y + 1);
+        OpenListAdd(currentNode.x + 1, currentNode.y);
+        OpenListAdd(currentNode.x, currentNode.y - 1);
+        OpenListAdd(currentNode.x - 1, currentNode.y);
     }
 
     void OpenListAdd(int checkX, int checkY)
@@ -134,6 +127,18 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    // 최종 경로를 추적합니다.
+    private void TracePath()
+    {
+        Node targetCurNode = TargetNode;
+        while (targetCurNode != StartNode)
+        {
+            FinalNodeList.Add(targetCurNode);
+            targetCurNode = targetCurNode.ParentNode;
+        }
+        FinalNodeList.Add(StartNode);
+        FinalNodeList.Reverse();
+    }
 
     void OnDrawGizmos()
     {
@@ -141,49 +146,37 @@ public class GameManager : MonoBehaviour
                 Gizmos.DrawLine(new Vector2(FinalNodeList[i].x, FinalNodeList[i].y), new Vector2(FinalNodeList[i + 1].x, FinalNodeList[i + 1].y));
     }
 
-    public GameObject GetRandomTargetObject()
+    // 사용 중인 목적지를 업데이트합니다.
+    public void UpdateUsedTargets(GameObject[] newTargets)
     {
-        // targetObjects 배열이 비어있으면 null 반환
-        if (targetObjects == null || targetObjects.Length == 0)
+        usedTargets.Clear();
+        foreach (var target in newTargets)
         {
-            Debug.LogError("No target objects available.");
-            return null;
+            if (usedTargets.Contains(target))
+                continue;
+
+            usedTargets.Add(target);
         }
-
-        // targetObjects 배열에서 랜덤하게 인덱스를 선택
-        int randomIndex = Random.Range(0, targetObjects.Length);
-
-        // 선택된 인덱스의 목적지 반환
-        return targetObjects[randomIndex];
     }
-    public GameObject GetUnusedTargetObject()
+
+    public GameObject GetRandomUnusedTargetObject()
     {
         List<GameObject> unusedTargets = new List<GameObject>();
-
-        // 사용되지 않은 목적지를 찾아서 리스트에 추가
-        foreach (GameObject targetObject in targetObjects)
+        foreach (var target in targetObjects)
         {
-            if (!usedTargets.Contains(targetObject))
+            if (!usedTargets.Contains(target))
             {
-                Debug.Log("리스트 추가");
-                unusedTargets.Add(targetObject);
+                unusedTargets.Add(target);
             }
         }
 
-        // 사용되지 않은 목적지가 없으면 null 반환
         if (unusedTargets.Count == 0)
         {
-            Debug.LogError("No unused target objects available.");
+            Debug.LogError("All target objects are already in use.(GameManager)");
             return null;
         }
 
-        // 랜덤하게 사용되지 않은 목적지 선택
         int randomIndex = Random.Range(0, unusedTargets.Count);
-        GameObject selectedTarget = unusedTargets[randomIndex];
-
-        // 선택된 목적지를 사용 중으로 표시
-        usedTargets.Add(selectedTarget); // 사용된 목적지 추가
-
-        return selectedTarget;
+        return unusedTargets[randomIndex];
     }
 }

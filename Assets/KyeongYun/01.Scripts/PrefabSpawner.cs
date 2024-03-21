@@ -6,8 +6,10 @@ public class PrefabSpawner : MonoBehaviour
 {
     public GameObject[] prefabs;
     public GameObject prefabToSpawn;
+    public Queue<GameObject>[] objectPool;
+    public int poolSize = 10;
 
-    public int rate1 = 20, rate2 = 10, rate3 = 10, visit = 60; // 각 종족별 방문율
+    public int rate1 = 20, rate2 = 10, rate3 = 10, visit = 60; // 각 종족별 선호도
     public int visitation = 60; // 방문율
     public int finalRate1;
     public int finalRate2;
@@ -20,6 +22,19 @@ public class PrefabSpawner : MonoBehaviour
         finalRate1 = rate1 * (totalPreference / (sum / 10)) / 10;
         finalRate2 = rate2 * (totalPreference / (sum / 10)) / 10;
         finalRate3 = rate3 * (totalPreference / (sum / 10)) / 10;
+
+        // 풀 초기화
+        objectPool = new Queue<GameObject>[prefabs.Length];
+        for (int i = 0; i < prefabs.Length; i++)
+        {
+            objectPool[i] = new Queue<GameObject>();
+            for (int j = 0; j < poolSize; j++)
+            {
+                GameObject obj = Instantiate(prefabs[i]);
+                obj.SetActive(false);
+                objectPool[i].Enqueue(obj);
+            }
+        }
     }
 
     public void Calculate()
@@ -53,11 +68,49 @@ public class PrefabSpawner : MonoBehaviour
         Calculate();
         if (prefabToSpawn != null)
         {
-            Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
+            int index = GetPrefabIndex(prefabToSpawn);
+            if (index != -1)
+            {
+                GameObject obj = GetObjectFromPool(index);
+                obj.transform.position = transform.position;
+                obj.SetActive(true);
+            }
+            else
+            {
+                Debug.LogError("Prefab not found in pool.");
+            }
         }
         else
         {
             Debug.Log("Prefab to spawn is null.");
         }
+    }
+    private int GetPrefabIndex(GameObject prefab)
+    {
+        for (int i = 0; i < prefabs.Length; i++)
+        {
+            if (prefabs[i] == prefab)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private GameObject GetObjectFromPool(int index)
+    {
+        if (objectPool[index].Count == 0)
+        {
+            GameObject obj = Instantiate(prefabs[index]);
+            obj.SetActive(false);
+            objectPool[index].Enqueue(obj);
+        }
+        return objectPool[index].Dequeue();
+    }
+
+    public void ReturnObjectToPool(GameObject obj, int index)
+    {
+        obj.SetActive(false);
+        objectPool[index].Enqueue(obj);
     }
 }

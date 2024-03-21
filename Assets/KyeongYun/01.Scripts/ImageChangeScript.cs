@@ -6,7 +6,8 @@ public class ImageChangeScript : MonoBehaviour
     public Sprite newSprite;
     private Image imageComponent;
     private Sprite originalSprite; // 원래 이미지를 저장하기 위한 변수
-    private bool isKeyPressed = false;
+    [HideInInspector] 
+    public bool isKeyPressed;
 
     void Start()
     {

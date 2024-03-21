@@ -11,8 +11,10 @@ public class RecipeResearch : MonoBehaviour
     int xp; //보유 xp
     public GameObject textUi; //표시 UI
     public TMP_Text printText; //표시 UI 텍스트
-    public XPManager xpManager; //xp매니저 스크립트
     private bool research = false; //연구했는지 안했는지 체크하는 불 변수
+
+    public XPManager xpManager; //xp매니저 스크립트
+    public MenuUnlocked menuUnlocked; //메뉴 해금 스크립트
 
     void Start()
     {
@@ -36,6 +38,7 @@ public class RecipeResearch : MonoBehaviour
             {
                 xpManager.xp -= price; //보유 xp에서 필요xp만큼의 xp를 뺌
                 research = true;
+                menuUnlocked.HandleRecipeCode(recipeCode); //메뉴 해금 스크립트로 값 전달
 
                 printText.text = "레시피 연구 성공!"; //표시 UI에 문장 넣기
             }

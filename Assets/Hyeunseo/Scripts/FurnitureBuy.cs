@@ -6,12 +6,13 @@ using TMPro;
 
 public class FurnitureBuy : MonoBehaviour
 {
-    public int itemCode; //가구코드
+    public int furnitureCode; //가구코드
     public float price; //가격
     float gold; //보유 골드
     public GameObject textUi; //표시 UI
     public TMP_Text printText; //표시 UI 텍스트
     public GoldManager goldManager; //골드매니저 스크립트
+    public FurnitureManager furnitureManager; //가구매니저 스크립트
 
     void Start()
     {
@@ -32,6 +33,7 @@ public class FurnitureBuy : MonoBehaviour
         if (price <= gold) //가격보다 보유골드가 크거나 같으면
         {
             goldManager.gold -= price; //보유 골드에서 가격만큼의 골드를 뺌
+            furnitureManager.HandleFurnitureCode(furnitureCode); //가구 매니저 스크립트로 값 전달
 
             printText.text = "구매완료!"; //표시 UI에 문장 넣기
         }

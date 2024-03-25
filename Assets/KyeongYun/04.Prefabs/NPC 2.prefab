@@ -97,3 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c79df4ab351a3fe4fb617db40cdb9fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetIndex: 0
+  targetObject: {fileID: 0}
+  reservationSystem: {fileID: 0}
+  destinationPosition: {x: 0, y: 0, z: 0}
+  NPCName: rate2

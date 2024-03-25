@@ -7,7 +7,7 @@ public class PrefabSpawner : MonoBehaviour
     public GameObject[] prefabs;
     public GameObject prefabToSpawn;
     public Queue<GameObject>[] objectPool;
-    public int poolSize = 10;
+    public int poolSize;
 
     public int rate1 = 20, rate2 = 10, rate3 = 10, visit = 60; // 각 종족별 선호도
     public int visitation = 60; // 방문율
@@ -34,6 +34,24 @@ public class PrefabSpawner : MonoBehaviour
                 obj.SetActive(false);
                 objectPool[i].Enqueue(obj);
             }
+        }
+    }
+    public void UpdateRate(string rateName, int newValue)
+    {
+        switch (rateName)
+        {
+            case "rate1":
+                rate1 = newValue;
+                break;
+            case "rate2":
+                rate2 = newValue;
+                break;
+            case "rate3":
+                rate3 = newValue;
+                break;
+            default:
+                Debug.LogError("Invalid rate name: " + rateName);
+                break;
         }
     }
 

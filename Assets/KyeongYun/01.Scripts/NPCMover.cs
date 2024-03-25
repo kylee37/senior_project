@@ -11,13 +11,13 @@ public class NPCMover : MonoBehaviour
     public GameObject targetObject; // NPC의 목적지를 저장할 변수
     public PosManager reservationSystem;
     public Vector3Int destinationPosition;
+    public string NPCName;
 
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         prefabSpawner = FindObjectOfType<PrefabSpawner>();
         reservationSystem = FindObjectOfType<PosManager>();
-
         targetObject = gameManager.GetRandomUnusedTargetObject(); // 랜덤한 목적지 설정
 
         // 목적지 예약 시스템을 초기화하고 목적지 예약
@@ -31,7 +31,7 @@ public class NPCMover : MonoBehaviour
             else
             {
                 Debug.Log("Destination already reserved. Finding new destination...");
-                StartCoroutine(FindNewDestinationWithRetry(gameManager.targetObjects.Length - 1));
+                StartCoroutine(FindNewDestinationWithRetry(gameManager.targetObjects.Length));
                 // N 회 탐색을 재시도하는 코루틴
             }
         }
@@ -96,20 +96,57 @@ public class NPCMover : MonoBehaviour
     {
         int randomNum = Random.Range(1, 10);
         Debug.Log("목적지 도착");
+
+        // NPCName에 해당하는 rate 변수 가져오기
+        int currentRate = 0;
+        switch (NPCName)
+        {
+            case "rate1":
+                currentRate = prefabSpawner.rate1;
+                break;
+            case "rate2":
+                currentRate = prefabSpawner.rate2;
+                break;
+            case "rate3":
+                currentRate = prefabSpawner.rate3;
+                break;
+            default:
+                Debug.LogError("Invalid NPCName: " + NPCName);
+                break;
+        }
+
         switch (randomNum)
         {
             case int n when (n > 0 && n <= 6):
                 Debug.Log("선호하는 음식 주문, 선호도 + 2");
-                prefabSpawner.rate1 += 2;
+                currentRate += 2;
                 break;
             case int n when (n > 6 && n < 10):
                 Debug.Log("아무것도 없는 음식 주문, 선호도 + 1");
-                prefabSpawner.rate1 += 1;
+                currentRate += 1;
                 break;
             case int n when (n >= 10):
                 Debug.Log("불호하는 음식 주문");
                 break;
         }
+
+        // 해당 NPC에 대한 rate 변수 업데이트
+        switch (NPCName)
+        {
+            case "rate1":
+                prefabSpawner.UpdateRate("rate1", currentRate);
+                break;
+            case "rate2":
+                prefabSpawner.UpdateRate("rate2", currentRate);
+                break;
+            case "rate3":
+                prefabSpawner.UpdateRate("rate3", currentRate);
+                break;
+            default:
+                Debug.LogError("Invalid NPCName: " + NPCName);
+                break;
+        }
+
         Invoke("NPCExit", 3);
     }
     void NPCExit()
@@ -124,7 +161,7 @@ public class NPCMover : MonoBehaviour
         int retryCount = 0;
         while (retryCount < maxRetryCount)
         {
-            yield return new WaitForSeconds(0.5f); // 재시도 간격을 1초로 설정하거나 필요에 따라 조절
+            yield return new WaitForSeconds(0.5f); // 재시도 간격을 0.5초로 설정하거나 필요에 따라 조절
 
             targetObject = gameManager.GetRandomUnusedTargetObject(); // 랜덤한 목적지 설정
             if (targetObject != null)
@@ -150,7 +187,7 @@ public class NPCMover : MonoBehaviour
         }
 
         // 최대 재시도 횟수를 초과한 경우 NPC를 파괴합니다.
-        Debug.LogWarning("Failed to find an available destination after " + maxRetryCount + " retries. Destroying NPC."); 
+        Debug.LogWarning("Failed to find an available destination after " + maxRetryCount + " retries. Destroying NPC.");
         prefabSpawner.ReturnObjectToPool(gameObject, 1);
     }
 }

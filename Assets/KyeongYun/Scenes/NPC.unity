@@ -3107,7 +3107,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1846941712}
-  timer: 0
 --- !u!4 &95110978
 Transform:
   m_ObjectHideFlags: 0
@@ -3537,7 +3536,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 21
-      m_TileSpriteIndex: 5
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3652,16 +3651,16 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 1660493187, guid: a6836501cdba8eb469181f103b0b6cb8, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 1938317379, guid: d2184bc0d27eea3499f98e0397125bb0, type: 3}
   - m_RefCount: 1
@@ -5670,7 +5669,7 @@ MonoBehaviour:
   - {fileID: 2730795498203845917, guid: 5e41990db6034104485785e449a28c64, type: 3}
   - {fileID: 2730795498203845917, guid: 5ca04415073cc0d4a8e3f364a36744e8, type: 3}
   prefabToSpawn: {fileID: 0}
-  poolSize: 10
+  poolSize: 5
   rate1: 20
   rate2: 10
   rate3: 10
@@ -5843,7 +5842,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1863595070
 Transform:
   m_ObjectHideFlags: 0
@@ -5922,7 +5921,7 @@ GameObject:
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2094340440
 Transform:
   m_ObjectHideFlags: 0

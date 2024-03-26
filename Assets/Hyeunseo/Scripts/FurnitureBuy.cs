@@ -41,6 +41,7 @@ public class FurnitureBuy : MonoBehaviour
         {
             printText.text = "골드가 부족합니다."; //표시 UI에 문장 넣기
         }
+
         textUi.SetActive(true); //표시 UI 활성화
         Invoke("CloseUI", 0.5f); //0.5초 뒤 UI 삭제
     }

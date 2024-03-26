@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class PrefabSpawner : MonoBehaviour
 {
@@ -15,8 +17,11 @@ public class PrefabSpawner : MonoBehaviour
     public int finalRate2;
     public int finalRate3;
 
+    public int myVariable = 0;
+
     private void Start()
     {
+        StartCoroutine(IncrementRoutine());
         var sum = rate1 + rate2 + rate3;
         var totalPreference = visit + (rate1 + rate2 + rate3) / 10;
         finalRate1 = rate1 * (totalPreference / (sum / 10)) / 10;
@@ -34,6 +39,21 @@ public class PrefabSpawner : MonoBehaviour
                 obj.SetActive(false);
                 objectPool[i].Enqueue(obj);
             }
+        }
+    }
+    IEnumerator IncrementRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            myVariable++; // 변수 증가
+        }
+    }
+    private void Update()
+    {
+        if(myVariable >= 10) // 10초마다 스폰
+        {
+            Spawn();
         }
     }
     public void UpdateRate(string rateName, int newValue)
@@ -57,6 +77,11 @@ public class PrefabSpawner : MonoBehaviour
 
     public void Calculate()
     {
+        var sum = rate1 + rate2 + rate3;
+        var totalPreference = visit + (rate1 + rate2 + rate3) / 10;
+        finalRate1 = rate1 * (totalPreference / (sum / 10)) / 10;
+        finalRate2 = rate2 * (totalPreference / (sum / 10)) / 10;
+        finalRate3 = rate3 * (totalPreference / (sum / 10)) / 10;
         int randomNumber = Random.Range(1, 100);
         switch (randomNumber)
         {

@@ -51,9 +51,11 @@ public class PrefabSpawner : MonoBehaviour
     }
     private void Update()
     {
-        if(myVariable >= 10) // 10초마다 스폰
+        if(myVariable >= 5) // 10초마다 스폰
         {
+            myVariable = 0;
             Spawn();
+            Debug.Log("Spawn");
         }
     }
     public void UpdateRate(string rateName, int newValue)

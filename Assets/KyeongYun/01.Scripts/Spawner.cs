@@ -82,9 +82,9 @@ public class Spawner : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Q))
         {
             // 키를 눌렀을 때 상태를 Normal로 변경하고 알파값을 되돌리기
-            Debug.Log("배치 完");
-            if (stateManager != null)
+            if (stateManager != null && CollideChecker.isColliding == false)
             {
+                Debug.Log("배치 완료");
                 stateManager.UpdateState(State.Normal);
 
                 // buttonController의 prefabToSpawn을 사용하여 알파값을 1로 되돌림
@@ -92,13 +92,18 @@ public class Spawner : MonoBehaviour
                 buildPanel.SetActive(false);
                 //여기서 배치 확정을 짓는다면 가지고 있는 재화 - 필요한 재화
             }
+            else if (CollideChecker.isColliding == true)
+            {
+                Debug.LogError("이곳엔 배치할 수 없습니다");
+            }
         }
         else if(Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("배치 취소됨");
             if (stateManager != null)
             {
+                Debug.Log("배치 취소됨");
                 stateManager.UpdateState(State.Normal);
+
                 Destroy(spawnedObject);
                 buildPanel.SetActive(false);
             }

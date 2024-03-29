@@ -16,7 +16,7 @@ public class ImageChangeScript : MonoBehaviour
 
         if (imageComponent == null)
         {
-            Debug.LogError("이 스크립트를 사용하려면 Image 컴포넌트가 게임 오브젝트에 추가되어야 합니다.");
+            Debug.LogError("imageComponent is NULL");
         }
     }
 

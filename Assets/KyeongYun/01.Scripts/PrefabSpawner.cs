@@ -44,7 +44,7 @@ public class PrefabSpawner : MonoBehaviour
     }
     private void Update()
     {
-        if(timeManager.timeSeconds >= 5) // 5초마다 스폰
+        if(timeManager.timeSeconds >= 3) // 5초마다 스폰
         {
             timeManager.timeSeconds = 0f;
             Spawn();

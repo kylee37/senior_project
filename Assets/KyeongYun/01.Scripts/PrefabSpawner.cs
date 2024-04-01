@@ -16,12 +16,13 @@ public class PrefabSpawner : MonoBehaviour
     public int finalRate1;
     public int finalRate2;
     public int finalRate3;
+    private TimeManager timeManager;
 
     public int myVariable = 0;
 
     private void Start()
     {
-        StartCoroutine(IncrementRoutine());
+        timeManager = FindObjectOfType<TimeManager>();
         var sum = rate1 + rate2 + rate3;
         var totalPreference = visit + (rate1 + rate2 + rate3) / 10;
         finalRate1 = rate1 * (totalPreference / (sum / 10)) / 10;
@@ -41,19 +42,11 @@ public class PrefabSpawner : MonoBehaviour
             }
         }
     }
-    IEnumerator IncrementRoutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(1f);
-            myVariable++; // 변수 증가
-        }
-    }
     private void Update()
     {
-        if(myVariable >= 5) // 10초마다 스폰
+        if(timeManager.timeSeconds >= 3) // 5초마다 스폰
         {
-            myVariable = 0;
+            timeManager.timeSeconds = 0f;
             Spawn();
             Debug.Log("Spawn");
         }

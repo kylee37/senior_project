@@ -17,6 +17,7 @@ public class StateManager : MonoBehaviour
 
     public void UpdateState(State newState)
     {
+        Debug.Log(currentState);
         currentState = newState;
     }
     public void UpdateButtonState(ButtonState newButtonState)

@@ -9,6 +9,7 @@ public class TimeManager : MonoBehaviour
     public TMP_Text timerText;
 
     private float timer = 0f;
+    public float timeSeconds = 0f;
 
     private void Start()
     {
@@ -22,6 +23,7 @@ public class TimeManager : MonoBehaviour
             yield return null; // 한 프레임을 기다립니다.
 
             timer += Time.deltaTime; // 경과된 시간을 누적합니다.
+            timeSeconds += Time.deltaTime;
 
             // 시간을 시, 분, 초로 변환합니다.
             //int hours = (int)(timer / 3600);

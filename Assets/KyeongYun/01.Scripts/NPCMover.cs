@@ -7,18 +7,21 @@ public class NPCMover : MonoBehaviour
     PrefabSpawner prefabSpawner;
     Vector3[] path;
     public int targetIndex;
-    private float moveSpeed = 5f;
     public GameObject targetObject; // NPC의 목적지를 저장할 변수
     public PosManager reservationSystem;
     public Vector3Int destinationPosition;
     public string NPCName;
+    private float moveSpeed = 5f;
+    private Animator animator; // NPC의 애니메이터 참조
+
 
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         prefabSpawner = FindObjectOfType<PrefabSpawner>();
         reservationSystem = FindObjectOfType<PosManager>();
-        targetObject = gameManager.GetRandomUnusedTargetObject(); // 랜덤한 목적지 설정
+        targetObject = gameManager.GetRandomUnusedTargetObject();   // 랜덤한 목적지 설정
+        animator = GetComponent<Animator>();                        // 애니메이터 컴포넌트 가져오기
 
         // 목적지 예약 시스템을 초기화하고 목적지 예약
         if (targetObject != null)
@@ -74,7 +77,7 @@ public class NPCMover : MonoBehaviour
 
     void Update()
     {
-        if (path == null || targetIndex >= path.Length)
+        if (path == null || path.Length == 0 || targetIndex >= path.Length)
             return;
 
         // 다음 위치로 이동
@@ -83,13 +86,23 @@ public class NPCMover : MonoBehaviour
         // 다음 위치에 도착하면 다음 인덱스로 이동
         if (Vector3.Distance(transform.position, path[targetIndex]) < 0.1f)
         {
-            // 목적지에 도착했을 때의 동작
-            if (targetIndex == path.Length - 1)
-            {
-                OnDestinationReached();
-            }
-
             targetIndex++;
+        }
+
+        // 이동 방향에 따라 애니메이션 변경
+        if (targetIndex < path.Length)
+        {
+            Vector3 direction = (path[targetIndex] - transform.position).normalized;
+            if (direction != Vector3.zero)
+            {
+                // 이동 방향에 따라 MoveX와 MoveY 값을 설정하여 애니메이션을 제어
+                float moveX = direction.x > 0 ? 1 : direction.x < 0 ? -1 : 0;
+                float moveY = direction.y > 0 ? 1 : direction.y < 0 ? -1 : 0;
+
+                // MoveX와 MoveY 값을 설정하여 애니메이션을 제어
+                animator.SetFloat("MoveX", moveX);
+                animator.SetFloat("MoveY", moveY);
+            }
         }
     }
     void OnDestinationReached()

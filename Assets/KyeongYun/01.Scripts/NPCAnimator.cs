@@ -28,15 +28,15 @@ public class NPCAnimator : MonoBehaviour
             animator.SetFloat("MoveX", -1); // 왼쪽 애니메이션 재생
             animator.SetFloat("MoveY", 0);
         }
-        else if (direction.y > 0)
+        else if (direction.y >= -1)
         {
-            animator.SetFloat("MoveY", 1); // 위쪽 애니메이션 재생
-            animator.SetFloat("MoveX", 0);
+            animator.SetFloat("MoveX", 0);  // 위쪽 애니메이션 재생
+            animator.SetFloat("MoveY", 1); 
         }
-        else if (direction.y < 0)
+        else if (direction.y <= -1)
         {
-            animator.SetFloat("MoveY", -1); // 아래쪽 애니메이션 재생
-            animator.SetFloat("MoveX", 0);
+            animator.SetFloat("MoveX", 0);  // 아래쪽 애니메이션 재생
+            animator.SetFloat("MoveY", -1); 
         }
     }
 }

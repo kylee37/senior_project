@@ -824,48 +824,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fantasy RPG Interior Pack (16x16 grid)_380
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 256
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5056a7e168db3f84ba632070486321a3
-      internalID: -1088031884
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fantasy RPG Interior Pack (16x16 grid)_381
-      rect:
-        serializedVersion: 2
-        x: 464
-        y: 256
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9ac85e9b91b00ad42a601a8bc7cd7f79
-      internalID: -1650798246
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Fantasy RPG Interior Pack (16x16 grid)_384
       rect:
         serializedVersion: 2
@@ -2856,6 +2814,48 @@ TextureImporter:
       bones: []
       spriteID: 8c7af577e8df68e40b2ebe2834091527
       internalID: 1587038004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fantasy RPG Interior Pack (16x16 grid)_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 193
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1b3ff1778f55e6488d904c61c986ece
+      internalID: -1359734848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fantasy RPG Interior Pack (16x16 grid)_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 177
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 568bc90bf85d84144b17f5bee237a30b
+      internalID: 1522734825
       vertices: []
       indices: 
       edges: []

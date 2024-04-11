@@ -11,23 +11,24 @@ public class PrefabSpawner : MonoBehaviour
     public Queue<GameObject>[] objectPool;
     public int poolSize;
 
-    public int rate1 = 20, rate2 = 10, rate3 = 10, visit = 60; // 각 종족별 선호도
-    public int visitation = 60; // 방문율
-    public int finalRate1;
-    public int finalRate2;
-    public int finalRate3;
+    private FameManager fameManager; // FameManager 인스턴스를 저장할 변수
     private TimeManager timeManager;
+    public int rate1;
+    public int rate2;
+    public int rate3;
 
-    public int myVariable = 0;
+    public int visit;
 
     private void Start()
     {
+        fameManager = FameManager.instance;
+        // FameManager에서 초기 선호도 값 가져오기
+        rate1 = fameManager.sumHuman;
+        rate2 = fameManager.sumDwarf;
+        rate3 = fameManager.sumElf;
+        visit = fameManager.visitation;
+
         timeManager = FindObjectOfType<TimeManager>();
-        var sum = rate1 + rate2 + rate3;
-        var totalPreference = visit + (rate1 + rate2 + rate3) / 10;
-        finalRate1 = rate1 * (totalPreference / (sum / 10)) / 10;
-        finalRate2 = rate2 * (totalPreference / (sum / 10)) / 10;
-        finalRate3 = rate3 * (totalPreference / (sum / 10)) / 10;
 
         // 풀 초기화
         objectPool = new Queue<GameObject>[prefabs.Length];
@@ -74,25 +75,25 @@ public class PrefabSpawner : MonoBehaviour
     {
         var sum = rate1 + rate2 + rate3;
         var totalPreference = visit + (rate1 + rate2 + rate3) / 10;
-        finalRate1 = rate1 * (totalPreference / (sum / 10)) / 10;
-        finalRate2 = rate2 * (totalPreference / (sum / 10)) / 10;
-        finalRate3 = rate3 * (totalPreference / (sum / 10)) / 10;
+        rate1 = rate1 * (totalPreference / (sum / 10)) / 10;
+        rate2 = rate2 * (totalPreference / (sum / 10)) / 10;
+        rate3 = rate3 * (totalPreference / (sum / 10)) / 10;
         int randomNumber = Random.Range(1, 100);
         switch (randomNumber)
         {
-            case int n when (n > 0 && n <= finalRate1):
+            case int n when (n > 0 && n <= rate1):
                 prefabToSpawn = prefabs[0];
                 Debug.Log("1 방문");
                 break;
-            case int n when (n > finalRate1 && n <= finalRate1 + finalRate2):
+            case int n when (n > rate1 && n <= rate1 + rate2):
                 prefabToSpawn = prefabs[1];
                 Debug.Log("2 방문");
                 break;
-            case int n when (n > finalRate1 + finalRate2 && n <= finalRate1 + finalRate2 + finalRate3):
+            case int n when (n > rate1 + rate2 && n <= rate1 + rate2 + rate3):
                 prefabToSpawn = prefabs[2];
                 Debug.Log("3 방문");
                 break;
-            case int n when (n > finalRate1 + finalRate2 + finalRate3 && n <= 100):
+            case int n when (n > rate1 + rate2 + rate3 && n <= 100):
                 Debug.Log("아무도 방문하지 않음");
                 break;
             default:

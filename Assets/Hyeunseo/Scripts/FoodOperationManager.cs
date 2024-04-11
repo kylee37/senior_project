@@ -6,9 +6,9 @@ using TMPro;
 public class FoodOperationManager : MonoBehaviour //ÄÚµå°¡ ´õ·¯¿öÁö´Â °ÍÀ» ¹æÁöÇÏ±â À§ÇØ ÃßÈÄ °¡±¸ µî·Ï ½Ã½ºÅÛÀÌ »ı±æ °æ¿ì ÅØ½ºÆ®¸¦ »èÁ¦ÇÏ°í °ü¸®¿ë ¸Å´ÏÀú¸¦ ¸¸µé¾î¼­ ±âº» ¼±È£µµ += À½½Ä ¼±È£µµ + °¡±¸ ¼±È£µµ·Î ¸¸µé ¿¹Á¤
 {
     //°¢ Á¾Á·º° ¼±È£µµ¸¦ ÀúÀåÇÒ º¯¼ö
-    private int sumHuman = 0;
-    private int sumElf = 0;
-    private int sumDwarf = 0;
+    private int sumHuman;
+    private int sumElf;
+    private int sumDwarf;
 
     public TMP_Text operText; //ÁÖÁ¡ °ü¸®Ã¢ÀÇ ÅØ½ºÆ®
 
@@ -20,6 +20,18 @@ public class FoodOperationManager : MonoBehaviour //ÄÚµå°¡ ´õ·¯¿öÁö´Â °ÍÀ» ¹æÁöÇ
     HashSet<int> processedFoodCodes = new HashSet<int>(); // ÀÌ¹Ì Ã³¸®ÇÑ À½½Ä ÄÚµå¸¦ ÀúÀåÇÏ´Â HashSet
 
     bool resetCheck = false; //¸®¼Â »óÅÂ¸¦ È®ÀÎÇØÁÖ´Â º¯¼ö
+
+    private FameManager fameManager;
+
+    // FameManger °ª °¡Á®¿Í »ç¿ë
+    private void Start()
+    {
+        fameManager = FameManager.instance;
+
+        sumHuman = fameManager.sumHuman;
+        sumElf = fameManager.sumElf;
+        sumDwarf = fameManager.sumDwarf;
+    }
 
     void Update()
     {

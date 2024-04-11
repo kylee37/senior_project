@@ -89,6 +89,12 @@ public class NPCMover : MonoBehaviour
             targetIndex++;
         }
 
+        // 목적지에 도착했을 때의 동작
+        if (targetIndex == path.Length)
+        {
+            OnDestinationReached();
+        }
+
         // 이동 방향에 따라 애니메이션 변경
         if (targetIndex < path.Length)
         {
@@ -165,6 +171,8 @@ public class NPCMover : MonoBehaviour
     void NPCExit()
     {
         // 여기서 NPC가 떠날 때 로직 구현.
+
+        Debug.Log("NPC떠남");
         prefabSpawner.ReturnObjectToPool(gameObject, 1);
         gameManager.acheivement++;
         reservationSystem.CancelReservation(destinationPosition);

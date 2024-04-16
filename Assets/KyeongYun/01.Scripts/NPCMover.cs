@@ -220,5 +220,4 @@ public class NPCMover : MonoBehaviour
             Debug.Log("특정 NPC와 충돌 발생!");
         }
     }
-
 }

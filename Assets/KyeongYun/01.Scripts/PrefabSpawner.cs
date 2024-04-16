@@ -47,9 +47,15 @@ public class PrefabSpawner : MonoBehaviour
     {
         if(timeManager.timeSeconds >= 3) // 5초마다 스폰
         {
+            int randomNum = Random.Range(1, 100);
             timeManager.timeSeconds = 0f;
+            Calculate();
             Spawn();
-            Debug.Log("Spawn");
+            if(randomNum > 50) // 동시 방문 확률이 n% 일 때 계산식: [value(randomNum) = 100 - n]
+            {
+                Debug.Log("동시 방문");
+                Invoke(nameof(Spawn), 0.25f);
+            }
         }
     }
     public void UpdateRate(string rateName, int newValue)
@@ -104,7 +110,6 @@ public class PrefabSpawner : MonoBehaviour
 
     public void Spawn()
     {
-        Calculate();
         if (prefabToSpawn != null)
         {
             int index = GetPrefabIndex(prefabToSpawn);

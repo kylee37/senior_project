@@ -29,8 +29,8 @@ public class PosManager : MonoBehaviour
     {
         List<Vector3Int> availableDestinations = new List<Vector3Int>();
 
-        // 여기서 사용 가능한 모든 목적지를 찾아서 리스트에 추가합니다.
-        // 예를 들어, 맵 전체의 모든 위치를 확인하고 사용되지 않은 위치를 찾을 수 있습니다.
+        // 여기서 사용 가능한 모든 목적지를 찾아서 리스트에 추가
+        // 예를 들어, 맵 전체의 모든 위치를 확인하고 사용되지 않은 위치를 찾을 수 있다.
 
         return availableDestinations;
     }

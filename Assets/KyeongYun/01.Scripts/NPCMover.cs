@@ -11,6 +11,7 @@ public class NPCMover : MonoBehaviour
     public PosManager reservationSystem;
     public Vector3Int destinationPosition;
     public string NPCName;
+    public string OtherNPCName;
     private float moveSpeed = 5f;
     private Animator animator; // NPC의 애니메이터 참조
 
@@ -88,13 +89,6 @@ public class NPCMover : MonoBehaviour
         {
             targetIndex++;
         }
-
-        // 목적지에 도착했을 때의 동작
-        if (targetIndex == path.Length)
-        {
-            OnDestinationReached();
-        }
-
         // 이동 방향에 따라 애니메이션 변경
         if (targetIndex < path.Length)
         {
@@ -109,6 +103,12 @@ public class NPCMover : MonoBehaviour
                 animator.SetFloat("MoveX", moveX);
                 animator.SetFloat("MoveY", moveY);
             }
+        }
+
+        // 목적지에 도착했을 때의 동작
+        if (targetIndex == path.Length)
+        {
+            OnDestinationReached();
         }
     }
     void OnDestinationReached()
@@ -211,4 +211,14 @@ public class NPCMover : MonoBehaviour
         Debug.LogWarning("Failed to find an available destination after " + maxRetryCount + " retries. Destroying NPC.");
         prefabSpawner.ReturnObjectToPool(gameObject, 1);
     }
+    void OnTriggerEnter(Collider other)
+    {
+        // 충돌한 상대방의 NPCName이 특정 NPCName과 같은지 확인
+        if (other.CompareTag("NPC") && other.GetComponent<NPCMover>().NPCName == OtherNPCName)
+        {
+            // 여기서 특정 NPC들 간의 상호작용 작성
+            Debug.Log("특정 NPC와 충돌 발생!");
+        }
+    }
+
 }

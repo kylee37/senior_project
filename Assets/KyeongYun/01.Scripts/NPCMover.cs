@@ -10,8 +10,8 @@ public class NPCMover : MonoBehaviour
     public GameObject targetObject; // NPC의 목적지를 저장할 변수
     public PosManager reservationSystem;
     public Vector3Int destinationPosition;
-    public string NPCName;
-    public string OtherNPCName;
+    public string NPCName;  // 인스펙터 창에 NPC 기재
+    public string badNPC;   // 관계가 나쁜 NPC 기재
     private float moveSpeed = 5f;
     private Animator animator; // NPC의 애니메이터 참조
 
@@ -214,10 +214,10 @@ public class NPCMover : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // 충돌한 상대방의 NPCName이 특정 NPCName과 같은지 확인
-        if (other.CompareTag("NPC") && other.GetComponent<NPCMover>().NPCName == OtherNPCName)
+        if (other.CompareTag("NPC") && other.GetComponent<NPCMover>().NPCName == badNPC)
         {
             // 여기서 특정 NPC들 간의 상호작용 작성
-            Debug.Log("특정 NPC와 충돌 발생!");
+            Debug.Log("이번트 발생");
         }
     }
 }

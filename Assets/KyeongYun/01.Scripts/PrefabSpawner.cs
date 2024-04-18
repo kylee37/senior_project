@@ -9,20 +9,22 @@ public class PrefabSpawner : MonoBehaviour
     public GameObject[] prefabs;
     public GameObject prefabToSpawn;
     public Queue<GameObject>[] objectPool;
-    public int poolSize;
+    public int poolSize;                        // 풀 사이즈
 
-    private FameManager fameManager; // FameManager 인스턴스를 저장할 변수
+    private FameManager fameManager;            // FameManager 인스턴스를 저장할 변수
     private TimeManager timeManager;
-    public int rate1;
-    public int rate2;
-    public int rate3;
 
-    public int visit;
+    // 인스펙터 창에서 숨기기
+    [HideInInspector] public int rate1;
+    [HideInInspector] public int rate2;
+    [HideInInspector] public int rate3;
+
+    [HideInInspector] public int visit;
 
     private void Start()
     {
-        fameManager = FameManager.instance;
-        // FameManager에서 초기 선호도 값 가져오기
+        fameManager = FameManager.instance;     // FameManager에서 초기 선호도 값 가져오기
+
         rate1 = fameManager.sumHuman;
         rate2 = fameManager.sumDwarf;
         rate3 = fameManager.sumElf;
@@ -45,7 +47,7 @@ public class PrefabSpawner : MonoBehaviour
     }
     private void Update()
     {
-        if(timeManager.timeSeconds >= 3) // 5초마다 스폰
+        if(timeManager.timeSeconds >= 3) // 3초마다 스폰
         {
             int randomNum = Random.Range(1, 100);
             timeManager.timeSeconds = 0f;
@@ -58,6 +60,8 @@ public class PrefabSpawner : MonoBehaviour
             }
         }
     }
+
+    // rateName(NPC이름) 값이 다음과 같을 때 각각 NPC 선호도 증감
     public void UpdateRate(string rateName, int newValue)
     {
         switch (rateName)
@@ -77,6 +81,7 @@ public class PrefabSpawner : MonoBehaviour
         }
     }
 
+    // 각 NPC 선호도에 따른 방문률 계산 + 각 방문률에 따른 방문할 NPC 도출
     public void Calculate()
     {
         var sum = rate1 + rate2 + rate3;

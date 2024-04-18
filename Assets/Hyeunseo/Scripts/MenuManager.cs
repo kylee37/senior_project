@@ -6,18 +6,18 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
-    public static int limit = 3; //리스트에 등록할 수 있는 최대 갯수
-    public List<int> foodList = new(new int[limit]); //음식 코드를 담는 리스트
-    public GameObject addPanel; //메뉴 등록 UI (켜져있을 때만 등록을 실행하기 위해 필요)
-    public MenuReset menuReset; //메뉴 리셋 스크립트
+    public static int limit = 3;                        //리스트에 등록할 수 있는 최대 갯수
+    public List<int> foodList = new(new int[limit]);    //음식 코드를 담는 리스트
+    public GameObject addPanel;                         //메뉴 등록 UI (켜져있을 때만 등록을 실행하기 위해 필요)
+    public MenuReset menuReset;                         //메뉴 리셋 스크립트
 
     //저장용 리스트
-    public List<Image> foodImageList = new(); //모든 음식 이미지를 담는 리스트
+    public List<Image> foodImageList = new();           //모든 음식 이미지를 담는 리스트
     [TextArea]
-    public List<string> foodTextList = new(); //모든 음식 설명을 담는 리스트
+    public List<string> foodTextList = new();           //모든 음식 설명을 담는 리스트
     //메뉴판 리스트
-    public List<Image> manuImageList = new(); //메뉴판 이미지를 담는 리스트
-    public List<TMP_Text> manuTextList = new(); //메뉴판 설명을 담는 리스트
+    public List<Image> manuImageList = new();           //메뉴판 이미지를 담는 리스트
+    public List<TMP_Text> manuTextList = new();         //메뉴판 설명을 담는 리스트
 
     private void Awake()
     {

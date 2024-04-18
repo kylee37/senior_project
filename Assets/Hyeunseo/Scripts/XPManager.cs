@@ -5,7 +5,7 @@ using TMPro;
 
 public class XPManager : MonoBehaviour
 {
-    public int xp = 0; //xp
+    public int xp; //xp
     public TMP_Text xpText; //xp Ç¥½Ã UI
     public LevelManager levelManager;
 

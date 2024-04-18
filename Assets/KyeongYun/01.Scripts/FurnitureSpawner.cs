@@ -2,7 +2,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SubsystemsImplementation;
 
-public class Spawner : MonoBehaviour
+public class FurnitureSpawner : MonoBehaviour
 {
     [HideInInspector] public StateManager stateManager;
     [HideInInspector] public GameObject buildPanel;

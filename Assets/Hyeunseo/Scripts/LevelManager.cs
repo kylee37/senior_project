@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour
     public GameObject textUi; //표시 UI
     public TMP_Text printText; //표시 UI 텍스트
 
-    public int totalXP = 0; //XP를 전달할 변수
+    public int totalXP; //XP를 전달할 변수
 
     void Update()
     {

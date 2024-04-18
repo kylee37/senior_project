@@ -7,13 +7,13 @@ public class NPCMover : MonoBehaviour
     PrefabSpawner prefabSpawner;
     Vector3[] path;
     public int targetIndex;
-    public GameObject targetObject; // NPC의 목적지를 저장할 변수
+    public GameObject targetObject;             // NPC의 목적지를 저장할 변수
     public PosManager reservationSystem;
     public Vector3Int destinationPosition;
-    public string NPCName;  // 인스펙터 창에 NPC 기재
-    public string badNPC;   // 관계가 나쁜 NPC 기재
+    public string NPCName;                      // 인스펙터 창에 NPC 기재
+    public string badNPC;                       // 관계가 나쁜 NPC 기재
     private float moveSpeed = 5f;
-    private Animator animator; // NPC의 애니메이터 참조
+    private Animator animator;                  // NPC의 애니메이터 참조
 
 
     void Start()
@@ -89,6 +89,7 @@ public class NPCMover : MonoBehaviour
         {
             targetIndex++;
         }
+
         // 이동 방향에 따라 애니메이션 변경
         if (targetIndex < path.Length)
         {
@@ -166,7 +167,7 @@ public class NPCMover : MonoBehaviour
                 break;
         }
 
-        Invoke("NPCExit", 3);
+        Invoke(nameof(NPCExit), 3);
     }
     void NPCExit()
     {
@@ -190,8 +191,8 @@ public class NPCMover : MonoBehaviour
                 destinationPosition = new Vector3Int((int)targetObject.transform.position.x, (int)targetObject.transform.position.y, 0);
                 if (reservationSystem.ReserveDestination(destinationPosition, gameObject))
                 {
-                    FindPath(); // 경로 찾기
-                    yield break; // 목적지를 찾았으므로 반복문 탈출
+                    FindPath();     // 경로 찾기
+                    yield break;    // 목적지를 찾았으므로 반복문 탈출
                 }
                 else
                 {
@@ -207,7 +208,7 @@ public class NPCMover : MonoBehaviour
             retryCount++;
         }
 
-        // 최대 재시도 횟수를 초과한 경우 NPC를 파괴합니다.
+        // 최대 재시도 횟수를 초과한 경우 NPC를 풀에 반환
         Debug.LogWarning("Failed to find an available destination after " + maxRetryCount + " retries. Destroying NPC.");
         prefabSpawner.ReturnObjectToPool(gameObject, 1);
     }

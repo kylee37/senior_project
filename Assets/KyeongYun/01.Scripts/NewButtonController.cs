@@ -6,7 +6,7 @@ public class NewButtonController : MonoBehaviour
 {
     // [HideInInspector] 
     public StateManager stateManager;
-    [HideInInspector] public Spawner spawner;
+    [HideInInspector] public FurnitureSpawner spawner;
     public GameObject panel;
 
     private void Start()

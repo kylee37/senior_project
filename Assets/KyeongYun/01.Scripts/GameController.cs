@@ -72,7 +72,7 @@ public class GameController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Q))
         {
             // Space 키를 눌렀을 때 상태를 Normal로 변경하고 알파값을 되돌리기
-            Debug.Log("배치 完");
+            Debug.Log("배치 완료");
             stateManager.UpdateState(State.Normal);
             SetObjectAlpha(spawnedObject, 1.0f); // 알파값을 1로 되돌림
         }

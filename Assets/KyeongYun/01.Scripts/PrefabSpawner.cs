@@ -9,25 +9,28 @@ public class PrefabSpawner : MonoBehaviour
     public GameObject[] prefabs;
     public GameObject prefabToSpawn;
     public Queue<GameObject>[] objectPool;
-    public int poolSize;
+    public int poolSize;                        // 풀 사이즈
 
-    public int rate1 = 20, rate2 = 10, rate3 = 10, visit = 60; // 각 종족별 선호도
-    public int visitation = 60; // 방문율
-    public int finalRate1;
-    public int finalRate2;
-    public int finalRate3;
+    private FameManager fameManager;            // FameManager 인스턴스를 저장할 변수
     private TimeManager timeManager;
 
-    public int myVariable = 0;
+    // 인스펙터 창에서 숨기기
+    [HideInInspector] public int humanRate;
+    [HideInInspector] public int dwarfRate;
+    [HideInInspector] public int elfRate;
+
+    [HideInInspector] public int visit;
 
     private void Start()
     {
+        fameManager = FameManager.instance;     // FameManager에서 초기 선호도 값 가져오기
+
+        humanRate = fameManager.sumHuman;
+        dwarfRate = fameManager.sumDwarf;
+        elfRate = fameManager.sumElf;
+        visit = fameManager.visitation;
+
         timeManager = FindObjectOfType<TimeManager>();
-        var sum = rate1 + rate2 + rate3;
-        var totalPreference = visit + (rate1 + rate2 + rate3) / 10;
-        finalRate1 = rate1 * (totalPreference / (sum / 10)) / 10;
-        finalRate2 = rate2 * (totalPreference / (sum / 10)) / 10;
-        finalRate3 = rate3 * (totalPreference / (sum / 10)) / 10;
 
         // 풀 초기화
         objectPool = new Queue<GameObject>[prefabs.Length];
@@ -44,25 +47,33 @@ public class PrefabSpawner : MonoBehaviour
     }
     private void Update()
     {
-        if(timeManager.timeSeconds >= 3) // 5초마다 스폰
+        if(timeManager.timeSeconds >= 3) // 3초마다 스폰
         {
+            int randomNum = Random.Range(1, 100);
             timeManager.timeSeconds = 0f;
+            Calculate();
             Spawn();
-            Debug.Log("Spawn");
+            if(randomNum > 50) // 동시 방문 확률이 n% 일 때 계산식: [value(randomNum) = 100 - n]
+            {
+                Debug.Log("동시 방문");
+                Invoke(nameof(Spawn), 0.25f);
+            }
         }
     }
+
+    // rateName(NPC이름) 값이 다음과 같을 때 각각 NPC 선호도 증감
     public void UpdateRate(string rateName, int newValue)
     {
         switch (rateName)
         {
             case "rate1":
-                rate1 = newValue;
+                humanRate = newValue;
                 break;
             case "rate2":
-                rate2 = newValue;
+                dwarfRate = newValue;
                 break;
             case "rate3":
-                rate3 = newValue;
+                elfRate = newValue;
                 break;
             default:
                 Debug.LogError("Invalid rate name: " + rateName);
@@ -70,29 +81,30 @@ public class PrefabSpawner : MonoBehaviour
         }
     }
 
+    // 각 NPC 선호도에 따른 방문률 계산 + 각 방문률에 따른 방문할 NPC 도출
     public void Calculate()
     {
-        var sum = rate1 + rate2 + rate3;
-        var totalPreference = visit + (rate1 + rate2 + rate3) / 10;
-        finalRate1 = rate1 * (totalPreference / (sum / 10)) / 10;
-        finalRate2 = rate2 * (totalPreference / (sum / 10)) / 10;
-        finalRate3 = rate3 * (totalPreference / (sum / 10)) / 10;
+        var sum = humanRate + dwarfRate + elfRate;
+        var totalPreference = visit + (humanRate + dwarfRate + elfRate) / 10;
+        humanRate = humanRate * (totalPreference / (sum / 10)) / 10;
+        dwarfRate = dwarfRate * (totalPreference / (sum / 10)) / 10;
+        elfRate = elfRate * (totalPreference / (sum / 10)) / 10;
         int randomNumber = Random.Range(1, 100);
         switch (randomNumber)
         {
-            case int n when (n > 0 && n <= finalRate1):
+            case int n when (n > 0 && n <= humanRate):
                 prefabToSpawn = prefabs[0];
                 Debug.Log("1 방문");
                 break;
-            case int n when (n > finalRate1 && n <= finalRate1 + finalRate2):
+            case int n when (n > humanRate && n <= humanRate + dwarfRate):
                 prefabToSpawn = prefabs[1];
                 Debug.Log("2 방문");
                 break;
-            case int n when (n > finalRate1 + finalRate2 && n <= finalRate1 + finalRate2 + finalRate3):
+            case int n when (n > humanRate + dwarfRate && n <= humanRate + dwarfRate + elfRate):
                 prefabToSpawn = prefabs[2];
                 Debug.Log("3 방문");
                 break;
-            case int n when (n > finalRate1 + finalRate2 + finalRate3 && n <= 100):
+            case int n when (n > humanRate + dwarfRate + elfRate && n <= 100):
                 Debug.Log("아무도 방문하지 않음");
                 break;
             default:
@@ -103,7 +115,6 @@ public class PrefabSpawner : MonoBehaviour
 
     public void Spawn()
     {
-        Calculate();
         if (prefabToSpawn != null)
         {
             int index = GetPrefabIndex(prefabToSpawn);

@@ -5,7 +5,7 @@ using TMPro;
 
 public class GoldManager : MonoBehaviour
 {
-    public float gold = 0; //°ñµå
+    public float gold; //°ñµå
     public TMP_Text goldText; //°ñµå Ç¥½Ã UI
 
     void Update()

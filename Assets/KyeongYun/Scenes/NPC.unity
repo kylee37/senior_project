@@ -3107,6 +3107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1846941712}
+  timeSeconds: 0
 --- !u!4 &95110978
 Transform:
   m_ObjectHideFlags: 0
@@ -5635,6 +5636,54 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1681453048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1681453050}
+  - component: {fileID: 1681453049}
+  m_Layer: 0
+  m_Name: FameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1681453049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681453048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc30594d4b29bd4f9b48f6f4158b24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sumHuman: 10
+  sumDwarf: 10
+  sumElf: 20
+  visitation: 60
+--- !u!4 &1681453050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681453048}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1747592718
 GameObject:
   m_ObjectHideFlags: 0
@@ -5674,10 +5723,6 @@ MonoBehaviour:
   rate2: 10
   rate3: 10
   visit: 60
-  visitation: 0
-  finalRate1: 0
-  finalRate2: 0
-  finalRate3: 0
   myVariable: 0
 --- !u!4 &1747592720
 Transform:
@@ -5955,3 +6000,4 @@ SceneRoots:
   - {fileID: 1747592720}
   - {fileID: 54443322}
   - {fileID: 95110978}
+  - {fileID: 1681453050}

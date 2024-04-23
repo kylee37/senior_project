@@ -15,9 +15,9 @@ public class PrefabSpawner : MonoBehaviour
     private TimeManager timeManager;
 
     // 인스펙터 창에서 숨기기
-    [HideInInspector] public int rate1;
-    [HideInInspector] public int rate2;
-    [HideInInspector] public int rate3;
+    [HideInInspector] public int humanRate;
+    [HideInInspector] public int dwarfRate;
+    [HideInInspector] public int elfRate;
 
     [HideInInspector] public int visit;
 
@@ -25,9 +25,9 @@ public class PrefabSpawner : MonoBehaviour
     {
         fameManager = FameManager.instance;     // FameManager에서 초기 선호도 값 가져오기
 
-        rate1 = fameManager.sumHuman;
-        rate2 = fameManager.sumDwarf;
-        rate3 = fameManager.sumElf;
+        humanRate = fameManager.sumHuman;
+        dwarfRate = fameManager.sumDwarf;
+        elfRate = fameManager.sumElf;
         visit = fameManager.visitation;
 
         timeManager = FindObjectOfType<TimeManager>();
@@ -67,13 +67,13 @@ public class PrefabSpawner : MonoBehaviour
         switch (rateName)
         {
             case "rate1":
-                rate1 = newValue;
+                humanRate = newValue;
                 break;
             case "rate2":
-                rate2 = newValue;
+                dwarfRate = newValue;
                 break;
             case "rate3":
-                rate3 = newValue;
+                elfRate = newValue;
                 break;
             default:
                 Debug.LogError("Invalid rate name: " + rateName);
@@ -84,27 +84,27 @@ public class PrefabSpawner : MonoBehaviour
     // 각 NPC 선호도에 따른 방문률 계산 + 각 방문률에 따른 방문할 NPC 도출
     public void Calculate()
     {
-        var sum = rate1 + rate2 + rate3;
-        var totalPreference = visit + (rate1 + rate2 + rate3) / 10;
-        rate1 = rate1 * (totalPreference / (sum / 10)) / 10;
-        rate2 = rate2 * (totalPreference / (sum / 10)) / 10;
-        rate3 = rate3 * (totalPreference / (sum / 10)) / 10;
+        var sum = humanRate + dwarfRate + elfRate;
+        var totalPreference = visit + (humanRate + dwarfRate + elfRate) / 10;
+        humanRate = humanRate * (totalPreference / (sum / 10)) / 10;
+        dwarfRate = dwarfRate * (totalPreference / (sum / 10)) / 10;
+        elfRate = elfRate * (totalPreference / (sum / 10)) / 10;
         int randomNumber = Random.Range(1, 100);
         switch (randomNumber)
         {
-            case int n when (n > 0 && n <= rate1):
+            case int n when (n > 0 && n <= humanRate):
                 prefabToSpawn = prefabs[0];
                 Debug.Log("1 방문");
                 break;
-            case int n when (n > rate1 && n <= rate1 + rate2):
+            case int n when (n > humanRate && n <= humanRate + dwarfRate):
                 prefabToSpawn = prefabs[1];
                 Debug.Log("2 방문");
                 break;
-            case int n when (n > rate1 + rate2 && n <= rate1 + rate2 + rate3):
+            case int n when (n > humanRate + dwarfRate && n <= humanRate + dwarfRate + elfRate):
                 prefabToSpawn = prefabs[2];
                 Debug.Log("3 방문");
                 break;
-            case int n when (n > rate1 + rate2 + rate3 && n <= 100):
+            case int n when (n > humanRate + dwarfRate + elfRate && n <= 100):
                 Debug.Log("아무도 방문하지 않음");
                 break;
             default:

@@ -5859,6 +5859,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 482147648}
   - {fileID: 383478631}
   - {fileID: 1759903931}
   - {fileID: 719836698}
@@ -5866,7 +5867,6 @@ Transform:
   - {fileID: 1077263210}
   - {fileID: 1830911309}
   - {fileID: 741213201}
-  - {fileID: 482147648}
   - {fileID: 171914547}
   - {fileID: 2056802498}
   - {fileID: 27074151}
@@ -9272,9 +9272,9 @@ MonoBehaviour:
   - {fileID: 2730795498203845917, guid: 5ca04415073cc0d4a8e3f364a36744e8, type: 3}
   prefabToSpawn: {fileID: 0}
   poolSize: 5
-  rate1: 0
-  rate2: 0
-  rate3: 0
+  humanRate: 0
+  dwarfRate: 0
+  elfRate: 0
   visit: 0
 --- !u!4 &670244620
 Transform:

@@ -4,17 +4,23 @@ using UnityEngine;
 public class NPCMover : MonoBehaviour
 {
     GameManager gameManager;
+    
     PrefabSpawner prefabSpawner;
+    
     Vector3[] path;
     public int targetIndex;
     public GameObject targetObject;             // NPC의 목적지를 저장할 변수
+    
     public PosManager reservationSystem;
+    public GameObject arrivalIcon;              // 머리 위에 표시할 아이콘
     public Vector3Int destinationPosition;
-    public string NPCName;                      // 인스펙터 창에 NPC 기재
+    
+    public string NPCName;                      // 인스펙터 창에 해당 NPC 기재
     public string badNPC;                       // 관계가 나쁜 NPC 기재
     private float moveSpeed = 5f;
-    private Animator animator;                  // NPC의 애니메이터 참조
 
+    private Animator animator;                  // NPC의 애니메이터 참조
+    
 
     void Start()
     {
@@ -121,14 +127,14 @@ public class NPCMover : MonoBehaviour
         int currentRate = 0;
         switch (NPCName)
         {
-            case "rate1":
-                currentRate = prefabSpawner.rate1;
+            case "rate1": // NPC 이름
+                currentRate = prefabSpawner.humanRate;
                 break;
             case "rate2":
-                currentRate = prefabSpawner.rate2;
+                currentRate = prefabSpawner.dwarfRate;
                 break;
             case "rate3":
-                currentRate = prefabSpawner.rate3;
+                currentRate = prefabSpawner.elfRate;
                 break;
             default:
                 Debug.LogError("Invalid NPCName: " + NPCName);
@@ -165,6 +171,14 @@ public class NPCMover : MonoBehaviour
             default:
                 Debug.LogError("Invalid NPCName: " + NPCName);
                 break;
+        }
+
+        // 목적지에 도착했을 때 아이콘을 활성화하고 위치를 설정하여 머리 위로 이동시킴
+        if (arrivalIcon != null)
+        {
+            arrivalIcon.SetActive(true);
+            // 아이콘 위치를 머리 위로 이동시키기 위해 아이콘의 localPosition 조정
+            arrivalIcon.transform.localPosition = Vector3.up * 2f; // 예시로 위로 2 유닛 이동
         }
 
         Invoke(nameof(NPCExit), 3);

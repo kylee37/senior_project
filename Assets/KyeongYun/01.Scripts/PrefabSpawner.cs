@@ -15,9 +15,9 @@ public class PrefabSpawner : MonoBehaviour
     private TimeManager timeManager;
 
     // 인스펙터 창에서 숨기기
-    [HideInInspector] public int humanRate;
-    [HideInInspector] public int dwarfRate;
-    [HideInInspector] public int elfRate;
+    public int humanRate;
+    public int dwarfRate;
+    public int elfRate;
 
     [HideInInspector] public int visit;
 
@@ -53,7 +53,7 @@ public class PrefabSpawner : MonoBehaviour
             timeManager.timeSeconds = 0f;
             Calculate();
             Spawn();
-            if(randomNum > 50) // 동시 방문 확률이 n% 일 때 계산식: [value(randomNum) = 100 - n]
+            if(randomNum > 50) // 동시 방문 확률이 n% 일 때 계산식: [value(= randomNum) = 100 - n]
             {
                 Debug.Log("동시 방문");
                 Invoke(nameof(Spawn), 0.25f);
@@ -66,13 +66,13 @@ public class PrefabSpawner : MonoBehaviour
     {
         switch (rateName)
         {
-            case "rate1":
+            case nameof(humanRate):
                 humanRate = newValue;
                 break;
-            case "rate2":
+            case nameof(dwarfRate):
                 dwarfRate = newValue;
                 break;
-            case "rate3":
+            case nameof(elfRate):
                 elfRate = newValue;
                 break;
             default:

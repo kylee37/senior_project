@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class NPCMover : MonoBehaviour
 {
@@ -13,11 +12,11 @@ public class NPCMover : MonoBehaviour
     public GameObject targetObject;             // NPC의 목적지를 저장할 변수
     
     public PosManager reservationSystem;
+    public GameObject arrivalIcon;              // 머리 위에 표시할 아이콘
     public Vector3Int destinationPosition;
     
     public string NPCName;                      // 인스펙터 창에 해당 NPC 기재
     public string badNPC;                       // 관계가 나쁜 NPC 기재
-    public string goodFood;                     // 선호하는 음식 기재
     private float moveSpeed = 5f;
 
     private Animator animator;                  // NPC의 애니메이터 참조
@@ -49,15 +48,6 @@ public class NPCMover : MonoBehaviour
         else
         {
             Debug.LogError("No available target object found.");
-        }
-        // TilemapCollider 끄기
-        if (targetObject != null)
-        {
-            TilemapCollider2D tilemapCollider = targetObject.GetComponent<TilemapCollider2D>();
-            if (tilemapCollider != null)
-            {
-                tilemapCollider.enabled = false;
-            }
         }
     }
 
@@ -133,21 +123,18 @@ public class NPCMover : MonoBehaviour
         int randomNum = Random.Range(1, 10);
         Debug.Log("목적지 도착");
 
-        // NPCName에 해당하는 rate 변수 가져오기, 도착한 NPC 이름에 따라 선호도 증가
+        // NPCName에 해당하는 rate 변수 가져오기
         int currentRate = 0;
         switch (NPCName)
         {
-            case "Human": // NPC 이름
+            case "rate1": // NPC 이름
                 currentRate = prefabSpawner.humanRate;
-                prefabSpawner.UpdateRate("humanRate", currentRate);
                 break;
-            case "Dwarf":
+            case "rate2":
                 currentRate = prefabSpawner.dwarfRate;
-                prefabSpawner.UpdateRate("dwarfRate", currentRate);
                 break;
-            case "Elf":
+            case "rate3":
                 currentRate = prefabSpawner.elfRate;
-                prefabSpawner.UpdateRate("elfRate", currentRate);
                 break;
             default:
                 Debug.LogError("Invalid NPCName: " + NPCName);
@@ -157,69 +144,54 @@ public class NPCMover : MonoBehaviour
         switch (randomNum)
         {
             case int n when (n > 0 && n <= 6):
-                Invoke(nameof(GoodEmote), 3);
+                Debug.Log("선호하는 음식 주문, 선호도 + 2");
                 currentRate += 2;
                 break;
             case int n when (n > 6 && n < 10):
-                Invoke(nameof(NormalEmote), 3);
+                Debug.Log("아무것도 없는 음식 주문, 선호도 + 1");
                 currentRate += 1;
                 break;
             case int n when (n >= 10):
-                Invoke(nameof(BadEmote), 3);
+                Debug.Log("불호하는 음식 주문");
                 break;
         }
 
-        // 도착 후 1초 후 2초(이모티콘 출력까지의 간격)동안 생각
-        Invoke(nameof(Thinking), 1);
+        // 해당 NPC에 대한 rate 변수 업데이트
+        switch (NPCName)
+        {
+            case "rate1":
+                prefabSpawner.UpdateRate("rate1", currentRate);
+                break;
+            case "rate2":
+                prefabSpawner.UpdateRate("rate2", currentRate);
+                break;
+            case "rate3":
+                prefabSpawner.UpdateRate("rate3", currentRate);
+                break;
+            default:
+                Debug.LogError("Invalid NPCName: " + NPCName);
+                break;
+        }
 
-        Invoke(nameof(NPCExit), 10);
+        // 목적지에 도착했을 때 아이콘을 활성화하고 위치를 설정하여 머리 위로 이동시킴
+        if (arrivalIcon != null)
+        {
+            arrivalIcon.SetActive(true);
+            // 아이콘 위치를 머리 위로 이동시키기 위해 아이콘의 localPosition 조정
+            arrivalIcon.transform.localPosition = Vector3.up * 2f; // 예시로 위로 2 유닛 이동
+        }
+
+        Invoke(nameof(NPCExit), 3);
     }
-
     void NPCExit()
     {
-        // 여기서 NPC가 떠날 때 로직 구현
+        // 여기서 NPC가 떠날 때 로직 구현.
 
         Debug.Log("NPC떠남");
-
-        // TilemapCollider 켜기
-        if (targetObject != null)
-        {
-            TilemapCollider2D tilemapCollider = targetObject.GetComponent<TilemapCollider2D>();
-            if (tilemapCollider != null)
-            {
-                tilemapCollider.enabled = true;
-            }
-        }
         prefabSpawner.ReturnObjectToPool(gameObject, 1);
         gameManager.acheivement++;
         reservationSystem.CancelReservation(destinationPosition);
     }
-
-    void Thinking()
-    {
-        Debug.Log("고민중...");
-    }
-
-    void GoodEmote()
-    {
-        Debug.Log("선호 음식 주문, 좋은 이모티콘 출력, +2");
-    }
-    
-    void NormalEmote()
-    {
-        Debug.Log("일반 음식 주문, 평범한 이모티콘 출력, +1");
-    }
-
-    void BadEmote()
-    {
-        Debug.Log("불호 음식 주문, 나쁜 이모티콘 출력");
-    }
-
-    void Eating()
-    {
-        Debug.Log("식사중...");
-    }
-
     IEnumerator FindNewDestinationWithRetry(int maxRetryCount)
     {
         int retryCount = 0;
@@ -257,7 +229,7 @@ public class NPCMover : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // 충돌한 상대방의 NPCName이 특정 NPCName과 같은지 확인
-        if (/*other.CompareTag("NPC") && */other.GetComponent<NPCMover>().NPCName == badNPC)
+        if (other.CompareTag("NPC") && other.GetComponent<NPCMover>().NPCName == badNPC)
         {
             // 여기서 특정 NPC들 간의 상호작용 작성
             Debug.Log("이번트 발생");

@@ -29,6 +29,8 @@ public class TimeManager : MonoBehaviour
     void OnStartButtonClick()
     {
         StartCoroutine(UpdateTimer());
+
+        startButton.gameObject.SetActive(false);
     }
 
     IEnumerator UpdateTimer()
@@ -75,6 +77,8 @@ public class TimeManager : MonoBehaviour
                 //데이 텍스트 업데이트
                 days++;
                 dayText.text = "Day" + days.ToString("D1");
+
+                startButton.gameObject.SetActive(true);
 
                 //GameStop
                 yield break;

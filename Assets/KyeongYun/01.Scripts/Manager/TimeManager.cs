@@ -29,6 +29,8 @@ public class TimeManager : MonoBehaviour
     void OnStartButtonClick()
     {
         StartCoroutine(UpdateTimer());
+
+        startButton.gameObject.SetActive(false);
     }
 
     IEnumerator UpdateTimer()
@@ -37,24 +39,24 @@ public class TimeManager : MonoBehaviour
 
         while (true)
         {
-            yield return null; // 한 프레임을 기다린다
+            yield return null; // 한 프레임을 기다립니다.
 
-            timer += Time.deltaTime; // 경과된 시간을 누적
+            timer += Time.deltaTime; // 경과된 시간을 누적합니다.
             timeSeconds += Time.deltaTime;
 
-            // 시간을 시, 분, 초로 변환
+            // 시간을 시, 분, 초로 변환합니다.
             //int hours = (int)(timer / 3600);
             //int minutes = (int)((timer % 3600) / 60);
             //int seconds = (int)(timer % 60);
 
             //게임 시간에 맞춰 변경
-            if (timer >= seconds)
+            if(timer >= seconds)
             {
-                if (minutes == 0)
+                if(minutes == 0)
                 {
                     minutes += 30;
                 }
-                else if (minutes == 30)
+                else if(minutes == 30)
                 {
                     minutes = 0;
                     hours++;
@@ -63,7 +65,7 @@ public class TimeManager : MonoBehaviour
                 timer = 0;
             }
 
-            if (hours == 12 && minutes == 30)
+            if(hours == 12 && minutes == 30)
             {
                 minutes = 0;
                 hours = 0;
@@ -76,14 +78,16 @@ public class TimeManager : MonoBehaviour
                 days++;
                 dayText.text = "Day" + days.ToString("D1");
 
+                startButton.gameObject.SetActive(true);
+
                 //GameStop
                 yield break;
             }
 
             // 타이머 텍스트 업데이트
-            timerText.text =
+            timerText.text = 
             //hours.ToString("D2") + ":" +  시간 표시하려면 주석 제거
-            hours.ToString("D2") + ":" +
+            hours.ToString("D2") + ":" + 
             minutes.ToString("D2");
         }
     }

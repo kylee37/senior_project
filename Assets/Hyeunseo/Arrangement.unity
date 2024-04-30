@@ -3141,7 +3141,7 @@ MonoBehaviour:
   timerText: {fileID: 140497679}
   dayText: {fileID: 623256227}
   timeSeconds: 0
-  second: 4
+  seconds: 4
   startButton: {fileID: 682683140}
 --- !u!4 &171914547
 Transform:

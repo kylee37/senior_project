@@ -10,7 +10,7 @@ public class PosManager : MonoBehaviour
     {
         if (reservedDestinations.Contains(position))
         {
-            Debug.Log("Destination already reserved.");
+            Debug.Log("Destinations Are Already Reserved.");
             return false;
         }
 

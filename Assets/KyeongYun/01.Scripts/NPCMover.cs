@@ -257,7 +257,7 @@ public class NPCMover : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // 충돌한 상대방의 NPCName이 특정 NPCName과 같은지 확인
-        if (/*other.CompareTag("NPC") && */other.GetComponent<NPCMover>().NPCName == badNPC)
+        if (other.GetComponent<NPCMover>().NPCName == badNPC)
         {
             // 여기서 특정 NPC들 간의 상호작용 작성
             Debug.Log("이번트 발생");

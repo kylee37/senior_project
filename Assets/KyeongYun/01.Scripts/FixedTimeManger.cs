@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class TimeManager : MonoBehaviour
+public class FixedTimeManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private TMP_Text dayText;
@@ -18,8 +18,8 @@ public class TimeManager : MonoBehaviour
     int minutes = 0;
     int hours = 4;
 
-    public Button startButton; // 일차 시작하는 버튼 UI
-    public Button pauseButton; // 멈추는 버튼 UI
+    public Button startButton; //일차 시작하는 버튼 UI
+    public Button pauseButton;
 
     private void Start()
     {

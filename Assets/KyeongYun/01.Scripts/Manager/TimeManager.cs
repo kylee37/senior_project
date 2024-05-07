@@ -27,7 +27,7 @@ public class TimeManager : MonoBehaviour
     private void Start()
     {
         startButton.onClick.AddListener(OnStartButtonClick);
-        dayText.text = "Day" + days.ToString("D1");
+        dayText.text = days.ToString("D1");
     }
 
     private void Update()
@@ -105,7 +105,7 @@ public class TimeManager : MonoBehaviour
 
                 //데이 텍스트 업데이트
                 days++;
-                dayText.text = "Day" + days.ToString("D1");
+                dayText.text = days.ToString("D1");
 
                 startButton.gameObject.SetActive(true);
                 lockMenuButton.gameObject.SetActive(false);

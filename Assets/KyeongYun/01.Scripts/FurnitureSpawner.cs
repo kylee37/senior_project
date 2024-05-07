@@ -29,10 +29,10 @@ public class FurnitureSpawner : MonoBehaviour
             // 패널이 내려간 상태에서 오브젝트를 생성하고 이동할 수 있는 로직
             HandleBuildingInput();
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log(stateManager != null ? stateManager.currentState.ToString() : "StateManager is null");
-        }
+        }*/
     }
 
     public void SpawnObject(GameObject prefabToSpawn)

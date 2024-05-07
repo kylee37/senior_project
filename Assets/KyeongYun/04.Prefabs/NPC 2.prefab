@@ -102,7 +102,9 @@ MonoBehaviour:
   targetObject: {fileID: 0}
   reservationSystem: {fileID: 0}
   destinationPosition: {x: 0, y: 0, z: 0}
-  NPCName: rate2
+  NPCName: Elf
+  badNPC: 
+  goodFood: 
 --- !u!95 &2531117277830237027
 Animator:
   serializedVersion: 5

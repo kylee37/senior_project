@@ -41,7 +41,7 @@ public class TimeManager : MonoBehaviour
     {
         printText.text = "일차 진행 중에 사용할 수 없습니다.";
         textUi.SetActive(true); //표시 UI 활성화
-        Invoke("CloseUI", 0.5f); //0.5초 뒤 UI 삭제
+        Invoke(nameof(CloseUI), 0.5f); //0.5초 뒤 UI 삭제
     }
 
     void CloseUI()
@@ -122,5 +122,4 @@ public class TimeManager : MonoBehaviour
             minutes.ToString("D2");
         }
     }
-
 }

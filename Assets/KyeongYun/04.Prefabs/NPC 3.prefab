@@ -106,10 +106,10 @@ MonoBehaviour:
   badNPC: 
   goodFood: 
   emotes:
-  - {fileID: 4237047944533828372, guid: 97793507748ea8441890dbf78d1f18d9, type: 3}
-  - {fileID: 8249762722064680966, guid: f54aed34ad85c1e42ac9b82222238f1e, type: 3}
-  - {fileID: 4582611714944960744, guid: 9a36028c90fa18a49b74c829e2a62a94, type: 3}
-  - {fileID: 6733231797675133706, guid: 009a62495a27d9b448b6fd8b521a56ae, type: 3}
+  - {fileID: 2381260277095769234, guid: 97793507748ea8441890dbf78d1f18d9, type: 3}
+  - {fileID: 4360705961359046199, guid: f54aed34ad85c1e42ac9b82222238f1e, type: 3}
+  - {fileID: 7277929761336124051, guid: 9a36028c90fa18a49b74c829e2a62a94, type: 3}
+  - {fileID: 2353489578767359461, guid: 009a62495a27d9b448b6fd8b521a56ae, type: 3}
 --- !u!95 &3229740781820595609
 Animator:
   serializedVersion: 5

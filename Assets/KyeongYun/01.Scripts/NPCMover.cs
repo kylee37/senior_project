@@ -4,26 +4,25 @@ using UnityEngine.Tilemaps;
 
 public class NPCMover : MonoBehaviour
 {
-    private GameManager gameManager;
-    private PrefabSpawner prefabSpawner;
-    private Animator animator;
-    private GoldManager goldManager;
-    private Vector3[] path;
-    private int emoteNum;
-    private GameObject emoteInstance;
+    GameManager gameManager;
 
+    PrefabSpawner prefabSpawner;
+
+    Vector3[] path;
     public int targetIndex;
-    public GameObject targetObject;
+    public GameObject targetObject;             // NPC의 목적지를 저장할 변수
 
     public PosManager reservationSystem;
     public Vector3Int destinationPosition;
 
-    public string NPCName;
-    public string badNPC;
-    public string goodFood;
-    public GameObject[] emotes;
-
+    public string NPCName;                      // 인스펙터 창에 해당 NPC 기재
+    public string badNPC;                       // 관계가 나쁜 NPC 기재
+    public string goodFood;                     // 선호하는 음식 기재
     private float moveSpeed = 5f;
+
+    private Animator animator;                  // NPC의 애니메이터 참조
+    private GoldManager goldManager;
+
 
     void Start()
     {
@@ -31,8 +30,8 @@ public class NPCMover : MonoBehaviour
         prefabSpawner = FindObjectOfType<PrefabSpawner>();
         reservationSystem = FindObjectOfType<PosManager>();
         goldManager = FindObjectOfType<GoldManager>();
-        targetObject = gameManager.GetRandomUnusedTargetObject();
-        animator = GetComponent<Animator>();
+        targetObject = gameManager.GetRandomUnusedTargetObject();   // 랜덤한 목적지 설정
+        animator = GetComponent<Animator>();                        // 애니메이터 컴포넌트 가져오기
 
         // 목적지 예약 시스템을 초기화하고 목적지 예약
         if (targetObject != null)
@@ -40,7 +39,7 @@ public class NPCMover : MonoBehaviour
             destinationPosition = new Vector3Int((int)targetObject.transform.position.x, (int)targetObject.transform.position.y, 0);
             if (reservationSystem.ReserveDestination(destinationPosition, gameObject))
             {
-                FindPath();
+                FindPath(); // 경로 찾기
             }
             else
             {
@@ -53,12 +52,23 @@ public class NPCMover : MonoBehaviour
         {
             Debug.LogError("No available target object found.");
         }
+        // TilemapCollider 끄기
+        if (targetObject != null)
+        {
+            TilemapCollider2D tilemapCollider = targetObject.GetComponent<TilemapCollider2D>();
+            if (tilemapCollider != null)
+            {
+                tilemapCollider.enabled = false;
+            }
+        }
     }
+
 
     void FindPath()
     {
         if (targetObject == null) return;
 
+        // Vector3 startPos = transform.position;
         Vector3 endPos = targetObject.transform.position;
 
         // A* 알고리즘을 사용하여 경로 찾기
@@ -74,7 +84,6 @@ public class NPCMover : MonoBehaviour
         // 이동 경로가 생성되었으므로 이동 시작
         MoveToNextTarget();
     }
-
     void MoveToNextTarget()
     {
         if (path == null || path.Length == 0)
@@ -121,7 +130,6 @@ public class NPCMover : MonoBehaviour
             OnDestinationReached();
         }
     }
-
     void OnDestinationReached()
     {
         int randomNum = Random.Range(1, 10);
@@ -131,7 +139,7 @@ public class NPCMover : MonoBehaviour
         int currentRate = 0;
         switch (NPCName)
         {
-            case "Human":
+            case "Human": // NPC 이름
                 currentRate = prefabSpawner.humanRate;
                 prefabSpawner.UpdateRate("humanRate", currentRate);
                 break;
@@ -152,17 +160,14 @@ public class NPCMover : MonoBehaviour
         {
             case int n when (n > 0 && n <= 6):
                 Invoke(nameof(GoodEmote), 3);
-                emoteNum = 0;
                 currentRate += 2;
                 break;
             case int n when (n > 6 && n < 10):
                 Invoke(nameof(NormalEmote), 3);
-                emoteNum = 1;
                 currentRate += 1;
                 break;
             case int n when (n >= 10):
                 Invoke(nameof(BadEmote), 3);
-                emoteNum = 2;
                 break;
         }
 
@@ -189,46 +194,13 @@ public class NPCMover : MonoBehaviour
         }
         prefabSpawner.ReturnObjectToPool(gameObject, 1);
         gameManager.acheivement++;
-        goldManager.gold += 100;
+        goldManager.gold += 100; // NPC 퇴장 시 100만큼의 골드 획득
         reservationSystem.CancelReservation(destinationPosition);
     }
 
     void Thinking()
     {
         Debug.Log("고민중...");
-        Vector3 emotePosition = transform.position + new Vector3(0, 1, 0); // NPC 위치의 약간 위 (y축으로 1만큼 위로 이동)
-        emoteInstance = Instantiate(emotes[3], emotePosition, Quaternion.identity);
-        // 이모티콘 관련 동작 실행
-
-        // 이모티콘이 출력된 후 일정 시간 후에 파괴되도록 Invoke를 사용하여 DestroyEmote 함수 호출
-        Invoke(nameof(DestroyEmote), 2f); // 2초 후에 DestroyEmote 함수 호출
-        StartCoroutine(ExecuteAfterDelay(2f)); // 2(delay)초 후에 Emotes 함수 실행
-    }
-
-    IEnumerator ExecuteAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        Emotes(emoteNum); // 지정된 시간 후에 Emotes 함수 실행
-    }
-
-    void Emotes(int emoteNum)
-    {
-        Debug.Log("이모티콘 출력");
-        Vector3 emotePosition = transform.position + new Vector3(0, 1, 0); // NPC 위치의 약간 위 (y축으로 1만큼 위로 이동)
-        emoteInstance = Instantiate(emotes[emoteNum], emotePosition, Quaternion.identity);
-        // 이모티콘 관련 동작 실행
-
-        // 이모티콘이 출력된 후 일정 시간 후에 파괴되도록 Invoke를 사용하여 DestroyEmote 함수 호출
-        Invoke(nameof(DestroyEmote), 3f); // 3초 후에 DestroyEmote 함수 호출
-    }
-
-    void DestroyEmote()
-    {
-        if (emoteInstance != null)
-        {
-            Destroy(emoteInstance);
-            Debug.Log("이모티콘 파괴");
-        }
     }
 
     void GoodEmote()
@@ -246,12 +218,9 @@ public class NPCMover : MonoBehaviour
         Debug.Log("불호 음식 주문, 나쁜 이모티콘 출력");
     }
 
-    void OnTriggerEnter(Collider other)
+    void Eating()
     {
-        if (other.GetComponent<NPCMover>().NPCName == badNPC)
-        {
-            Debug.Log("이벤트 발생");
-        }
+        Debug.Log("식사중...");
     }
 
     IEnumerator FindNewDestinationWithRetry(int maxRetryCount)
@@ -259,16 +228,16 @@ public class NPCMover : MonoBehaviour
         int retryCount = 0;
         while (retryCount < maxRetryCount)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.5f); // 재시도 간격을 0.5초로 설정하거나 필요에 따라 조절
 
-            targetObject = gameManager.GetRandomUnusedTargetObject();
+            targetObject = gameManager.GetRandomUnusedTargetObject(); // 랜덤한 목적지 설정
             if (targetObject != null)
             {
                 destinationPosition = new Vector3Int((int)targetObject.transform.position.x, (int)targetObject.transform.position.y, 0);
                 if (reservationSystem.ReserveDestination(destinationPosition, gameObject))
                 {
-                    FindPath();
-                    yield break;
+                    FindPath();     // 경로 찾기
+                    yield break;    // 목적지를 찾았으므로 반복문 탈출
                 }
                 else
                 {
@@ -278,13 +247,23 @@ public class NPCMover : MonoBehaviour
             else
             {
                 Debug.LogError("No available target object found.");
-                yield break;
+                yield break; // 사용 가능한 목적지가 없으므로 반복문 탈출
             }
 
             retryCount++;
         }
 
+        // 최대 재시도 횟수를 초과한 경우 NPC를 풀에 반환
         Debug.LogWarning("Failed to find an available destination after " + maxRetryCount + " retries. Destroying NPC.");
         prefabSpawner.ReturnObjectToPool(gameObject, 1);
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        // 충돌한 상대방의 NPCName이 특정 NPCName과 같은지 확인
+        if (/*other.CompareTag("NPC") && */other.GetComponent<NPCMover>().NPCName == badNPC)
+        {
+            // 여기서 특정 NPC들 간의 상호작용 작성
+            Debug.Log("이번트 발생");
+        }
     }
 }

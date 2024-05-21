@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
-
 public class PrefabSpawner : MonoBehaviour
 {
     public GameObject[] prefabs;
@@ -55,7 +54,7 @@ public class PrefabSpawner : MonoBehaviour
             Spawn();
             if(randomNum > 50) // 동시 방문 확률이 n% 일 때 계산식: [value(randomNum) = 100 - n]
             {
-                Debug.Log("동시 방문");
+                Debug.Log("동행");
                 Invoke(nameof(Spawn), 0.25f);
             }
         }

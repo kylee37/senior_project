@@ -6,6 +6,8 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
+    [SerializeField] FoodSO foodSO;                     //푸드 SO 가져옴
+    [SerializeField] MenuSO menuSO;                     //메뉴 SO 가져옴(음식 설명 담겨있음)
     public static int limit = 3;                        //리스트에 등록할 수 있는 최대 갯수
     public List<int> foodList = new(new int[limit]);    //음식 코드를 담는 리스트
     public GameObject addPanel;                         //메뉴 등록 UI (켜져있을 때만 등록을 실행하기 위해 필요)
@@ -13,11 +15,12 @@ public class MenuManager : MonoBehaviour
 
     //저장용 리스트
     public List<Image> foodImageList = new();           //모든 음식 이미지를 담는 리스트
-    [TextArea]
-    public List<string> foodTextList = new();           //모든 음식 설명을 담는 리스트
     //메뉴판 리스트
-    public List<Image> manuImageList = new();           //메뉴판 이미지를 담는 리스트
-    public List<TMP_Text> manuTextList = new();         //메뉴판 설명을 담는 리스트
+    public List<Image> menuImageList = new();           //메뉴판 이미지를 담는 리스트
+    //메뉴판 설명을 담는 리스트
+    public List<TMP_Text> menuNameList = new();         //이름
+    public List<TMP_Text> menuExplanationList = new();  //설명
+    public List<TMP_Text> menuPriceList = new();        //가격
 
     private void Awake()
     {
@@ -87,12 +90,17 @@ public class MenuManager : MonoBehaviour
     {
         for(int i = 0; i < limit; i++)
         {
-            if(foodList[i] != 0) //푸드리스트에 값이 있다면
+            Menu menu = menuSO.menus[i]; //menu에 menus[i] 값 할당
+
+            if (foodList[i] != 0) //푸드리스트에 값이 있다면
             {
-                if (foodList[i] < foodImageList.Count && foodList[i] < foodTextList.Count) //인덱스 범위 내에 있을 때
+                if (foodList[i] < foodImageList.Count /* && foodList[i] < menuSO */) //인덱스 범위 내에 있을 때
                 {
-                    manuImageList[i].sprite = foodImageList[foodList[i]].sprite; //메뉴판에 들어온 번호에 해당하는 음식 이미지를 적용
-                    manuTextList[i].text = foodTextList[foodList[i]]; //메뉴판에 들어온 번호에 해당하는 음식 설명을 적용
+                    menuImageList[i].sprite = foodImageList[foodList[i]].sprite; //메뉴판에 들어온 번호에 해당하는 음식 이미지를 적용
+                    //메뉴판에 들어온 번호에 해당하는 음식 설명을 적용
+                    menuNameList[i].text = menu.name;
+                    menuExplanationList[i].text = menu.explanation;
+                    menuPriceList[i].text = menu.price.ToString();
                 }
             }
         }
@@ -102,20 +110,22 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator ResetMenu()
     {
-        int manuImageListCount = manuImageList.Count;
-        int manuTextListCount = manuTextList.Count;
+        int manuImageListCount = menuImageList.Count;
+        int manuTextListCount = menuNameList.Count;
 
         for (int i = 0; i < limit; i++)
         {
             foodList[i] = 0;
             if (foodList[i] == 0) //값이 0이고
             {
-                if (foodImageList.Count > 0 && foodTextList.Count > 0) //해당 리스트가 비어있다면
+                if (foodImageList.Count > 0 && menuNameList.Count > 0) //해당 리스트가 비어있다면
                 {
                     if (i < manuImageListCount && i < manuTextListCount) //인덱스 범위 내에 있을 때
                     {
-                        manuImageList[i].sprite = foodImageList[0].sprite; //스프라이트 리스트  0번으로 번경
-                        manuTextList[i].text = foodTextList[0]; //텍스트 리스트 0번으로 번경
+                        menuImageList[i].sprite = foodImageList[0].sprite; //스프라이트 리스트  0번으로 번경
+                        menuNameList[i].text = "없음"; //텍스트 번경
+                        menuExplanationList[i].text = "없음"; //텍스트 번경
+                        menuPriceList[i].text = " "; //0원으로 번경
                     }
                 }
             }

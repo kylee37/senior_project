@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2cb79e4168eb74f84d61a703587203, type: 3}
+  m_Name: MenuSO
+  m_EditorClassIdentifier: 
+  menus:
+  - num: 1
+    name: "\uD638\uBC00\uBE75"
+    explanation: "\uD638\uBD88\uD638 \uAC08\uB9AC\uC9C0 \uC54A\uB294 \uBB34\uB09C\uD55C
+      \uBE75"
+    price: 500
+  - num: 1
+    name: "\uD638\uBC00\uBE75"
+    explanation: "\uD638\uBD88\uD638 \uAC08\uB9AC\uC9C0 \uC54A\uB294 \uBB34\uB09C\uD55C
+      \uBE75"
+    price: 500
+  - num: 1
+    name: "\uD638\uBC00\uBE75"
+    explanation: "\uD638\uBD88\uD638 \uAC08\uB9AC\uC9C0 \uC54A\uB294 \uBB34\uB09C\uD55C
+      \uBE75"
+    price: 500
+  - num: 1
+    name: "\uD638\uBC00\uBE75"
+    explanation: "\uD638\uBD88\uD638 \uAC08\uB9AC\uC9C0 \uC54A\uB294 \uBB34\uB09C\uD55C
+      \uBE75"
+    price: 500

@@ -72,9 +72,9 @@ public class FoodOperationManager : MonoBehaviour //ÄÚµå°¡ ´õ·¯¿öÁö´Â °ÍÀ» ¹æÁöÇ
                     sumHuman += food.human;
                     sumElf += food.elf;
                     sumDwarf += food.dwarf;
-
+                    
                     processedFoodCodes.Add(foodCode); //ÀÌ¹Ì Ã³¸®ÇÑ ÄÚµå·Î Ç¥½Ã
-
+                    
                     break; //Å»Ãâ
                 }
             }

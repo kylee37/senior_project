@@ -69,10 +69,10 @@ public class TimeManager : MonoBehaviour
         while (true)
         {
             yield return null; // 한 프레임을 기다립니다.
-
+          
             timer += Time.deltaTime; // 경과된 시간을 누적합니다.
             timeSeconds += Time.deltaTime;
-
+            
             // 시간을 시, 분, 초로 변환합니다.
             //int hours = (int)(timer / 3600);
             //int minutes = (int)((timer % 3600) / 60);
@@ -88,7 +88,7 @@ public class TimeManager : MonoBehaviour
                 else if (minutes == 30)
                 {
                     minutes = 0;
-                    hours++;
+                    hours++; 
                 }
 
                 timer = 0;

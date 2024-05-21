@@ -9,6 +9,9 @@ public class Food
     public int human;
     public int elf;
     public int dwarf;
+    public string name;
+    public string explanation;
+    public int price;
 }
 
 [CreateAssetMenu(fileName = "FoodSO", menuName = "Scriptable Object/FoodSO")]

@@ -1,0 +1,641 @@
+fileFormatVersion: 2
+guid: ad74df926efa67344b7f32838a10de02
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Food and Drink Icons 01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdd664dddea557e4e9632d72309101ed
+      internalID: 1866904391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food and Drink Icons 01_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c87c41ee1697344d8e8474e8aac45d2
+      internalID: 2056597906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food and Drink Icons 01_10
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 236de700f897069429dbf882d3ea4aa4
+      internalID: -672976246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food and Drink Icons 01_20
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82f53b76b832eaf4eb134aa4c7c6efd0
+      internalID: -534713031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food and Drink Icons 01_22
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bac1497edfc81144a7075dceeee16ff
+      internalID: 1349850591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food and Drink Icons 01_40
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a55a02d2099e33840880b3542eb231a4
+      internalID: -95428304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food and Drink Icons 01_53
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f28a9b2a4cfd56f48af757457c7f5bb7
+      internalID: 1211805936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food and Drink Icons 01_70
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ad2f2b842d8b9d4c80b4ab6b1608efc
+      internalID: -444810434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food and Drink Icons 01_76
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d43cc4386e144d541b06bb9c65b00e4a
+      internalID: 1745324956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food and Drink Icons 01_78
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c9a17870a3899a4ca3653be0cc0e892
+      internalID: 1476132082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food and Drink Icons 01_79
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 830d2e3747ae23f4faa74d6599b7063a
+      internalID: 2091791086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food and Drink Icons 01_107
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dee18f443691ded4ab76115e40c7727d
+      internalID: 2007329148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food and Drink Icons 01_108
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e95b746fc58fbdf4398dc2f5af7d28ec
+      internalID: -1088708233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food and Drink Icons 01_109
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 722bbf443c01df148b6565e5c7f74912
+      internalID: -413312228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 0208dacc82737a54b8cf740017c845c4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Food and Drink Icons 01_0: 1866904391
+      Food and Drink Icons 01_1: -671892936
+      Food and Drink Icons 01_10: -672976246
+      Food and Drink Icons 01_100: 1727097866
+      Food and Drink Icons 01_101: 1217178856
+      Food and Drink Icons 01_102: 685805934
+      Food and Drink Icons 01_103: -463268616
+      Food and Drink Icons 01_104: 519694803
+      Food and Drink Icons 01_105: -1943633839
+      Food and Drink Icons 01_106: 189825063
+      Food and Drink Icons 01_107: 2007329148
+      Food and Drink Icons 01_108: -1088708233
+      Food and Drink Icons 01_109: -413312228
+      Food and Drink Icons 01_11: -86355175
+      Food and Drink Icons 01_110: 2019269736
+      Food and Drink Icons 01_111: 485025710
+      Food and Drink Icons 01_112: -302815009
+      Food and Drink Icons 01_113: 536423208
+      Food and Drink Icons 01_114: 1481144305
+      Food and Drink Icons 01_115: -1735538804
+      Food and Drink Icons 01_116: 646275872
+      Food and Drink Icons 01_117: 2019736726
+      Food and Drink Icons 01_118: 846044814
+      Food and Drink Icons 01_119: 187350098
+      Food and Drink Icons 01_12: -1841883735
+      Food and Drink Icons 01_120: 1175679445
+      Food and Drink Icons 01_121: 226416950
+      Food and Drink Icons 01_122: 930180587
+      Food and Drink Icons 01_123: -374240641
+      Food and Drink Icons 01_124: -1312509548
+      Food and Drink Icons 01_125: -472802932
+      Food and Drink Icons 01_126: 1719133919
+      Food and Drink Icons 01_127: 1265469177
+      Food and Drink Icons 01_128: 1155173551
+      Food and Drink Icons 01_129: -1861901764
+      Food and Drink Icons 01_13: -1755556786
+      Food and Drink Icons 01_130: 813476735
+      Food and Drink Icons 01_131: 528059268
+      Food and Drink Icons 01_132: -1749680955
+      Food and Drink Icons 01_133: -684159242
+      Food and Drink Icons 01_134: 960389676
+      Food and Drink Icons 01_135: 1879359230
+      Food and Drink Icons 01_136: 1744959566
+      Food and Drink Icons 01_137: 1478134208
+      Food and Drink Icons 01_138: 1414162603
+      Food and Drink Icons 01_139: -2086457840
+      Food and Drink Icons 01_14: -2082673032
+      Food and Drink Icons 01_140: -781486716
+      Food and Drink Icons 01_141: -1452329656
+      Food and Drink Icons 01_142: 31554005
+      Food and Drink Icons 01_143: -1151402749
+      Food and Drink Icons 01_144: 630731464
+      Food and Drink Icons 01_145: 122828281
+      Food and Drink Icons 01_146: -427624885
+      Food and Drink Icons 01_147: -1437451209
+      Food and Drink Icons 01_148: 298216685
+      Food and Drink Icons 01_149: -1127785671
+      Food and Drink Icons 01_15: -1086181044
+      Food and Drink Icons 01_150: -2078630569
+      Food and Drink Icons 01_151: -896225296
+      Food and Drink Icons 01_152: 1061642487
+      Food and Drink Icons 01_153: 1463674735
+      Food and Drink Icons 01_154: 1603186127
+      Food and Drink Icons 01_155: 784575532
+      Food and Drink Icons 01_156: -654815808
+      Food and Drink Icons 01_157: 903434949
+      Food and Drink Icons 01_158: 900899745
+      Food and Drink Icons 01_159: 5450857
+      Food and Drink Icons 01_16: -1477876028
+      Food and Drink Icons 01_160: -370008393
+      Food and Drink Icons 01_161: 198769005
+      Food and Drink Icons 01_162: 1244207618
+      Food and Drink Icons 01_163: 399553994
+      Food and Drink Icons 01_164: 1598900616
+      Food and Drink Icons 01_165: -980386909
+      Food and Drink Icons 01_166: 1208155338
+      Food and Drink Icons 01_167: -712258842
+      Food and Drink Icons 01_168: 569659082
+      Food and Drink Icons 01_169: 257664571
+      Food and Drink Icons 01_17: 5010818
+      Food and Drink Icons 01_170: 1097290933
+      Food and Drink Icons 01_171: -485935221
+      Food and Drink Icons 01_172: 1361082361
+      Food and Drink Icons 01_173: -1168988513
+      Food and Drink Icons 01_174: -89762791
+      Food and Drink Icons 01_175: 1880550423
+      Food and Drink Icons 01_176: 1507522637
+      Food and Drink Icons 01_177: 1796775235
+      Food and Drink Icons 01_178: -2019847692
+      Food and Drink Icons 01_179: -666381611
+      Food and Drink Icons 01_18: -1623917013
+      Food and Drink Icons 01_180: -559780147
+      Food and Drink Icons 01_181: -575913559
+      Food and Drink Icons 01_182: -54850540
+      Food and Drink Icons 01_183: -836971426
+      Food and Drink Icons 01_184: -614567085
+      Food and Drink Icons 01_185: -2094239046
+      Food and Drink Icons 01_186: 2031885030
+      Food and Drink Icons 01_187: -1052580039
+      Food and Drink Icons 01_188: -584063660
+      Food and Drink Icons 01_189: -1946607969
+      Food and Drink Icons 01_19: -44524596
+      Food and Drink Icons 01_190: -1081969727
+      Food and Drink Icons 01_191: -75981106
+      Food and Drink Icons 01_192: -701653577
+      Food and Drink Icons 01_193: 193257247
+      Food and Drink Icons 01_194: -2012144582
+      Food and Drink Icons 01_195: -1286462291
+      Food and Drink Icons 01_196: -887171187
+      Food and Drink Icons 01_197: -204282298
+      Food and Drink Icons 01_198: -1661343034
+      Food and Drink Icons 01_199: 1855057718
+      Food and Drink Icons 01_2: 223556580
+      Food and Drink Icons 01_20: -534713031
+      Food and Drink Icons 01_200: 1804817697
+      Food and Drink Icons 01_201: 573701204
+      Food and Drink Icons 01_202: 1934462733
+      Food and Drink Icons 01_203: 580880890
+      Food and Drink Icons 01_204: -233268495
+      Food and Drink Icons 01_205: -1371947260
+      Food and Drink Icons 01_206: -1972637486
+      Food and Drink Icons 01_207: -386921768
+      Food and Drink Icons 01_208: 463947747
+      Food and Drink Icons 01_209: -309577508
+      Food and Drink Icons 01_21: 1524723373
+      Food and Drink Icons 01_210: -1072432364
+      Food and Drink Icons 01_211: 632167256
+      Food and Drink Icons 01_212: 1716059893
+      Food and Drink Icons 01_213: -661460618
+      Food and Drink Icons 01_214: 993201672
+      Food and Drink Icons 01_215: -2070276079
+      Food and Drink Icons 01_216: -1469882526
+      Food and Drink Icons 01_217: 1715303962
+      Food and Drink Icons 01_218: -1196405141
+      Food and Drink Icons 01_219: 827344592
+      Food and Drink Icons 01_22: 1349850591
+      Food and Drink Icons 01_23: 550951494
+      Food and Drink Icons 01_24: -2030745730
+      Food and Drink Icons 01_25: -1965848798
+      Food and Drink Icons 01_26: -1575964964
+      Food and Drink Icons 01_27: 1467092276
+      Food and Drink Icons 01_28: -1172940429
+      Food and Drink Icons 01_29: 765852659
+      Food and Drink Icons 01_3: -599548184
+      Food and Drink Icons 01_30: -116822761
+      Food and Drink Icons 01_31: 856166344
+      Food and Drink Icons 01_32: -1902997674
+      Food and Drink Icons 01_33: 1703142934
+      Food and Drink Icons 01_34: 1125741363
+      Food and Drink Icons 01_35: -1659528227
+      Food and Drink Icons 01_36: -805075206
+      Food and Drink Icons 01_37: -1753114757
+      Food and Drink Icons 01_38: -780043800
+      Food and Drink Icons 01_39: 551564334
+      Food and Drink Icons 01_4: 1912284539
+      Food and Drink Icons 01_40: -95428304
+      Food and Drink Icons 01_41: -1321824162
+      Food and Drink Icons 01_42: 981679136
+      Food and Drink Icons 01_43: 1468680111
+      Food and Drink Icons 01_44: -1366578292
+      Food and Drink Icons 01_45: -99132096
+      Food and Drink Icons 01_46: -341931311
+      Food and Drink Icons 01_47: -763028744
+      Food and Drink Icons 01_48: 304183724
+      Food and Drink Icons 01_49: 394546179
+      Food and Drink Icons 01_5: 988238573
+      Food and Drink Icons 01_50: 289474317
+      Food and Drink Icons 01_51: -2099005417
+      Food and Drink Icons 01_52: 1164791743
+      Food and Drink Icons 01_53: 1211805936
+      Food and Drink Icons 01_54: 428441545
+      Food and Drink Icons 01_55: 1439984500
+      Food and Drink Icons 01_56: -263722412
+      Food and Drink Icons 01_57: 709427317
+      Food and Drink Icons 01_58: -1732094001
+      Food and Drink Icons 01_59: -1584599207
+      Food and Drink Icons 01_6: 2056597906
+      Food and Drink Icons 01_60: 2078128282
+      Food and Drink Icons 01_61: -1376911894
+      Food and Drink Icons 01_62: 1004741360
+      Food and Drink Icons 01_63: 1448018260
+      Food and Drink Icons 01_64: -1205296582
+      Food and Drink Icons 01_65: -641611488
+      Food and Drink Icons 01_66: 203814257
+      Food and Drink Icons 01_67: 1992710689
+      Food and Drink Icons 01_68: -117019110
+      Food and Drink Icons 01_69: -1199587653
+      Food and Drink Icons 01_7: -554420601
+      Food and Drink Icons 01_70: -444810434
+      Food and Drink Icons 01_71: 977527893
+      Food and Drink Icons 01_72: 1182176303
+      Food and Drink Icons 01_73: -1042562592
+      Food and Drink Icons 01_74: -2107495646
+      Food and Drink Icons 01_75: 649130580
+      Food and Drink Icons 01_76: 1745324956
+      Food and Drink Icons 01_77: -1490507019
+      Food and Drink Icons 01_78: 1476132082
+      Food and Drink Icons 01_79: 2091791086
+      Food and Drink Icons 01_8: -1390014463
+      Food and Drink Icons 01_80: -1802982224
+      Food and Drink Icons 01_81: -2925848
+      Food and Drink Icons 01_82: -2003871432
+      Food and Drink Icons 01_83: -1113127848
+      Food and Drink Icons 01_84: 1018402324
+      Food and Drink Icons 01_85: -809948616
+      Food and Drink Icons 01_86: -2019855294
+      Food and Drink Icons 01_87: -272034952
+      Food and Drink Icons 01_88: -1966634312
+      Food and Drink Icons 01_89: -1094634991
+      Food and Drink Icons 01_9: 894320097
+      Food and Drink Icons 01_90: 185122338
+      Food and Drink Icons 01_91: -1159990919
+      Food and Drink Icons 01_92: -1857843125
+      Food and Drink Icons 01_93: -1657353517
+      Food and Drink Icons 01_94: -1541009002
+      Food and Drink Icons 01_95: -1318712069
+      Food and Drink Icons 01_96: -1128956592
+      Food and Drink Icons 01_97: 196977254
+      Food and Drink Icons 01_98: 1382494339
+      Food and Drink Icons 01_99: 651739219
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

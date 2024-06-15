@@ -27,7 +27,30 @@ public class TimeManager : MonoBehaviour
     private void Start()
     {
         startButton.onClick.AddListener(OnStartButtonClick);
-        dayText.text = "Day" + days.ToString("D1");
+        dayText.text = days.ToString("D1");
+    }
+
+    private void Update()
+    {
+        //록 버튼을 눌렀을 경우
+        lockMenuButton.onClick.AddListener(LockButtonClick);
+        lockArgmButton.onClick.AddListener(LockButtonClick);
+    }
+
+    void LockButtonClick()
+    {
+        printText.text = "일차 진행 중에 사용할 수 없습니다.";
+        textUi.SetActive(true); //표시 UI 활성화
+        Invoke(nameof(CloseUI), 0.5f); //0.5초 뒤 UI 삭제
+    }
+
+    void CloseUI()
+    {
+        // UI를 비활성화
+        if (textUi != null)
+        {
+            textUi.SetActive(false);
+        }
     }
 
     private void Update()
@@ -69,32 +92,32 @@ public class TimeManager : MonoBehaviour
         while (true)
         {
             yield return null; // 한 프레임을 기다립니다.
-
+          
             timer += Time.deltaTime; // 경과된 시간을 누적합니다.
             timeSeconds += Time.deltaTime;
-
+            
             // 시간을 시, 분, 초로 변환합니다.
             //int hours = (int)(timer / 3600);
             //int minutes = (int)((timer % 3600) / 60);
             //int seconds = (int)(timer % 60);
 
             //게임 시간에 맞춰 변경
-            if(timer >= seconds)
+            if (timer >= seconds)
             {
-                if(minutes == 0)
+                if (minutes == 0)
                 {
                     minutes += 30;
                 }
-                else if(minutes == 30)
+                else if (minutes == 30)
                 {
                     minutes = 0;
-                    hours++;
+                    hours++; 
                 }
 
                 timer = 0;
             }
 
-            if(hours == 12 && minutes == 30)
+            if (hours == 12 && minutes == 30)
             {
                 minutes = 0;
                 hours = 0;
@@ -105,7 +128,7 @@ public class TimeManager : MonoBehaviour
 
                 //데이 텍스트 업데이트
                 days++;
-                dayText.text = "Day" + days.ToString("D1");
+                dayText.text = days.ToString("D1");
 
                 startButton.gameObject.SetActive(true);
                 lockMenuButton.gameObject.SetActive(false);
@@ -116,9 +139,9 @@ public class TimeManager : MonoBehaviour
             }
 
             // 타이머 텍스트 업데이트
-            timerText.text = 
+            timerText.text =
             //hours.ToString("D2") + ":" +  시간 표시하려면 주석 제거
-            hours.ToString("D2") + ":" + 
+            hours.ToString("D2") + ":" +
             minutes.ToString("D2");
         }
     }

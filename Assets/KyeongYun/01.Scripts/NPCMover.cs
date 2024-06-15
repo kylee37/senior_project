@@ -21,6 +21,7 @@ public class NPCMover : MonoBehaviour
     private float moveSpeed = 5f;
 
     private Animator animator;                  // NPC의 애니메이터 참조
+    private GoldManager goldManager;
 
 
     void Start()
@@ -28,6 +29,7 @@ public class NPCMover : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         prefabSpawner = FindObjectOfType<PrefabSpawner>();
         reservationSystem = FindObjectOfType<PosManager>();
+        goldManager = FindObjectOfType<GoldManager>();
         targetObject = gameManager.GetRandomUnusedTargetObject();   // 랜덤한 목적지 설정
         animator = GetComponent<Animator>();                        // 애니메이터 컴포넌트 가져오기
 
@@ -192,6 +194,7 @@ public class NPCMover : MonoBehaviour
         }
         prefabSpawner.ReturnObjectToPool(gameObject, 1);
         gameManager.acheivement++;
+        goldManager.gold += 100; // NPC 퇴장 시 100만큼의 골드 획득
         reservationSystem.CancelReservation(destinationPosition);
     }
 

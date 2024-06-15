@@ -14,12 +14,12 @@ public class PrefabSpawner : MonoBehaviour
     private FameManager fameManager;            // FameManager 인스턴스를 저장할 변수
     private TimeManager timeManager;
 
-    // 인스펙터 창에서 숨기기
-    [HideInInspector] public int humanRate;
-    [HideInInspector] public int dwarfRate;
-    [HideInInspector] public int elfRate;
+    // 인스펙터 창에서 숨기기?
+     public int humanRate;
+     public int dwarfRate;
+     public int elfRate;
 
-    [HideInInspector] public int visit;
+     public int visit;
 
     private void Start()
     {
@@ -66,13 +66,13 @@ public class PrefabSpawner : MonoBehaviour
     {
         switch (rateName)
         {
-            case "rate1":
+            case "humanRate":
                 humanRate = newValue;
                 break;
-            case "rate2":
+            case "dwarfRate":
                 dwarfRate = newValue;
                 break;
-            case "rate3":
+            case "elfRate":
                 elfRate = newValue;
                 break;
             default:

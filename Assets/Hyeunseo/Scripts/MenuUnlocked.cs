@@ -13,7 +13,7 @@ public class MenuUnlocked : MonoBehaviour
             uiButtons[i].SetActive(false);
         }
     }
-
+    
     public void HandleRecipeCode(int recipeCode)
     {
         uiButtons[recipeCode-1].SetActive(true);

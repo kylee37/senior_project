@@ -118,7 +118,7 @@ TextureImporter:
         width: 44
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -126,6 +126,90 @@ TextureImporter:
       bones: []
       spriteID: c6298be910fdfb14fa795deabad79307
       internalID: -2078495915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Expansion_AlchemyLab_1
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 289
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 247b8bbcadb68104ab5e3d84915d6500
+      internalID: 965912555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Expansion_AlchemyLab_2
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 100
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e250fe66b02515f4987c4300bd2262f4
+      internalID: -994045141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Expansion_AlchemyLab_3
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 624
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d46591769a056934fa017cbd2a74a81c
+      internalID: 591632769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Expansion_AlchemyLab_4
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 1170
+        width: 45
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd11883b60ae88c419c86b2fe0aece64
+      internalID: -655577959
       vertices: []
       indices: 
       edges: []
@@ -142,6 +226,10 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Expansion_AlchemyLab_0: -2078495915
+      Expansion_AlchemyLab_1: 965912555
+      Expansion_AlchemyLab_2: -994045141
+      Expansion_AlchemyLab_3: 591632769
+      Expansion_AlchemyLab_4: -655577959
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FameManager : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class FameManager : MonoBehaviour
     public int _sumHuman;   // 10
     public int _sumDwarf;   // 10
     public int _sumElf;     // 20
+
+    public Slider humanSlider;
+    public Slider dwarfSlider;
+    public Slider elfSlider;
 
     // 프로퍼티 이용하여 외부 스크립트에 의해 변수가 업데이트 될 수 있게.
     public int sumHuman
@@ -45,6 +50,18 @@ public class FameManager : MonoBehaviour
     {
         // 초기 선호도를 계산
         CalculateInitialPreferences();
+
+        // 슬라이더 설정
+        humanSlider.value = sumHuman;
+        dwarfSlider.value = sumDwarf;
+        elfSlider.value = sumElf;
+    }
+
+    private void Update()
+    {
+        humanSlider.value = sumHuman;
+        dwarfSlider.value = sumDwarf;
+        elfSlider.value = sumElf;
     }
 
     // 초기 선호도 계산 메서드

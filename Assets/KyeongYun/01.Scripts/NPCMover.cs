@@ -4,25 +4,30 @@ using UnityEngine.Tilemaps;
 
 public class NPCMover : MonoBehaviour
 {
-    GameManager gameManager;
+    private GameManager gameManager;
+    private PrefabSpawner prefabSpawner;
+    private Animator animator;
+    private GoldManager goldManager;
+    private Vector3[] path;
+    private GameObject emoteInstance;
+    private SpriteRenderer emoteSpriteRenderer;
 
-    PrefabSpawner prefabSpawner;
-
-    Vector3[] path;
     public int targetIndex;
-    public GameObject targetObject;             // NPC의 목적지를 저장할 변수
+    public int emoteNum;
+    public GameObject targetObject;
 
     public PosManager reservationSystem;
     public Vector3Int destinationPosition;
 
-    public string NPCName;                      // 인스펙터 창에 해당 NPC 기재
-    public string badNPC;                       // 관계가 나쁜 NPC 기재
-    public string goodFood;                     // 선호하는 음식 기재
-    private float moveSpeed = 5f;
+    public float moveSpeed = 3f;
+    public string NPCName;
+    public string badNPC;
+    public string goodFood;
+    public GameObject[] emotes;
+    public Vector3 exitPos;
 
-    private Animator animator;                  // NPC의 애니메이터 참조
-    private GoldManager goldManager;
-
+    private bool conditionMet = false;
+    private bool hasReachedDestination = false; // 추가된 변수
 
     void Start()
     {
@@ -30,50 +35,28 @@ public class NPCMover : MonoBehaviour
         prefabSpawner = FindObjectOfType<PrefabSpawner>();
         reservationSystem = FindObjectOfType<PosManager>();
         goldManager = FindObjectOfType<GoldManager>();
-        targetObject = gameManager.GetRandomUnusedTargetObject();   // 랜덤한 목적지 설정
-        animator = GetComponent<Animator>();                        // 애니메이터 컴포넌트 가져오기
+        targetObject = gameManager.GetRandomUnusedTargetObject();
+        animator = GetComponent<Animator>();
 
-        // 목적지 예약 시스템을 초기화하고 목적지 예약
-        if (targetObject != null)
-        {
-            destinationPosition = new Vector3Int((int)targetObject.transform.position.x, (int)targetObject.transform.position.y, 0);
-            if (reservationSystem.ReserveDestination(destinationPosition, gameObject))
-            {
-                FindPath(); // 경로 찾기
-            }
-            else
-            {
-                Debug.Log("Destination already reserved. Finding new destination...");
-                StartCoroutine(FindNewDestinationWithRetry(gameManager.targetObjects.Length - 1));
-                // N 회 탐색을 재시도하는 코루틴
-            }
-        }
-        else
-        {
-            Debug.LogError("No available target object found.");
-        }
-        // TilemapCollider 끄기
-        if (targetObject != null)
-        {
-            TilemapCollider2D tilemapCollider = targetObject.GetComponent<TilemapCollider2D>();
-            if (tilemapCollider != null)
-            {
-                tilemapCollider.enabled = false;
-            }
-        }
+        exitPos = new Vector3(10, 0, 0);
     }
 
-
-    void FindPath()
+    public void FindPathFromCurrentPosition()
     {
-        if (targetObject == null) return;
+        if (targetObject == null || hasReachedDestination) return;
 
-        // Vector3 startPos = transform.position;
+        Vector3 currentPos = transform.position;
+        Vector2Int startPos = new Vector2Int(Mathf.RoundToInt(currentPos.x), Mathf.RoundToInt(currentPos.y));
         Vector3 endPos = targetObject.transform.position;
+        Vector2Int targetPos = new Vector2Int(Mathf.RoundToInt(endPos.x), Mathf.RoundToInt(endPos.y));
 
-        // A* 알고리즘을 사용하여 경로 찾기
-        gameManager.targetPos = new Vector2Int((int)endPos.x, (int)endPos.y);
+        Debug.Log($"Start Position: {startPos}");
+        Debug.Log($"Target Position: {targetPos}");
+
+        gameManager.startPos = startPos;
+        gameManager.targetPos = targetPos;
         gameManager.PathFinding();
+
         path = new Vector3[gameManager.FinalNodeList.Count];
         for (int i = 0; i < gameManager.FinalNodeList.Count; i++)
         {
@@ -81,16 +64,14 @@ public class NPCMover : MonoBehaviour
         }
         targetIndex = 0;
 
-        // 이동 경로가 생성되었으므로 이동 시작
         MoveToNextTarget();
     }
+
     void MoveToNextTarget()
     {
         if (path == null || path.Length == 0)
             return;
 
-        // 첫 번째 위치로 이동
-        transform.position = path[0];
         targetIndex = 1;
     }
 
@@ -99,47 +80,49 @@ public class NPCMover : MonoBehaviour
         if (path == null || path.Length == 0 || targetIndex >= path.Length)
             return;
 
-        // 다음 위치로 이동
-        transform.position = Vector3.MoveTowards(transform.position, path[targetIndex], moveSpeed * Time.deltaTime);
+        Vector3 targetPosition = path[targetIndex];
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
 
-        // 다음 위치에 도착하면 다음 인덱스로 이동
-        if (Vector3.Distance(transform.position, path[targetIndex]) < 0.1f)
+        if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
             targetIndex++;
         }
 
-        // 이동 방향에 따라 애니메이션 변경
-        if (targetIndex < path.Length)
-        {
-            Vector3 direction = (path[targetIndex] - transform.position).normalized;
-            if (direction != Vector3.zero)
-            {
-                // 이동 방향에 따라 MoveX와 MoveY 값을 설정하여 애니메이션을 제어
-                float moveX = direction.x > 0 ? 1 : direction.x < 0 ? -1 : 0;
-                float moveY = direction.y > 0 ? 1 : direction.y < 0 ? -1 : 0;
+        UpdateAnimation(direction);
 
-                // MoveX와 MoveY 값을 설정하여 애니메이션을 제어
-                animator.SetFloat("MoveX", moveX);
-                animator.SetFloat("MoveY", moveY);
-            }
-        }
-
-        // 목적지에 도착했을 때의 동작
-        if (targetIndex == path.Length)
+        if (targetIndex == path.Length && !conditionMet)
         {
             OnDestinationReached();
         }
+
+        if (conditionMet && Vector3.Distance(transform.position, exitPos) < 0.1f)
+        {
+            OnExitReached();
+        }
     }
+
+    void UpdateAnimation(Vector3 direction)
+    {
+        if (direction != Vector3.zero)
+        {
+            float moveX = direction.x > 0 ? 1 : direction.x < 0 ? -1 : 0;
+            float moveY = direction.y > 0 ? 1 : direction.y < 0 ? -1 : 0;
+
+            animator.SetFloat("MoveX", moveX);
+            animator.SetFloat("MoveY", moveY);
+        }
+    }
+
     void OnDestinationReached()
     {
+        hasReachedDestination = true; // 목적지에 도착했음을 표시
         int randomNum = Random.Range(1, 10);
-        Debug.Log("목적지 도착");
 
-        // NPCName에 해당하는 rate 변수 가져오기, 도착한 NPC 이름에 따라 선호도 증가
         int currentRate = 0;
         switch (NPCName)
         {
-            case "Human": // NPC 이름
+            case "Human":
                 currentRate = prefabSpawner.humanRate;
                 prefabSpawner.UpdateRate("humanRate", currentRate);
                 break;
@@ -160,47 +143,125 @@ public class NPCMover : MonoBehaviour
         {
             case int n when (n > 0 && n <= 6):
                 Invoke(nameof(GoodEmote), 3);
+                emoteNum = 0;
                 currentRate += 2;
                 break;
             case int n when (n > 6 && n < 10):
                 Invoke(nameof(NormalEmote), 3);
+                emoteNum = 3;
                 currentRate += 1;
                 break;
             case int n when (n >= 10):
                 Invoke(nameof(BadEmote), 3);
+                emoteNum = 2;
                 break;
         }
 
-        // 도착 후 1초 후 2초(이모티콘 출력까지의 간격)동안 생각
         Invoke(nameof(Thinking), 1);
 
         Invoke(nameof(NPCExit), 10);
     }
 
+    void CheckConditionAndFindNewPath()
+    {
+        conditionMet = true;
+        Vector3 newDestination = exitPos;
+        destinationPosition = new Vector3Int((int)newDestination.x, (int)newDestination.y, 0);
+        reservationSystem.ReserveDestination(destinationPosition, gameObject);
+        FindPathFromCurrentPosition();
+    }
+
     void NPCExit()
     {
-        // 여기서 NPC가 떠날 때 로직 구현
+        conditionMet = true;
+        Vector3 newDestination = exitPos;
+        destinationPosition = new Vector3Int((int)newDestination.x, (int)newDestination.y, 0);
+        reservationSystem.ReserveDestination(destinationPosition, gameObject);
+        FindPathFromCurrentPosition();
 
-        Debug.Log("NPC떠남");
+        goldManager.gold += 100;
+        reservationSystem.CancelReservation(destinationPosition);
+    }
 
-        // TilemapCollider 켜기
-        if (targetObject != null)
-        {
-            TilemapCollider2D tilemapCollider = targetObject.GetComponent<TilemapCollider2D>();
-            if (tilemapCollider != null)
-            {
-                tilemapCollider.enabled = true;
-            }
-        }
+    void OnExitReached()
+    {
         prefabSpawner.ReturnObjectToPool(gameObject, 1);
         gameManager.acheivement++;
-        goldManager.gold += 100; // NPC 퇴장 시 100만큼의 골드 획득
-        reservationSystem.CancelReservation(destinationPosition);
     }
 
     void Thinking()
     {
-        Debug.Log("고민중...");
+        Vector3 emotePosition = transform.position + new Vector3(0, 0.75f, 0);
+        emoteInstance = Instantiate(emotes[1], emotePosition, Quaternion.identity);
+        emoteSpriteRenderer = emoteInstance.GetComponent<SpriteRenderer>();
+        StartCoroutine(FadeInAndMoveUp(emoteInstance.transform, emoteSpriteRenderer, 0.2f));
+
+        Invoke(nameof(DestroyEmote), 3f);
+    }
+
+    IEnumerator FadeInAndMoveUp(Transform emoteTransform, SpriteRenderer spriteRenderer, float duration)
+    {
+        Color c = spriteRenderer.color;
+        c.a = 0;
+        spriteRenderer.color = c;
+
+        Vector3 startPos = emoteTransform.position;
+        Vector3 endPos = emoteTransform.position + new Vector3(0, 0.5f, 0);
+
+        float elapsedTime = 0;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
+
+            c.a = Mathf.Lerp(0f, 1f, t);
+            spriteRenderer.color = c;
+
+            emoteTransform.position = Vector3.Lerp(startPos, endPos, t);
+
+            yield return null;
+        }
+    }
+
+    void Emotes(int emoteNum)
+    {
+        Vector3 emotePosition = transform.position + new Vector3(0, 0.75f, 0);
+        emoteInstance = Instantiate(emotes[emoteNum], emotePosition, Quaternion.identity);
+        emoteSpriteRenderer = emoteInstance.GetComponent<SpriteRenderer>();
+        StartCoroutine(FadeInAndMoveUp(emoteInstance.transform, emoteSpriteRenderer, 0.2f));
+
+        Invoke(nameof(DestroyEmote), 3f);
+    }
+
+    void DestroyEmote()
+    {
+        if (emoteInstance != null)
+        {
+            Destroy(emoteInstance);
+        }
+    }
+
+    void DestroyText()
+    {
+        if (emoteInstance != null)
+        {
+            Destroy(emoteInstance);
+        }
+    }
+
+    void RandomFunc()
+    {
+        int randomNum = Random.Range(1, 10);
+        if (randomNum > 8)
+        {
+            Vector3 emotePosition = transform.position + new Vector3(0, 0.75f, 0);
+            emoteInstance = Instantiate(emotes[4], emotePosition, Quaternion.identity);
+            emoteSpriteRenderer = emoteInstance.GetComponent<SpriteRenderer>();
+            StartCoroutine(FadeInAndMoveUp(emoteInstance.transform, emoteSpriteRenderer, 0.2f));
+
+            Invoke(nameof(DestroyEmote), 3f);
+        }
     }
 
     void GoodEmote()
@@ -215,55 +276,6 @@ public class NPCMover : MonoBehaviour
 
     void BadEmote()
     {
-        Debug.Log("불호 음식 주문, 나쁜 이모티콘 출력");
-    }
-
-    void Eating()
-    {
-        Debug.Log("식사중...");
-    }
-
-    IEnumerator FindNewDestinationWithRetry(int maxRetryCount)
-    {
-        int retryCount = 0;
-        while (retryCount < maxRetryCount)
-        {
-            yield return new WaitForSeconds(0.5f); // 재시도 간격을 0.5초로 설정하거나 필요에 따라 조절
-
-            targetObject = gameManager.GetRandomUnusedTargetObject(); // 랜덤한 목적지 설정
-            if (targetObject != null)
-            {
-                destinationPosition = new Vector3Int((int)targetObject.transform.position.x, (int)targetObject.transform.position.y, 0);
-                if (reservationSystem.ReserveDestination(destinationPosition, gameObject))
-                {
-                    FindPath();     // 경로 찾기
-                    yield break;    // 목적지를 찾았으므로 반복문 탈출
-                }
-                else
-                {
-                    Debug.Log("Destination already reserved. Retrying...");
-                }
-            }
-            else
-            {
-                Debug.LogError("No available target object found.");
-                yield break; // 사용 가능한 목적지가 없으므로 반복문 탈출
-            }
-
-            retryCount++;
-        }
-
-        // 최대 재시도 횟수를 초과한 경우 NPC를 풀에 반환
-        Debug.LogWarning("Failed to find an available destination after " + maxRetryCount + " retries. Destroying NPC.");
-        prefabSpawner.ReturnObjectToPool(gameObject, 1);
-    }
-    void OnTriggerEnter(Collider other)
-    {
-        // 충돌한 상대방의 NPCName이 특정 NPCName과 같은지 확인
-        if (/*other.CompareTag("NPC") && */other.GetComponent<NPCMover>().NPCName == badNPC)
-        {
-            // 여기서 특정 NPC들 간의 상호작용 작성
-            Debug.Log("이번트 발생");
-        }
+        Debug.Log("불호 음식 주문, 싫은 이모티콘 출력, +0");
     }
 }

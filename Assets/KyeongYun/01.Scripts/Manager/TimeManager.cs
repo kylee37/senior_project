@@ -12,7 +12,7 @@ public class TimeManager : MonoBehaviour
     private float timer = 0f;
     public float timeSeconds = 0f;
 
-    public int seconds = 4; //게임 시간 30분이 현실에서 몇초인지
+    public int seconds = 6; //게임 시간 30분이 현실에서 몇초인지
 
     int days = 1;
     int minutes = 0;
@@ -85,7 +85,7 @@ public class TimeManager : MonoBehaviour
                 {
                     minutes += 30;
                 }
-                else if (minutes == 30)
+                else if (minutes == 60)
                 {
                     minutes = 0;
                     hours++; 

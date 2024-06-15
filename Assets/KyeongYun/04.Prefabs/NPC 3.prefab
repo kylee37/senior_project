@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2588780240877178228}
   - component: {fileID: 5685933170613954855}
   - component: {fileID: 3229740781820595609}
+  - component: {fileID: -8422834358582864748}
   m_Layer: 0
   m_Name: NPC 3
   m_TagString: Untagged
@@ -106,10 +107,12 @@ MonoBehaviour:
   badNPC: 
   goodFood: 
   emotes:
-  - {fileID: 2381260277095769234, guid: 97793507748ea8441890dbf78d1f18d9, type: 3}
-  - {fileID: 4360705961359046199, guid: f54aed34ad85c1e42ac9b82222238f1e, type: 3}
-  - {fileID: 7277929761336124051, guid: 9a36028c90fa18a49b74c829e2a62a94, type: 3}
-  - {fileID: 2353489578767359461, guid: 009a62495a27d9b448b6fd8b521a56ae, type: 3}
+  - {fileID: 3481569587317308770, guid: 97793507748ea8441890dbf78d1f18d9, type: 3}
+  - {fileID: 177245966848620174, guid: 009a62495a27d9b448b6fd8b521a56ae, type: 3}
+  - {fileID: 8579386794722966750, guid: f54aed34ad85c1e42ac9b82222238f1e, type: 3}
+  - {fileID: 2796109644278402977, guid: 9a36028c90fa18a49b74c829e2a62a94, type: 3}
+  - {fileID: 3206566113165621106, guid: dd955ff010dd7a7468d6e12ccfc6caba, type: 3}
+  exitPos: {x: 0, y: 0, z: 0}
 --- !u!95 &3229740781820595609
 Animator:
   serializedVersion: 5
@@ -131,3 +134,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-8422834358582864748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730795498203845917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd9b37fef399d644a2ddb8a1989d443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5

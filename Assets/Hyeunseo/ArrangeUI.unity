@@ -286,8 +286,8 @@ MonoBehaviour:
   - 10
   - 20
   levelXpList: 010000000200000002000000
-  textUi: {fileID: 0}
-  printText: {fileID: 0}
+  textUi: {fileID: 1987864004}
+  printText: {fileID: 1048316138}
   totalXP: 0
 --- !u!1 &17466951
 GameObject:
@@ -1197,7 +1197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7490196, g: 0.6862745, b: 0.5882353, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1429,8 +1429,8 @@ MonoBehaviour:
   price: 1500
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  goldManager: {fileID: 0}
-  furnitureManager: {fileID: 0}
+  goldManager: {fileID: 2088332079}
+  furnitureManager: {fileID: 1057321676}
 --- !u!114 &33651107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1635,9 +1635,9 @@ MonoBehaviour:
   _sumHuman: 10
   _sumDwarf: 10
   _sumElf: 20
-  humanSlider: {fileID: 0}
-  dwarfSlider: {fileID: 0}
-  elfSlider: {fileID: 0}
+  humanSlider: {fileID: 820124949}
+  dwarfSlider: {fileID: 2009676635}
+  elfSlider: {fileID: 609574279}
   visitation: 60
 --- !u!1 &37318606
 GameObject:
@@ -2485,8 +2485,8 @@ MonoBehaviour:
   price: 4000
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  goldManager: {fileID: 0}
-  furnitureManager: {fileID: 0}
+  goldManager: {fileID: 2088332079}
+  furnitureManager: {fileID: 1057321676}
 --- !u!114 &60166553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3184,7 +3184,7 @@ MonoBehaviour:
   foodCode: 1
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  menuManager: {fileID: 0}
+  menuManager: {fileID: 117336670}
 --- !u!114 &103085003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4077,29 +4077,29 @@ MonoBehaviour:
   menuSO: {fileID: 11400000, guid: 3a32a2e314a01a847896c37583486102, type: 2}
   foodList: 
   addPanel: {fileID: 1529321435}
-  menuReset: {fileID: 0}
+  menuReset: {fileID: 154151180}
   foodImageList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1073123807}
+  - {fileID: 21429401}
+  - {fileID: 729121311}
+  - {fileID: 327788200}
+  - {fileID: 583088701}
   menuImageList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 753614178}
+  - {fileID: 1081634049}
+  - {fileID: 823674164}
   menuNameList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1059967919}
+  - {fileID: 867864177}
+  - {fileID: 163426404}
   menuExplanationList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1268114056}
+  - {fileID: 1918893023}
+  - {fileID: 2061974642}
   menuPriceList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1062939069}
+  - {fileID: 1474304595}
+  - {fileID: 448259508}
 --- !u!114 &117336671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4113,10 +4113,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 103085000}
+  - {fileID: 1972878659}
+  - {fileID: 951211534}
+  - {fileID: 716257049}
 --- !u!224 &117336672
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5062,8 +5062,8 @@ MonoBehaviour:
   price: 3500
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  goldManager: {fileID: 0}
-  furnitureManager: {fileID: 0}
+  goldManager: {fileID: 2088332079}
+  furnitureManager: {fileID: 1057321676}
 --- !u!114 &161984650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6592,8 +6592,8 @@ MonoBehaviour:
   price: 2
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  xpManager: {fileID: 0}
-  menuUnlocked: {fileID: 0}
+  xpManager: {fileID: 161498312}
+  menuUnlocked: {fileID: 117336671}
 --- !u!114 &248110511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9017,8 +9017,8 @@ MonoBehaviour:
   price: 3
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  xpManager: {fileID: 0}
-  menuUnlocked: {fileID: 0}
+  xpManager: {fileID: 161498312}
+  menuUnlocked: {fileID: 117336671}
 --- !u!114 &353319917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9511,7 +9511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.745283, g: 0.68310475, b: 0.58638304, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12002,7 +12002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7490196, g: 0.6862745, b: 0.5882353, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14277,15 +14277,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eac6162ddacaa546b2ddae7fc44b75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerText: {fileID: 0}
-  dayText: {fileID: 0}
+  timerText: {fileID: 59615499}
+  dayText: {fileID: 1434400505}
   timeSeconds: 0
   seconds: 4
-  startButton: {fileID: 0}
-  lockMenuButton: {fileID: 0}
-  lockArgmButton: {fileID: 0}
-  textUi: {fileID: 0}
-  printText: {fileID: 0}
+  startButton: {fileID: 958278339}
+  lockMenuButton: {fileID: 1152152478}
+  lockArgmButton: {fileID: 1097840996}
+  textUi: {fileID: 1987864004}
+  printText: {fileID: 1048316138}
 --- !u!1 &660264019
 GameObject:
   m_ObjectHideFlags: 0
@@ -14338,7 +14338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7490196, g: 0.6862745, b: 0.5882353, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15051,7 +15051,7 @@ MonoBehaviour:
   foodCode: 4
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  menuManager: {fileID: 0}
+  menuManager: {fileID: 117336670}
 --- !u!114 &716257052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15192,8 +15192,8 @@ MonoBehaviour:
   price: 2
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  xpManager: {fileID: 0}
-  menuUnlocked: {fileID: 0}
+  xpManager: {fileID: 161498312}
+  menuUnlocked: {fileID: 117336671}
 --- !u!114 &717123695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15641,8 +15641,8 @@ MonoBehaviour:
   price: 2
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  xpManager: {fileID: 0}
-  menuUnlocked: {fileID: 0}
+  xpManager: {fileID: 161498312}
+  menuUnlocked: {fileID: 117336671}
 --- !u!114 &734493814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16654,8 +16654,8 @@ MonoBehaviour:
   price: 4
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  xpManager: {fileID: 0}
-  menuUnlocked: {fileID: 0}
+  xpManager: {fileID: 161498312}
+  menuUnlocked: {fileID: 117336671}
 --- !u!114 &762562856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19922,7 +19922,7 @@ MonoBehaviour:
   foodCode: 3
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  menuManager: {fileID: 0}
+  menuManager: {fileID: 117336670}
 --- !u!114 &951211537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21436,8 +21436,8 @@ MonoBehaviour:
   price: 3
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  xpManager: {fileID: 0}
-  menuUnlocked: {fileID: 0}
+  xpManager: {fileID: 161498312}
+  menuUnlocked: {fileID: 117336671}
 --- !u!114 &973944108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21887,7 +21887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7490196, g: 0.6862745, b: 0.5882353, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -22854,23 +22854,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   limit: 8
   furnitureUiList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1445694417}
+  - {fileID: 1713961432}
+  - {fileID: 1137350118}
+  - {fileID: 527138620}
+  - {fileID: 1780176145}
+  - {fileID: 1163658084}
+  - {fileID: 479730867}
+  - {fileID: 1804845772}
   furnitureTextList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 359442673}
+  - {fileID: 231570256}
+  - {fileID: 729018853}
+  - {fileID: 1864927182}
+  - {fileID: 278535767}
+  - {fileID: 1674431857}
+  - {fileID: 831514559}
+  - {fileID: 748490625}
 --- !u!1 &1059948003
 GameObject:
   m_ObjectHideFlags: 0
@@ -23457,14 +23457,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8745099, g: 0.80392164, b: 0.69411767, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dcda50058806f034a9e48c48fb3ad8e5, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26019,8 +26019,8 @@ MonoBehaviour:
   price: 1500
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  goldManager: {fileID: 0}
-  furnitureManager: {fileID: 0}
+  goldManager: {fileID: 2088332079}
+  furnitureManager: {fileID: 1057321676}
 --- !u!1 &1135495177
 GameObject:
   m_ObjectHideFlags: 0
@@ -27617,8 +27617,8 @@ MonoBehaviour:
   price: 10
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  xpManager: {fileID: 0}
-  menuUnlocked: {fileID: 0}
+  xpManager: {fileID: 161498312}
+  menuUnlocked: {fileID: 117336671}
 --- !u!114 &1196926901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32093,8 +32093,8 @@ MonoBehaviour:
   price: 1500
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  goldManager: {fileID: 0}
-  furnitureManager: {fileID: 0}
+  goldManager: {fileID: 2088332079}
+  furnitureManager: {fileID: 1057321676}
 --- !u!114 &1309742057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32367,8 +32367,8 @@ MonoBehaviour:
   price: 2000
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  goldManager: {fileID: 0}
-  furnitureManager: {fileID: 0}
+  goldManager: {fileID: 2088332079}
+  furnitureManager: {fileID: 1057321676}
 --- !u!114 &1329938860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33242,8 +33242,8 @@ MonoBehaviour:
   price: 3000
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  goldManager: {fileID: 0}
-  furnitureManager: {fileID: 0}
+  goldManager: {fileID: 2088332079}
+  furnitureManager: {fileID: 1057321676}
 --- !u!114 &1350749256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33798,8 +33798,8 @@ MonoBehaviour:
   price: 3500
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  goldManager: {fileID: 0}
-  furnitureManager: {fileID: 0}
+  goldManager: {fileID: 2088332079}
+  furnitureManager: {fileID: 1057321676}
 --- !u!114 &1389944799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34929,9 +34929,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c0678f7dd78e44bbb18957ba09d6bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  operText: {fileID: 0}
+  operText: {fileID: 1982347429}
   menuManager: {fileID: 117336670}
-  menuReset: {fileID: 0}
+  menuReset: {fileID: 154151180}
   foodSO: {fileID: 11400000, guid: bc9774b5cc00d4343882032014cad62d, type: 2}
 --- !u!1 &1460286451
 GameObject:
@@ -39486,7 +39486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7490196, g: 0.6862745, b: 0.5882353, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -40566,7 +40566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7490196, g: 0.6862745, b: 0.5882353, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -40801,8 +40801,8 @@ MonoBehaviour:
   price: 2000
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  goldManager: {fileID: 0}
-  furnitureManager: {fileID: 0}
+  goldManager: {fileID: 2088332079}
+  furnitureManager: {fileID: 1057321676}
 --- !u!114 &1716920893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44540,7 +44540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1902578163
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44767,7 +44767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7490196, g: 0.6862745, b: 0.5882353, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -45387,8 +45387,8 @@ MonoBehaviour:
   price: 4
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  xpManager: {fileID: 0}
-  menuUnlocked: {fileID: 0}
+  xpManager: {fileID: 161498312}
+  menuUnlocked: {fileID: 117336671}
 --- !u!114 &1938705999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45523,7 +45523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7490196, g: 0.6862745, b: 0.5882353, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -45792,7 +45792,7 @@ MonoBehaviour:
   foodCode: 2
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  menuManager: {fileID: 0}
+  menuManager: {fileID: 117336670}
 --- !u!114 &1972878662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45933,8 +45933,8 @@ MonoBehaviour:
   price: 1
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  xpManager: {fileID: 0}
-  menuUnlocked: {fileID: 0}
+  xpManager: {fileID: 161498312}
+  menuUnlocked: {fileID: 117336671}
 --- !u!114 &1975159037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46665,7 +46665,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1997386390}
   m_Layer: 0
-  m_Name: Managers (1)
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48123,8 +48123,8 @@ MonoBehaviour:
   price: 2000
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  goldManager: {fileID: 0}
-  furnitureManager: {fileID: 0}
+  goldManager: {fileID: 2088332079}
+  furnitureManager: {fileID: 1057321676}
 --- !u!1 &2068948960
 GameObject:
   m_ObjectHideFlags: 0
@@ -48469,8 +48469,8 @@ MonoBehaviour:
   price: 3
   textUi: {fileID: 1987864004}
   printText: {fileID: 1048316138}
-  xpManager: {fileID: 0}
-  menuUnlocked: {fileID: 0}
+  xpManager: {fileID: 161498312}
+  menuUnlocked: {fileID: 117336671}
 --- !u!114 &2102162652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48907,7 +48907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7490196, g: 0.6862745, b: 0.5882353, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

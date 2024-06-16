@@ -81,7 +81,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.75, y: 1.125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -100,9 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetIndex: 0
+  emoteNum: 0
   targetObject: {fileID: 0}
   reservationSystem: {fileID: 0}
   destinationPosition: {x: 0, y: 0, z: 0}
+  moveSpeed: 3
   NPCName: Dwarf
   badNPC: 
   goodFood: 
@@ -146,4 +148,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd9b37fef399d644a2ddb8a1989d443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5

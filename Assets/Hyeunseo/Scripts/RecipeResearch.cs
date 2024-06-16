@@ -41,18 +41,25 @@ public class RecipeResearch : MonoBehaviour
                 menuUnlocked.HandleRecipeCode(recipeCode); //메뉴 해금 스크립트로 값 전달
 
                 printText.text = "레시피 연구 성공!"; //표시 UI에 문장 넣기
+
+                textUi.SetActive(true); //표시 UI 활성화
+                Invoke("CloseAndDestroyUI", 0.5f); //0.5초 뒤 UI 삭제
             }
             else if (price > xp) //필요xp보다 xp가 적으면
             {
                 printText.text = "영감이 부족합니다."; //표시 UI에 문장 넣기
+
+                textUi.SetActive(true); //표시 UI 활성화
+                Invoke("CloseUI", 0.5f); //0.5초 뒤 UI 삭제
             }
         }
         else if(research)
         {
             printText.text = "이미 연구하였습니다."; //표시 UI에 문장 넣기
+
+            textUi.SetActive(true); //표시 UI 활성화
+            Invoke("CloseUI", 0.5f); //0.5초 뒤 UI 삭제
         }
-        textUi.SetActive(true); //표시 UI 활성화
-        Invoke("CloseUI", 0.5f); //0.5초 뒤 UI 삭제
     }
 
     void CloseUI()
@@ -61,6 +68,17 @@ public class RecipeResearch : MonoBehaviour
         if (textUi != null)
         {
             textUi.SetActive(false);
+        }
+    }
+
+    void CloseAndDestroyUI()
+    {
+        // UI를 비활성화
+        if (textUi != null)
+        {
+            textUi.SetActive(false);
+
+            Destroy(gameObject); //0.5초 뒤에 삭제되서 약간 어색함
         }
     }
 }

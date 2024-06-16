@@ -18,13 +18,17 @@ public class MenuManager : MonoBehaviour
     //메뉴판 리스트
     public List<Image> menuImageList = new();           //메뉴판 이미지를 담는 리스트
     //메뉴판 설명을 담는 리스트
-    public List<TMP_Text> menuNameList = new();         //이름
-    public List<TMP_Text> menuExplanationList = new();  //설명
-    public List<TMP_Text> menuPriceList = new();        //가격
+    public List<TMP_Text> menuNameList = new();         //SO에서 가져온 이름
+    public List<TMP_Text> menuExplanationList = new();  //SO에서 가져온 설명
+    public List<TMP_Text> menuPriceList = new();        //SO에서 가져온 가격
 
     private void Awake()
     {
         foodList = new List<int>(new int[limit]);
+
+        List<TMP_Text> nameList = new();
+        List<TMP_Text> explanationList = new();
+        List<TMP_Text> priceList = new();
 
         for (int i = 0; i < limit; i++)
         {
@@ -90,7 +94,7 @@ public class MenuManager : MonoBehaviour
     {
         for(int i = 0; i < limit; i++)
         {
-            Menu menu = menuSO.menus[i]; //menu에 menus[i] 값 할당
+            Menu menu = menuSO.menus[foodList[i]-1]; //menu에 menus[i] 값 할당
 
             if (foodList[i] != 0) //푸드리스트에 값이 있다면
             {
@@ -100,7 +104,7 @@ public class MenuManager : MonoBehaviour
                     //메뉴판에 들어온 번호에 해당하는 음식 설명을 적용
                     menuNameList[i].text = menu.name;
                     menuExplanationList[i].text = menu.explanation;
-                    menuPriceList[i].text = menu.price.ToString();
+                    menuPriceList[i].text = menu.price.ToString() + "G";
                 }
             }
         }

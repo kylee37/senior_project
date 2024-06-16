@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1abd2b0bc590d97488e09b3fe699a7aa
+guid: 51163cd2fc04ebb4eb86773d7b0c806d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,97 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fantasy RPG Interior Pack (48x48 grid)_0
+      name: UIicon_0
       rect:
         serializedVersion: 2
-        x: 1016
-        y: 873
+        x: 0
+        y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1e69169dc55539c409d0b8eb463cd16b
-      internalID: 1125139693
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fantasy RPG Interior Pack (48x48 grid)_1
-      rect:
-        serializedVersion: 2
-        x: 1017
-        y: 624
-        width: 30
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8f3bc2f0c45dacf4b9b5f4a7e162ae97
-      internalID: 1294081613
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fantasy RPG Interior Pack (48x48 grid)_2
-      rect:
-        serializedVersion: 2
-        x: 1251
-        y: 837
-        width: 42
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fbb0520a0931cb0408e54250f181f13e
-      internalID: 888192004
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fantasy RPG Interior Pack (48x48 grid)_3
-      rect:
-        serializedVersion: 2
-        x: 1401
-        y: 579
-        width: 30
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 42472b4183441ca4486ba971fc42d4d6
-      internalID: -1459774249
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fantasy RPG Interior Pack (48x48 grid)_4
-      rect:
-        serializedVersion: 2
-        x: 972
-        y: 396
-        width: 24
-        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,8 +124,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cad47b384beb51b4288789fce55c357b
-      internalID: -2049911108
+      spriteID: 51547b20254b0a74e8117e3649caf2f8
+      internalID: 412750785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIicon_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28ecc05cfa24a8147bf93e7434d849a4
+      internalID: 904560269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIicon_2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 146f8e06e37377c42b0e34afc0e6c588
+      internalID: 1367498669
       vertices: []
       indices: 
       edges: []
@@ -217,7 +175,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 479ce81044ebf9442be70670e5db2f40
     internalID: 0
     vertices: []
     indices: 
@@ -225,11 +183,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Fantasy RPG Interior Pack (48x48 grid)_0: 1125139693
-      Fantasy RPG Interior Pack (48x48 grid)_1: 1294081613
-      Fantasy RPG Interior Pack (48x48 grid)_2: 888192004
-      Fantasy RPG Interior Pack (48x48 grid)_3: -1459774249
-      Fantasy RPG Interior Pack (48x48 grid)_4: -2049911108
+      UIicon_0: 412750785
+      UIicon_1: 904560269
+      UIicon_2: 1367498669
+      UIicon_3: 1063403077
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

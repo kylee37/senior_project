@@ -11,6 +11,7 @@ public class NPCMover : MonoBehaviour
     private Vector3[] path;
     private GameObject emoteInstance;
     private SpriteRenderer emoteSpriteRenderer;
+    private XPManager xpManager;
 
     public int targetIndex;
     public int emoteNum;
@@ -38,7 +39,7 @@ public class NPCMover : MonoBehaviour
         targetObject = gameManager.GetRandomUnusedTargetObject();
         animator = GetComponent<Animator>();
 
-        exitPos = new Vector3(10, 0, 0);
+        exitPos = new Vector3(13.25f, 2.5f, 0);
     }
 
     public void FindPathFromCurrentPosition()
@@ -159,7 +160,14 @@ public class NPCMover : MonoBehaviour
 
         Invoke(nameof(Thinking), 1);
 
-        Invoke(nameof(NPCExit), 10);
+        // NPCExit를 Emotes가 끝난 후에 실행되도록 함
+        StartCoroutine(WaitAndExit(10f));
+    }
+
+    IEnumerator WaitAndExit(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        NPCExit();
     }
 
     void CheckConditionAndFindNewPath()
@@ -173,13 +181,16 @@ public class NPCMover : MonoBehaviour
 
     void NPCExit()
     {
+        Debug.Log("퇴장");
+        prefabSpawner.ReturnObjectToPool(gameObject, 1);
         conditionMet = true;
         Vector3 newDestination = exitPos;
         destinationPosition = new Vector3Int((int)newDestination.x, (int)newDestination.y, 0);
         reservationSystem.ReserveDestination(destinationPosition, gameObject);
         FindPathFromCurrentPosition();
 
-        goldManager.gold += 100;
+        goldManager.gold += 40;
+        xpManager.xp += 1;
         reservationSystem.CancelReservation(destinationPosition);
     }
 
@@ -191,8 +202,26 @@ public class NPCMover : MonoBehaviour
 
     void Thinking()
     {
+        Debug.LogWarning("생각 이모티콘");
         Vector3 emotePosition = transform.position + new Vector3(0, 0.75f, 0);
         emoteInstance = Instantiate(emotes[1], emotePosition, Quaternion.identity);
+        emoteSpriteRenderer = emoteInstance.GetComponent<SpriteRenderer>();
+        StartCoroutine(FadeInAndMoveUp(emoteInstance.transform, emoteSpriteRenderer, 0.2f));
+
+        StartCoroutine(DelayedEmotes(emoteNum, 3f)); // Coroutine으로 변경
+    }
+
+    IEnumerator DelayedEmotes(int emoteNum, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        DestroyEmote(); // 기존 이모티콘 삭제
+        Emotes(emoteNum);
+    }
+
+    void Emotes(int emoteNum)
+    {
+        Vector3 emotePosition = transform.position + new Vector3(0, 0.75f, 0);
+        emoteInstance = Instantiate(emotes[emoteNum], emotePosition, Quaternion.identity);
         emoteSpriteRenderer = emoteInstance.GetComponent<SpriteRenderer>();
         StartCoroutine(FadeInAndMoveUp(emoteInstance.transform, emoteSpriteRenderer, 0.2f));
 
@@ -222,16 +251,6 @@ public class NPCMover : MonoBehaviour
 
             yield return null;
         }
-    }
-
-    void Emotes(int emoteNum)
-    {
-        Vector3 emotePosition = transform.position + new Vector3(0, 0.75f, 0);
-        emoteInstance = Instantiate(emotes[emoteNum], emotePosition, Quaternion.identity);
-        emoteSpriteRenderer = emoteInstance.GetComponent<SpriteRenderer>();
-        StartCoroutine(FadeInAndMoveUp(emoteInstance.transform, emoteSpriteRenderer, 0.2f));
-
-        Invoke(nameof(DestroyEmote), 3f);
     }
 
     void DestroyEmote()

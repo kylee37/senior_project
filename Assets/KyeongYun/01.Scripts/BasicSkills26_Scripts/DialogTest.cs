@@ -41,7 +41,7 @@ public class DialogTest : MonoBehaviour
 		yield return new WaitForSeconds(2);
 
 		// 유니티 에디터 플레이 중지
-		UnityEditor.EditorApplication.ExitPlaymode();
+		//UnityEditor.EditorApplication.ExitPlaymode();
 	}
 }
 

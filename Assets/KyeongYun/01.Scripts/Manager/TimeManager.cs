@@ -12,17 +12,17 @@ public class TimeManager : MonoBehaviour
     private float timer = 0f;
     public float timeSeconds = 0f;
 
-    public int seconds = 6; //게임 시간 30분이 현실에서 몇초인지
+    public int seconds = 6; // 게임 시간 30분이 현실에서 몇 초인지
 
     int days = 1;
     int minutes = 0;
     int hours = 4;
 
-    public Button startButton; //일차 시작하는 버튼 UI
-    public Button lockMenuButton; //메뉴판 잠금 버튼
-    public Button lockArgmButton; //가구 배치 잠금 버튼
-    public GameObject textUi; //표시 UI
-    public TMP_Text printText; //표시 UI 텍스트
+    public Button startButton; // 일차 시작하는 버튼 UI
+    public Button lockMenuButton; // 메뉴판 잠금 버튼
+    public Button lockArgmButton; // 가구 배치 잠금 버튼
+    public GameObject textUi; // 표시 UI
+    public TMP_Text printText; // 표시 UI 텍스트
 
     private void Start()
     {
@@ -32,7 +32,7 @@ public class TimeManager : MonoBehaviour
 
     private void Update()
     {
-        //록 버튼을 눌렀을 경우
+        // 록 버튼을 눌렀을 경우
         lockMenuButton.onClick.AddListener(LockButtonClick);
         lockArgmButton.onClick.AddListener(LockButtonClick);
     }
@@ -40,8 +40,8 @@ public class TimeManager : MonoBehaviour
     void LockButtonClick()
     {
         printText.text = "일차 진행 중에 사용할 수 없습니다.";
-        textUi.SetActive(true); //표시 UI 활성화
-        Invoke(nameof(CloseUI), 0.5f); //0.5초 뒤 UI 삭제
+        textUi.SetActive(true); // 표시 UI 활성화
+        Invoke(nameof(CloseUI), 0.5f); // 0.5초 뒤 UI 삭제
     }
 
     void CloseUI()
@@ -65,61 +65,49 @@ public class TimeManager : MonoBehaviour
     IEnumerator UpdateTimer()
     {
         hours = 4;
+        minutes = 0;
 
         while (true)
         {
             yield return null; // 한 프레임을 기다립니다.
-          
+
             timer += Time.deltaTime; // 경과된 시간을 누적합니다.
             timeSeconds += Time.deltaTime;
-            
-            // 시간을 시, 분, 초로 변환합니다.
-            //int hours = (int)(timer / 3600);
-            //int minutes = (int)((timer % 3600) / 60);
-            //int seconds = (int)(timer % 60);
 
-            //게임 시간에 맞춰 변경
+            // 게임 시간에 맞춰 변경
             if (timer >= seconds)
             {
+                timer = 0;
+
                 if (minutes == 0)
                 {
-                    minutes += 30;
+                    minutes = 30;
                 }
-                else if (minutes == 60)
+                else
                 {
                     minutes = 0;
-                    hours++; 
+                    hours++;
                 }
 
-                timer = 0;
-            }
-
-            if (hours == 12 && minutes == 30)
-            {
-                minutes = 0;
-                hours = 0;
-                //타이머 텍스트 업데이트
+                // 타이머 텍스트 업데이트
                 timerText.text =
-                hours.ToString("D2") + ":" +
-                minutes.ToString("D2");
+                    hours.ToString("D2") + ":" +
+                    minutes.ToString("D2");
 
-                //데이 텍스트 업데이트
-                days++;
-                dayText.text = days.ToString("D1");
+                // 12시 30분이 되면 하루를 증가시킵니다.
+                if (hours == 12 && minutes == 0)
+                {
+                    days++;
+                    dayText.text = days.ToString("D1");
 
-                startButton.gameObject.SetActive(true);
-                lockMenuButton.gameObject.SetActive(false);
-                lockArgmButton.gameObject.SetActive(false);
+                    startButton.gameObject.SetActive(true);
+                    lockMenuButton.gameObject.SetActive(false);
+                    lockArgmButton.gameObject.SetActive(false);
 
-                //GameStop
-                yield break;
+                    // GameStop
+                    yield break;
+                }
             }
-
-            // 타이머 텍스트 업데이트
-            timerText.text =
-            //hours.ToString("D2") + ":" +  시간 표시하려면 주석 제거
-            hours.ToString("D2") + ":" +
-            minutes.ToString("D2");
         }
     }
 }

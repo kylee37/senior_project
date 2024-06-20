@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEditor.MemoryProfiler;
@@ -34,3 +34,4 @@ public class CollideChecker : MonoBehaviour
         }
     }
 }
+*/

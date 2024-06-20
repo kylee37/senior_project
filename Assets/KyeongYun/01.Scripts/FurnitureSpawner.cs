@@ -38,7 +38,7 @@ public class FurnitureSpawner : MonoBehaviour
     public void SpawnObject(GameObject prefabToSpawn)
     {
         spawnedObject = Instantiate(prefabToSpawn, Vector3.zero, Quaternion.identity);
-        SetObjectAlpha(spawnedObject, 0.2f); // 배치상태일 때 Alpha값을 줄임
+        SetObjectAlpha(spawnedObject, 0.5f); // 배치상태일 때 Alpha값을 줄임
         buildPanel.SetActive(true); 
     }
 
@@ -82,7 +82,7 @@ public class FurnitureSpawner : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Q))
         {
             // 키를 눌렀을 때 상태를 Normal로 변경하고 알파값을 되돌리기
-            if (stateManager != null && CollideChecker.isColliding == false)
+            if (stateManager != null/* && CollideChecker.isColliding == false*/)
             {
                 Debug.Log("배치 완료");
                 stateManager.UpdateState(State.Normal);
@@ -92,10 +92,10 @@ public class FurnitureSpawner : MonoBehaviour
                 buildPanel.SetActive(false);
                 //여기서 배치 확정을 짓는다면 가지고 있는 재화 - 필요한 재화
             }
-            else if (CollideChecker.isColliding == true)
+            /*else if (CollideChecker.isColliding == true)
             {
                 Debug.LogError("이곳엔 배치할 수 없습니다");
-            }
+            }*/
         }
         else if(Input.GetKeyDown(KeyCode.E))
         {

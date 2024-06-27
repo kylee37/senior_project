@@ -202,7 +202,7 @@ TextureImporter:
         width: 24
         height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -210,6 +210,27 @@ TextureImporter:
       bones: []
       spriteID: cad47b384beb51b4288789fce55c357b
       internalID: -2049911108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fantasy RPG Interior Pack (48x48 grid)_5
+      rect:
+        serializedVersion: 2
+        x: 1270
+        y: 1175
+        width: 49
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b67936e48832464a8bd20de8ee664fe
+      internalID: 1993226058
       vertices: []
       indices: 
       edges: []
@@ -230,6 +251,7 @@ TextureImporter:
       Fantasy RPG Interior Pack (48x48 grid)_2: 888192004
       Fantasy RPG Interior Pack (48x48 grid)_3: -1459774249
       Fantasy RPG Interior Pack (48x48 grid)_4: -2049911108
+      Fantasy RPG Interior Pack (48x48 grid)_5: 1993226058
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

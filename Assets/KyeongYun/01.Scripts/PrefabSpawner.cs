@@ -52,7 +52,7 @@ public class PrefabSpawner : MonoBehaviour
             timeManager.timeSeconds = 0f;
             Calculate();
             Spawn();
-            if(randomNum > 50) // 동시 방문 확률이 n% 일 때 계산식: [value(randomNum) = 100 - n]
+            if(randomNum > 80) // 동시 방문 확률이 n% 일 때 계산식: [value(randomNum) = 100 - n]
             {
                 Debug.Log("동행");
                 Invoke(nameof(Spawn), 0.25f);

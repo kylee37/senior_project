@@ -12,6 +12,8 @@ public class CheckPointMove : MonoBehaviour
     private bool pathComplete = false;
     private Animator animator;
 
+    private bool _isRollingDice = false;
+
     void Start()
     {
         waypointManager = FindObjectOfType<WaypointManager>();
@@ -38,6 +40,17 @@ public class CheckPointMove : MonoBehaviour
 
     void MovePath()
     {
+        if(!pathComplete && !_isRollingDice)
+        {
+            _isRollingDice = true;
+            if(Random.value < 0.5f)
+            {
+                Debug.Log("¹Ù·ÎÅ½»ö");
+                npcMover.FindPathFromCurrentPosition();
+                return;
+            }
+        }
+
         if (posIndex >= pos.Length)
         {
             pathComplete = true;

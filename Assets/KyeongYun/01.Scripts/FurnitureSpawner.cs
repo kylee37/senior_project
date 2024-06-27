@@ -1,12 +1,14 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.SubsystemsImplementation;
+using UnityEngine.Tilemaps;
 
 public class FurnitureSpawner : MonoBehaviour
 {
     [HideInInspector] public StateManager stateManager;
     [HideInInspector] public GameObject buildPanel;
     private GameObject spawnedObject;
+    public Tilemap targetTilemap;  // 타일맵을 할당합니다.
+    private Collider2D spawnedCollider;
+
     void Start()
     {
         buildPanel.SetActive(false);
@@ -23,40 +25,32 @@ public class FurnitureSpawner : MonoBehaviour
 
     void Update()
     {
-        // 게임과 관련된 로직 처리
         if (stateManager != null && stateManager.currentState == State.Spawned)
         {
-            // 패널이 내려간 상태에서 오브젝트를 생성하고 이동할 수 있는 로직
             HandleBuildingInput();
         }
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log(stateManager != null ? stateManager.currentState.ToString() : "StateManager is null");
-        }*/
     }
 
     public void SpawnObject(GameObject prefabToSpawn)
     {
         spawnedObject = Instantiate(prefabToSpawn, Vector3.zero, Quaternion.identity);
+        spawnedCollider = spawnedObject.GetComponent<Collider2D>();
         SetObjectAlpha(spawnedObject, 0.5f); // 배치상태일 때 Alpha값을 줄임
-        buildPanel.SetActive(true); 
+        buildPanel.SetActive(true);
     }
 
     void MoveObject(Vector3 direction)
     {
-        // 현재 생성된 오브젝트 가져오기
         GameObject[] spawnedObjects = GameObject.FindGameObjectsWithTag("SpawnedObject");
 
         if (spawnedObjects.Length > 0)
         {
             GameObject lastSpawnedObject = spawnedObjects[spawnedObjects.Length - 1];
-            // 이동할 거리
             float moveDistance = 1.0f;
-            if(Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift))
             {
                 moveDistance = 0.2f;
             }
-            // 현재 오브젝트의 위치를 이동
             lastSpawnedObject.transform.Translate(direction * moveDistance);
         }
     }
@@ -81,33 +75,58 @@ public class FurnitureSpawner : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
-            // 키를 눌렀을 때 상태를 Normal로 변경하고 알파값을 되돌리기
-            if (stateManager != null/* && CollideChecker.isColliding == false*/)
+            if (stateManager != null)
             {
-                Debug.Log("배치 완료");
-                stateManager.UpdateState(State.Normal);
-
-                // buttonController의 prefabToSpawn을 사용하여 알파값을 1로 되돌림
-                SetObjectAlpha(spawnedObject, 1.0f);
-                buildPanel.SetActive(false);
-                //여기서 배치 확정을 짓는다면 가지고 있는 재화 - 필요한 재화
+                if (IsOnTargetTilemap(spawnedObject))
+                {
+                    Debug.Log("배치 완료");
+                    stateManager.UpdateState(State.Normal);
+                    SetObjectAlpha(spawnedObject, 1.0f);
+                    buildPanel.SetActive(false);
+                }
+                else
+                {
+                    Debug.LogError("타일맵 위에 있어야 합니다!");
+                }
             }
-            /*else if (CollideChecker.isColliding == true)
-            {
-                Debug.LogError("이곳엔 배치할 수 없습니다");
-            }*/
         }
-        else if(Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.E))
         {
             if (stateManager != null)
             {
                 Debug.Log("배치 취소됨");
                 stateManager.UpdateState(State.Normal);
-
                 Destroy(spawnedObject);
                 buildPanel.SetActive(false);
             }
         }
+    }
+
+    bool IsOnTargetTilemap(GameObject obj)
+    {
+        if (targetTilemap == null || spawnedCollider == null)
+        {
+            Debug.LogError("Target Tilemap 또는 Collider가 설정되지 않았습니다.");
+            return false;
+        }
+
+        // 오브젝트의 각 콜라이더 정점들이 타일맵 위에 있는지 검사합니다.
+        Bounds bounds = spawnedCollider.bounds;
+        Vector3Int min = targetTilemap.WorldToCell(bounds.min);
+        Vector3Int max = targetTilemap.WorldToCell(bounds.max);
+
+        for (int x = min.x; x <= max.x; x++)
+        {
+            for (int y = min.y; y <= max.y; y++)
+            {
+                Vector3Int tilePosition = new Vector3Int(x, y, 0);
+                if (!targetTilemap.HasTile(tilePosition))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     void SetObjectAlpha(GameObject obj, float alpha)

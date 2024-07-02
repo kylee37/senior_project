@@ -14,18 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foods:
   - num: 1
-    human: 0
-    elf: 0
-    dwarf: 0
+    human: 3
+    elf: 3
+    dwarf: 3
   - num: 2
-    human: 0
-    elf: 0
+    human: 4
+    elf: -4
     dwarf: 0
   - num: 3
     human: 0
-    elf: 0
-    dwarf: 0
+    elf: 6
+    dwarf: -4
   - num: 4
-    human: 0
+    human: 2
     elf: 0
-    dwarf: 0
+    dwarf: 7
+  - num: 4
+    human: 2
+    elf: 0
+    dwarf: 7
+  - num: 4
+    human: 2
+    elf: 0
+    dwarf: 7
+  - num: 4
+    human: 2
+    elf: 0
+    dwarf: 7
+  - num: 4
+    human: 2
+    elf: 0
+    dwarf: 7
+  - num: 4
+    human: 2
+    elf: 0
+    dwarf: 7
+  - num: 4
+    human: 2
+    elf: 0
+    dwarf: 7

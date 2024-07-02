@@ -45,7 +45,7 @@ public class CheckPointMove : MonoBehaviour
             _isRollingDice = true;
             if (Random.value < 0.5f)
             {
-                Debug.Log("¹Ù·ÎÅ½»ö");
+                Debug.Log("Immediately Search");
                 npcMover.FindPathFromCurrentPosition();
                 return;
             }

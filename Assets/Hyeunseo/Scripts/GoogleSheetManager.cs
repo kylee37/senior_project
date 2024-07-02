@@ -58,7 +58,7 @@ public class GoogleSheetManager : MonoBehaviour
         }
     }
 
-    void SetFoodSO(string tsv) //스프레드시트 값 가져와서 FoodSO에 넣기
+    void SetFoodSO(string tsv) //스프레드시트 값 가져와서 FoodSO랑 MenuSO에 넣기
     {
         string[] row = tsv.Split('\n');
         int rowSize = row.Length;

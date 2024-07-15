@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SpawnedObject
   - Wall
+  - Furniture
   layers:
   - Default
   - TransparentFX

@@ -3,26 +3,27 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+
 public class PrefabSpawner : MonoBehaviour
 {
     public GameObject[] prefabs;
     public GameObject prefabToSpawn;
     public Queue<GameObject>[] objectPool;
-    public int poolSize;                        // 풀 사이즈
+    public int poolSize;
 
-    private FameManager fameManager;            // FameManager 인스턴스를 저장할 변수
+    private FameManager fameManager;
     private TimeManager timeManager;
 
-    // 인스펙터 창에서 숨기기?
-     public int humanRate;
-     public int dwarfRate;
-     public int elfRate;
+    public int humanRate;
+    public int dwarfRate;
+    public int elfRate;
+    public int visit;
 
-     public int visit;
+    public Transform spawnPoint;  // 스폰 위치를 지정할 변수
 
     private void Start()
     {
-        fameManager = FameManager.instance;     // FameManager에서 초기 선호도 값 가져오기
+        fameManager = FameManager.instance;
 
         humanRate = fameManager.sumHuman;
         dwarfRate = fameManager.sumDwarf;
@@ -31,7 +32,6 @@ public class PrefabSpawner : MonoBehaviour
 
         timeManager = FindObjectOfType<TimeManager>();
 
-        // 풀 초기화
         objectPool = new Queue<GameObject>[prefabs.Length];
         for (int i = 0; i < prefabs.Length; i++)
         {
@@ -44,15 +44,16 @@ public class PrefabSpawner : MonoBehaviour
             }
         }
     }
+
     private void Update()
     {
-        if(timeManager.timeSeconds >= 3) // 3초마다 스폰
+        if (timeManager.timeSeconds >= 3)
         {
             int randomNum = Random.Range(1, 100);
             timeManager.timeSeconds = 0f;
             Calculate();
             Spawn();
-            if(randomNum > 50) // 동시 방문 확률이 n% 일 때 계산식: [value(randomNum) = 100 - n]
+            if (randomNum > 50)
             {
                 Debug.Log("동행");
                 Invoke(nameof(Spawn), 0.25f);
@@ -60,7 +61,6 @@ public class PrefabSpawner : MonoBehaviour
         }
     }
 
-    // rateName(NPC이름) 값이 다음과 같을 때 각각 NPC 선호도 증감
     public void UpdateRate(string rateName, int newValue)
     {
         switch (rateName)
@@ -80,7 +80,6 @@ public class PrefabSpawner : MonoBehaviour
         }
     }
 
-    // 각 NPC 선호도에 따른 방문률 계산 + 각 방문률에 따른 방문할 NPC 도출
     public void Calculate()
     {
         var sum = humanRate + dwarfRate + elfRate;
@@ -120,7 +119,14 @@ public class PrefabSpawner : MonoBehaviour
             if (index != -1)
             {
                 GameObject obj = GetObjectFromPool(index);
-                obj.transform.position = transform.position;
+                if (spawnPoint != null)
+                {
+                    obj.transform.position = spawnPoint.position;
+                }
+                else
+                {
+                    obj.transform.position = transform.position;  // 스폰 위치가 지정되지 않은 경우, PrefabSpawner의 위치 사용
+                }
                 obj.SetActive(true);
             }
             else
@@ -133,6 +139,7 @@ public class PrefabSpawner : MonoBehaviour
             Debug.Log("Prefab to spawn is null.");
         }
     }
+
     private int GetPrefabIndex(GameObject prefab)
     {
         for (int i = 0; i < prefabs.Length; i++)

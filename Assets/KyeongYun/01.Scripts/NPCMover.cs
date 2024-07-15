@@ -15,6 +15,7 @@ public class NPCMover : MonoBehaviour
 
     public int targetIndex;
     public int emoteNum;
+    public int foodNum; //감정표현 음식 생성에서 사용
     public GameObject targetObject;
 
     public PosManager reservationSystem;
@@ -25,6 +26,7 @@ public class NPCMover : MonoBehaviour
     public string badNPC;
     public string goodFood;
     public GameObject[] emotes;
+    public GameObject[] foods; //음식 이미지 담는 곳
     public Vector3 exitPos;
 
     private bool conditionMet = false;
@@ -140,7 +142,25 @@ public class NPCMover : MonoBehaviour
                 break;
         }
 
-        switch (randomNum)
+        switch (randomNum) //음식 이모지
+        {
+            case int n when (n > 0 && n <= 6):
+                Invoke(nameof(GoodEmote), 3);
+                foodNum = 0;
+                currentRate += 2;
+                break;
+            case int n when (n > 6 && n < 10):
+                Invoke(nameof(NormalEmote), 3);
+                foodNum = 3;
+                currentRate += 1;
+                break;
+            case int n when (n >= 10):
+                Invoke(nameof(BadEmote), 3);
+                foodNum = 2;
+                break;
+        }
+
+        switch (randomNum) //음식에 대한 감정표현 이모지
         {
             case int n when (n > 0 && n <= 6):
                 Invoke(nameof(GoodEmote), 3);
@@ -222,6 +242,16 @@ public class NPCMover : MonoBehaviour
     {
         Vector3 emotePosition = transform.position + new Vector3(0, 0.75f, 0);
         emoteInstance = Instantiate(emotes[emoteNum], emotePosition, Quaternion.identity);
+        emoteSpriteRenderer = emoteInstance.GetComponent<SpriteRenderer>();
+        StartCoroutine(FadeInAndMoveUp(emoteInstance.transform, emoteSpriteRenderer, 0.2f));
+
+        Invoke(nameof(DestroyEmote), 3f);
+    }
+
+    void Foods(int foodsNum)
+    {
+        Vector3 emotePosition = transform.position + new Vector3(0, 0.75f, 0);
+        emoteInstance = Instantiate(emotes[foodsNum], emotePosition, Quaternion.identity);
         emoteSpriteRenderer = emoteInstance.GetComponent<SpriteRenderer>();
         StartCoroutine(FadeInAndMoveUp(emoteInstance.transform, emoteSpriteRenderer, 0.2f));
 

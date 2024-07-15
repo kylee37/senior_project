@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetIndex: 0
   emoteNum: 0
+  foodNum: 0
   targetObject: {fileID: 0}
   reservationSystem: {fileID: 0}
   destinationPosition: {x: 0, y: 0, z: 0}
@@ -114,6 +115,11 @@ MonoBehaviour:
   - {fileID: 8579386794722966750, guid: f54aed34ad85c1e42ac9b82222238f1e, type: 3}
   - {fileID: 2796109644278402977, guid: 9a36028c90fa18a49b74c829e2a62a94, type: 3}
   - {fileID: 3206566113165621106, guid: dd955ff010dd7a7468d6e12ccfc6caba, type: 3}
+  foods:
+  - {fileID: 2976872953962055889, guid: af83df6004009b144bc5f611e3ecc44c, type: 3}
+  - {fileID: 0}
+  - {fileID: 2976872953962055889, guid: 94e0399d88fd4e04cafb201610476718, type: 3}
+  - {fileID: 2976872953962055889, guid: d9ebf47868dbbcf449247ec2daf2bf81, type: 3}
   exitPos: {x: 0, y: 0, z: 0}
 --- !u!95 &2531117277830237027
 Animator:
@@ -125,7 +131,7 @@ Animator:
   m_GameObject: {fileID: 2730795498203845917}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c5fd00c548d438f4fac1c8aa8961bfff, type: 2}
+  m_Controller: {fileID: 9100000, guid: a77aabed5f0f8df458d560d389ec8faa, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

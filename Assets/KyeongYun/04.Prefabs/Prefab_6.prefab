@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1032664973233861583}
   - component: {fileID: 8130149476617911492}
   - component: {fileID: 6709682807208487340}
-  - component: {fileID: -8998024433533680063}
   - component: {fileID: -5681331926032169730}
   m_Layer: 0
   m_Name: Prefab_6
@@ -132,19 +131,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.19957763, y: 0.15114224}
   m_EdgeRadius: 0
---- !u!114 &-8998024433533680063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1234160969309089367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f7cbe980bbf30a44ab66a31de5ea9ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allowedTilemapName: 
 --- !u!114 &-5681331926032169730
 MonoBehaviour:
   m_ObjectHideFlags: 0

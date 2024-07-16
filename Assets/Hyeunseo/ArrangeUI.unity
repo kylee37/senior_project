@@ -5746,7 +5746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b139e8d167ccacf499370349961f8567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xp: 0
+  xp: 10
   xpText: {fileID: 347367855}
   levelManager: {fileID: 8088851}
 --- !u!1 &161984647
@@ -43749,7 +43749,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1451385982
 Transform:
   m_ObjectHideFlags: 0

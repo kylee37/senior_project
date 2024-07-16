@@ -40,7 +40,7 @@ public class CheckPointMove : MonoBehaviour
 
     void MovePath()
     {
-        if (!pathComplete && !_isRollingDice)
+        /*if (!pathComplete && !_isRollingDice)
         {
             _isRollingDice = true;
             if (Random.value < 0.5f)
@@ -49,7 +49,7 @@ public class CheckPointMove : MonoBehaviour
                 npcMover.FindPathFromCurrentPosition();
                 return;
             }
-        }
+        }*/
 
         if (posIndex >= pos.Length)
         {

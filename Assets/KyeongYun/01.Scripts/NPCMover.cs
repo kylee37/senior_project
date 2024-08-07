@@ -209,8 +209,8 @@ public class NPCMover : MonoBehaviour
         reservationSystem.ReserveDestination(destinationPosition, gameObject);
         FindPathFromCurrentPosition();
 
-        goldManager.gold += 40;
-        xpManager.xp += 1;
+        goldManager.gold += 200;
+        xpManager.xp += 5;
         reservationSystem.CancelReservation(destinationPosition);
     }
 

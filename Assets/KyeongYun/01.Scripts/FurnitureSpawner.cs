@@ -4,7 +4,7 @@ public class FurnitureSpawner : MonoBehaviour
 {
     [HideInInspector] public StateManager stateManager;
     [HideInInspector] public GameObject buildPanel;
-
+    [SerializeField] private GameObject startButton;
     private GameObject spawnedObject;
 
     void Start()
@@ -71,6 +71,7 @@ public class FurnitureSpawner : MonoBehaviour
                 stateManager.UpdateState(State.Normal);
                 SetObjectAlpha(spawnedObject, 1.0f);
                 buildPanel.SetActive(false);
+                startButton.SetActive(true);
             }
             else
             {

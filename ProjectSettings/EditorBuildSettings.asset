@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Hyeunseo/TitleScene.unity
     guid: 8d52b91fbe925a94bad640893c692337
+  - enabled: 1
+    path: Assets/Hyeunseo/ArrangeUI.unity
+    guid: a94b945eed0865141a9752e7d07366da
   m_configObjects: {}

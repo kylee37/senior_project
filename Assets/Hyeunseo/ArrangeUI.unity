@@ -5746,7 +5746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b139e8d167ccacf499370349961f8567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xp: 10
+  xp: 0
   xpText: {fileID: 347367855}
   levelManager: {fileID: 8088851}
 --- !u!1 &161984647
@@ -16267,7 +16267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 59615499}
-  dayText: {fileID: 0}
+  dayText: {fileID: 1434400505}
   timeSeconds: 0
   seconds: 4
   startButton: {fileID: 958278339}
@@ -20363,6 +20363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateManager: {fileID: 0}
   buildPanel: {fileID: 64096821}
+  startButton: {fileID: 958278337}
 --- !u!4 &765860840
 Transform:
   m_ObjectHideFlags: 0
@@ -34124,7 +34125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1185661711
 Transform:
   m_ObjectHideFlags: 0
@@ -35137,7 +35138,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100,000,000
+  m_text: 1000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ddf9de80105441449bce65a7433039cb, type: 2}
   m_sharedMaterial: {fileID: -1685003805941211607, guid: ddf9de80105441449bce65a7433039cb, type: 2}
@@ -43251,7 +43252,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ddf9de80105441449bce65a7433039cb, type: 2}
   m_sharedMaterial: {fileID: -1685003805941211607, guid: ddf9de80105441449bce65a7433039cb, type: 2}
@@ -43749,7 +43750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1451385982
 Transform:
   m_ObjectHideFlags: 0

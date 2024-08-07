@@ -12,7 +12,7 @@ public class CheckPointMove : MonoBehaviour
     private bool pathComplete = false;
     private Animator animator;
 
-    private bool _isRollingDice = false;
+    //private bool _isRollingDice = false;
 
     void Start()
     {

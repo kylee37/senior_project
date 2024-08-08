@@ -130,6 +130,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Expansion_Bedroom_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 912
+        width: 48
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c18b48aa07c5fa64e933b6285723977a
+      internalID: 1316639295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Expansion_Bedroom_2
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 930
+        width: 30
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e04218c0d6140049b1fb704905c841d
+      internalID: -1707585065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -142,6 +184,8 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Expansion_Bedroom_0: 529311719
+      Expansion_Bedroom_1: 1316639295
+      Expansion_Bedroom_2: -1707585065
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

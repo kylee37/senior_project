@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1032664973233861583}
   - component: {fileID: 8130149476617911492}
   - component: {fileID: 6709682807208487340}
-  - component: {fileID: -2170326190992305927}
+  - component: {fileID: -3277001463246460923}
   m_Layer: 0
-  m_Name: Prefab_4
+  m_Name: Prefab_21
   m_TagString: Furniture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 888192004, guid: 1abd2b0bc590d97488e09b3fe699a7aa, type: 3}
+  m_Sprite: {fileID: 20471944, guid: 1abd2b0bc590d97488e09b3fe699a7aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -118,20 +118,20 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.000000059604645, y: -0.2486559}
+  m_Offset: {x: 0.013171732, y: -0.3586722}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.65625, y: 0.84375}
+    oldSize: {x: 0.625, y: 1.03125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.59030175, y: 0.4003419}
+  m_Size: {x: 0.3762005, y: 0.21081844}
   m_EdgeRadius: 0
---- !u!114 &-2170326190992305927
+--- !u!114 &-3277001463246460923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

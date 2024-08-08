@@ -1603,6 +1603,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1505591695}
+  - {fileID: 1048689004}
   - {fileID: 1711100262}
   m_Father: {fileID: 1816605537}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2542,7 +2543,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -20}
+  m_AnchoredPosition: {x: 130, y: 70}
   m_SizeDelta: {x: 1900, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &330885311
@@ -2574,8 +2575,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2592,8 +2593,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4644,7 +4645,7 @@ MonoBehaviour:
   dialogs:
   - speakerIndex: 0
     name: "\uD558\uD504\uC5D8\uD504"
-    dialogue: "\uC548\uB155\uD558\uC2ED\uB2C8\uAE4C? \uC800\uB294 \uC778\uAC04\uACFC
+    dialogue: "\uC548\uB155\uD558\uC2ED\uB2C8\uAE4C? \n\uC800\uB294 \uC778\uAC04\uACFC
       \uC5D8\uD504 \uC0AC\uC774\uC5D0\uC11C \uD0DC\uC5B4\uB09C \uD63C\uD608, \uD558\uD504
       \uC5D8\uD504\uC785\uB2C8\uB2E4."
   - speakerIndex: 0
@@ -4667,7 +4668,7 @@ MonoBehaviour:
     name: "\uD558\uD504\uC5D8\uD504"
     dialogue: "\uC65C \uC801\uC778\uC9C0 \uC774\uC720\uB3C4 \uBAA8\uB974\uC9C0\uB9CC
       \uADF8 \uC815\uBCF4\uB9CC\uC744 \uC8FC\uC785\uBC1B\uC544 \uB9C9\uC5F0\uD55C
-      \uC801\uB300\uAC10\uC744 \uAC00\uC9C0\uAC8C \uB410\uC8E0."
+      \uC801\uB300\uAC10\uC744 \n\uAC00\uC9C0\uAC8C \uB410\uC8E0."
   - speakerIndex: 0
     name: "\uD558\uD504\uC5D8\uD504"
     dialogue: "\uADF8 \uACB0\uACFC \uADF8\uB4E4\uC740 \uC9C0\uAE08\uAE4C\uC9C0\uB3C4
@@ -4689,7 +4690,7 @@ MonoBehaviour:
     name: "\uD558\uD504\uC5D8\uD504"
     dialogue: "\uADF8\uB798\uC11C \uAD6D\uACBD\uC5D0 \uC8FC\uC810\uC744 \uC138\uC6E0\uC8E0.
       \uC11C\uB85C \uC9C0\uB098\uB2E4\uB2C8\uBA70 \uBC25\uACFC \uC220\uC744 \uBA39\uC73C\uBA74
-      \uC790\uC5F0\uC2A4\uB7FD\uAC8C \uCE5C\uD574\uC9C8\uAC70\uB2E4..."
+      \n\uC790\uC5F0\uC2A4\uB7FD\uAC8C \uCE5C\uD574\uC9C8\uAC70\uB2E4..."
   - speakerIndex: 0
     name: "\uD558\uD504\uC5D8\uD504"
     dialogue: "\uADF8\uB807\uAC8C \uC0DD\uAC01\uD588\uC5C8\uC2B5\uB2C8\uB2E4\u2026
@@ -4703,7 +4704,7 @@ MonoBehaviour:
     name: "\uD558\uD504\uC5D8\uD504"
     dialogue: "\uADF8\uB798\uC11C \uB2F9\uC2E0\uAED8 \uC5F0\uB77D\uD55C \uAC81\uB2C8\uB2E4. 
       \uC778\uAC04\uACFC \uC5D8\uD504\uAC00 \uD654\uD569\uD560 \uC218 \uC788\uB294
-      \uC2DD\uB2F9\uC744 \uB9CC\uB4E4\uC5B4\uC8FC\uC138\uC694."
+      \uC2DD\uB2F9\uC744 \n\uB9CC\uB4E4\uC5B4\uC8FC\uC138\uC694."
   - speakerIndex: 0
     name: "\uD558\uD504\uC5D8\uD504"
     dialogue: "\uBCF4\uC218\uB294 \uC5BC\uB9C8\uB4E0\uC9C0 \uB4DC\uB9B4\uD14C\uB2C8,
@@ -5297,8 +5298,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -103.5}
-  m_SizeDelta: {x: 1900, y: 50}
+  m_AnchoredPosition: {x: 100, y: -100}
+  m_SizeDelta: {x: 1700, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &869290931
 MonoBehaviour:
@@ -5330,8 +5331,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7284,6 +7285,81 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1048689003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1048689004}
+  - component: {fileID: 1048689006}
+  - component: {fileID: 1048689005}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1048689004
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048689003}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 213228608}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -580}
+  m_SizeDelta: {x: 300, y: 150}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &1048689005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048689003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 3190445de97d6c647bd371860dce2fd4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1048689006
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048689003}
+  m_CullTransparentMesh: 1
 --- !u!1 &1336477458
 GameObject:
   m_ObjectHideFlags: 0
@@ -7781,15 +7857,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 10dfd2494f9616146b5fac9d7caf7ce5, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

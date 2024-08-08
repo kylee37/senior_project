@@ -16772,7 +16772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speakers:
-  - spriteRenderer: {fileID: 0}
+  - image: {fileID: 0}
     imageDialog: {fileID: 0}
     textName: {fileID: 0}
     textDialogue: {fileID: 0}

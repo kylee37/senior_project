@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
-
+using UnityEngine.SceneManagement;
 public class DialogTest : MonoBehaviour
 {
 	[SerializeField]
@@ -21,7 +21,8 @@ public class DialogTest : MonoBehaviour
 
 		// 대사 분기 사이에 원하는 행동을 추가할 수 있다.
 		// 캐릭터를 움직이거나 아이템을 획득하는 등의.. 현재는 3-2-1 카운트다운 실행
-		textCountdown.gameObject.SetActive(true);
+		SceneManager.LoadScene("ArrangeUI");
+		/*textCountdown.gameObject.SetActive(true);
 		int count = 3;
 		while ( count > 0 )
 		{
@@ -38,7 +39,7 @@ public class DialogTest : MonoBehaviour
 		textCountdown.text = "The End";
 
 		// 2초 뒤
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(2);*/
 
 		// 유니티 에디터 플레이 중지
 		//UnityEditor.EditorApplication.ExitPlaymode();
